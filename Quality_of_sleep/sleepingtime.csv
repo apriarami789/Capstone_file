@@ -1,0 +1,121 @@
+sex,time,terms,Eat well Drink well,Sometimes eat Sometimes drink,Hardly eat or drink,Not eating or drinking at all,Other
+woman,Before 9:00 p.m.,Carbonated drinks,18,90,95,155,5
+woman,9:00 p.m.-9:29 p.m.,Carbonated drinks,101,440,465,529,23
+woman,9:30 p.m. to 9:59 p.m.,Carbonated drinks,187,702,645,700,32
+woman,10:00 p.m. to 10:29 p.m.,Carbonated drinks,302,1006,763,815,42
+woman,10:30 p.m. to 10:59 p.m.,Carbonated drinks,221,624,458,487,25
+woman,11:00 p.m.-11:29 p.m.,Carbonated drinks,140,361,229,284,10
+woman,11:30 p.m. to 11:59 p.m.,Carbonated drinks,65,112,93,111,4
+woman,After midnight,Carbonated drinks,34,55,39,49,3
+woman,No set bedtime.,Carbonated drinks,55,73,47,53,2
+woman,Other,Carbonated drinks,4,16,3,10,78
+man,Before 9:00 p.m.,Carbonated drinks,45,140,118,143,3
+man,9:00 p.m.-9:29 p.m.,Carbonated drinks,220,699,550,563,37
+man,9:30 p.m. to 9:59 p.m.,Carbonated drinks,356,965,713,668,29
+man,10:00 p.m. to 10:29 p.m.,Carbonated drinks,463,1162,656,720,38
+man,10:30 p.m. to 10:59 p.m.,Carbonated drinks,283,634,368,382,12
+man,11:00 p.m.-11:29 p.m.,Carbonated drinks,192,292,162,177,5
+man,11:30 p.m. to 11:59 p.m.,Carbonated drinks,70,78,43,73,4
+man,After midnight,Carbonated drinks,26,31,13,22,1
+man,No set bedtime.,Carbonated drinks,37,54,26,22,7
+man,Other,Carbonated drinks,9,10,1,5,91
+woman,Before 9:00 p.m.,cold sweets,66,185,72,35,5
+woman,9:00 p.m.-9:29 p.m.,cold sweets,355,794,297,89,23
+woman,9:30 p.m. to 9:59 p.m.,cold sweets,523,1242,364,114,23
+woman,10:00 p.m. to 10:29 p.m.,cold sweets,829,1506,425,132,36
+woman,10:30 p.m. to 10:59 p.m.,cold sweets,492,970,266,65,22
+woman,11:00 p.m.-11:29 p.m.,cold sweets,298,530,155,35,6
+woman,11:30 p.m. to 11:59 p.m.,cold sweets,109,189,58,22,7
+woman,After midnight,cold sweets,56,81,28,13,2
+woman,No set bedtime.,cold sweets,70,105,39,13,3
+woman,Other,cold sweets,12,19,2,0,78
+man,Before 9:00 p.m.,cold sweets,90,226,83,46,4
+man,9:00 p.m.-9:29 p.m.,cold sweets,484,1084,365,106,30
+man,9:30 p.m. to 9:59 p.m.,cold sweets,649,1465,460,127,30
+man,10:00 p.m. to 10:29 p.m.,cold sweets,817,1544,508,133,37
+man,10:30 p.m. to 10:59 p.m.,cold sweets,514,825,246,75,19
+man,11:00 p.m.-11:29 p.m.,cold sweets,265,383,129,45,6
+man,11:30 p.m. to 11:59 p.m.,cold sweets,91,118,44,12,3
+man,After midnight,cold sweets,36,39,13,3,2
+man,No set bedtime.,cold sweets,34,82,20,6,4
+man,Other,cold sweets,12,9,3,2,90
+woman,Before 9:00 p.m.,drink,91,127,90,51,4
+woman,9:00 p.m.-9:29 p.m.,drink,355,540,455,187,21
+woman,9:30 p.m. to 9:59 p.m.,drink,597,821,611,212,25
+woman,10:00 p.m. to 10:29 p.m.,drink,871,1026,682,311,38
+woman,10:30 p.m. to 10:59 p.m.,drink,577,645,422,156,15
+woman,11:00 p.m.-11:29 p.m.,drink,326,378,225,82,13
+woman,11:30 p.m. to 11:59 p.m.,drink,141,123,79,36,6
+woman,After midnight,drink,62,52,38,26,2
+woman,No set bedtime.,drink,79,83,49,15,4
+woman,Other,drink,10,13,6,4,78
+man,Before 9:00 p.m.,drink,149,147,97,53,3
+man,9:00 p.m.-9:29 p.m.,drink,734,769,406,130,30
+man,9:30 p.m. to 9:59 p.m.,drink,988,996,523,197,27
+man,10:00 p.m. to 10:29 p.m.,drink,1203,1113,502,183,38
+man,10:30 p.m. to 10:59 p.m.,drink,708,565,292,97,17
+man,11:00 p.m.-11:29 p.m.,drink,388,274,101,55,10
+man,11:30 p.m. to 11:59 p.m.,drink,132,83,36,16,1
+man,After midnight,drink,51,26,11,4,1
+man,No set bedtime.,drink,67,47,18,12,2
+man,Other,drink,11,7,4,3,91
+woman,Before 9:00 p.m.,fruit,63,140,83,73,4
+woman,9:00 p.m.-9:29 p.m.,fruit,214,666,408,249,21
+woman,9:30 p.m. to 9:59 p.m.,fruit,348,1053,558,274,33
+woman,10:00 p.m. to 10:29 p.m.,fruit,460,1288,733,402,45
+woman,10:30 p.m. to 10:59 p.m.,fruit,284,793,483,232,23
+woman,11:00 p.m.-11:29 p.m.,fruit,147,456,261,143,17
+woman,11:30 p.m. to 11:59 p.m.,fruit,60,172,99,49,5
+woman,After midnight,fruit,35,66,48,29,2
+woman,No set bedtime.,fruit,22,107,62,37,2
+woman,Other,fruit,9,16,6,2,78
+man,Before 9:00 p.m.,fruit,59,185,124,80,1
+man,9:00 p.m.-9:29 p.m.,fruit,273,869,585,311,31
+man,9:30 p.m. to 9:59 p.m.,fruit,362,1174,787,385,23
+man,10:00 p.m. to 10:29 p.m.,fruit,369,1382,828,421,39
+man,10:30 p.m. to 10:59 p.m.,fruit,211,759,455,237,17
+man,11:00 p.m.-11:29 p.m.,fruit,108,353,242,119,6
+man,11:30 p.m. to 11:59 p.m.,fruit,39,126,66,33,4
+man,After midnight,fruit,9,39,27,16,2
+man,No set bedtime.,fruit,19,48,53,20,6
+man,Other,fruit,4,8,7,6,91
+woman,Before 9:00 p.m.,"Rice, bread, noodles",61,66,60,173,3
+woman,9:00 p.m.-9:29 p.m.,"Rice, bread, noodles",211,331,387,606,23
+woman,9:30 p.m. to 9:59 p.m.,"Rice, bread, noodles",358,540,565,777,26
+woman,10:00 p.m. to 10:29 p.m.,"Rice, bread, noodles",486,771,699,933,39
+woman,10:30 p.m. to 10:59 p.m.,"Rice, bread, noodles",329,520,423,520,23
+woman,11:00 p.m.-11:29 p.m.,"Rice, bread, noodles",232,297,227,258,10
+woman,11:30 p.m. to 11:59 p.m.,"Rice, bread, noodles",104,103,80,94,4
+woman,After midnight,"Rice, bread, noodles",38,51,37,51,3
+woman,No set bedtime.,"Rice, bread, noodles",55,65,46,62,2
+woman,Other,"Rice, bread, noodles",12,8,5,9,77
+man,Before 9:00 p.m.,"Rice, bread, noodles",77,112,85,174,1
+man,9:00 p.m.-9:29 p.m.,"Rice, bread, noodles",387,542,504,607,29
+man,9:30 p.m. to 9:59 p.m.,"Rice, bread, noodles",486,832,667,724,22
+man,10:00 p.m. to 10:29 p.m.,"Rice, bread, noodles",631,970,676,728,34
+man,10:30 p.m. to 10:59 p.m.,"Rice, bread, noodles",372,533,399,361,14
+man,11:00 p.m.-11:29 p.m.,"Rice, bread, noodles",246,268,161,145,8
+man,11:30 p.m. to 11:59 p.m.,"Rice, bread, noodles",82,86,44,54,2
+man,After midnight,"Rice, bread, noodles",28,37,12,15,1
+man,No set bedtime.,"Rice, bread, noodles",35,48,27,30,6
+man,Other,"Rice, bread, noodles",7,7,8,3,91
+man,Before 9:00 p.m.,sweets,174,187,54,33,1
+man,9:00 p.m.-9:29 p.m.,sweets,849,903,233,65,19
+man,9:30 p.m. to 9:59 p.m.,sweets,1191,1180,260,83,17
+man,10:00 p.m. to 10:29 p.m.,sweets,1422,1240,280,72,25
+man,10:30 p.m. to 10:59 p.m.,sweets,773,698,159,37,12
+man,11:00 p.m.-11:29 p.m.,sweets,390,332,77,25,4
+man,11:30 p.m. to 11:59 p.m.,sweets,144,80,32,10,2
+man,After midnight,sweets,45,39,5,2,2
+man,No set bedtime.,sweets,50,71,15,6,4
+man,Other,sweets,15,8,3,0,90
+woman,Before 9:00 p.m.,sweets,171,143,34,14,1
+woman,9:00 p.m.-9:29 p.m.,sweets,762,597,133,52,14
+woman,9:30 p.m. to 9:59 p.m.,sweets,1159,882,158,52,15
+woman,10:00 p.m. to 10:29 p.m.,sweets,1560,1058,223,65,22
+woman,10:30 p.m. to 10:59 p.m.,sweets,990,656,123,33,13
+woman,11:00 p.m.-11:29 p.m.,sweets,540,382,67,26,9
+woman,11:30 p.m. to 11:59 p.m.,sweets,195,153,28,7,2
+woman,After midnight,sweets,88,65,19,5,3
+woman,No set bedtime.,sweets,122,88,14,5,1
+woman,Other,sweets,22,11,1,1,76

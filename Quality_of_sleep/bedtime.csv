@@ -1,0 +1,85 @@
+sex,time,terms,Eat well Drink well,Sometimes eat Sometimes drink,Hardly eat or drink,Not eating or drinking at all,Other
+man,Less than 8 hours,sweets,568,448,134,39,11
+man,8 hours,sweets,2465,2303,523,136,42
+man,9 hours,sweets,1857,1805,411,148,27
+man,10 hours,sweets,91,91,27,4,2
+man,More than 11 hours,sweets,1,3,0,0,0
+man,irregularity,sweets,57,80,19,6,4
+man,other,sweets,14,8,4,0,90
+woman,Less than 8 hours,sweets,858,642,133,39,17
+woman,8 hours,sweets,2760,1976,394,109,30
+woman,9 hours,sweets,1758,1246,240,102,28
+woman,10 hours,sweets,80,57,16,3,4
+woman,More than 11 hours,sweets,0,0,0,0,0
+woman,irregularity,sweets,131,100,15,6,1
+woman,other,sweets,22,14,2,1,76
+man,Less than 8 hours,cold sweets,367,558,194,64,17
+man,8 hours,cold sweets,1472,2809,881,243,64
+man,9 hours,cold sweets,1044,2207,725,225,47
+man,10 hours,cold sweets,56,101,41,14,3
+man,More than 11 hours,cold sweets,0,4,0,0,0
+man,irregularity,cold sweets,42,87,26,7,4
+man,other,cold sweets,11,9,4,2,90
+woman,Less than 8 hours,cold sweets,462,858,271,76,22
+woman,8 hours,cold sweets,1419,2757,794,246,53
+woman,9 hours,cold sweets,796,1788,575,171,44
+woman,10 hours,cold sweets,43,83,19,10,5
+woman,More than 11 hours,cold sweets,0,0,0,0,0
+woman,irregularity,cold sweets,78,114,44,14,3
+woman,other,cold sweets,12,21,3,1,78
+man,Less than 8 hours,drink,559,382,178,67,14
+man,8 hours,drink,2148,1961,942,354,64
+man,9 hours,drink,1571,1533,801,299,44
+man,10 hours,drink,67,87,44,13,4
+man,More than 11 hours,drink,0,4,0,0,0
+man,irregularity,drink,75,53,21,14,3
+man,other,drink,11,7,4,3,91
+woman,Less than 8 hours,drink,578,552,372,162,25
+woman,8 hours,drink,1517,1905,1288,506,53
+woman,9 hours,drink,875,1189,901,369,40
+woman,10 hours,drink,42,59,34,19,6
+woman,More than 11 hours,drink,0,0,0,0,0
+woman,irregularity,drink,87,89,55,18,4
+woman,other,drink,10,14,7,6,78
+man,Less than 8 hours,Carbonated drinks,240,412,247,285,16
+man,8 hours,Carbonated drinks,858,2003,1227,1323,58
+man,9 hours,Carbonated drinks,518,1505,1098,1075,52
+man,10 hours,Carbonated drinks,34,75,46,57,3
+man,More than 11 hours,Carbonated drinks,0,3,0,1,0
+man,irregularity,Carbonated drinks,42,57,31,29,7
+man,other,Carbonated drinks,9,10,1,5,91
+woman,Less than 8 hours,Carbonated drinks,239,563,390,473,24
+woman,8 hours,Carbonated drinks,561,1736,1417,1496,59
+woman,9 hours,Carbonated drinks,247,1037,931,1105,54
+woman,10 hours,Carbonated drinks,19,43,43,48,7
+woman,More than 11 hours,Carbonated drinks,0,0,0,0,0
+woman,irregularity,Carbonated drinks,57,82,53,59,2
+woman,other,Carbonated drinks,4,18,3,12,78
+man,Less than 8 hours,fruit,161,503,340,179,17
+man,8 hours,fruit,684,2459,1493,775,58
+man,9 hours,fruit,552,1837,1210,605,44
+man,10 hours,fruit,27,74,69,41,4
+man,More than 11 hours,fruit,1,3,0,0,0
+man,irregularity,fruit,23,60,55,22,6
+man,other,fruit,5,7,7,6,91
+woman,Less than 8 hours,fruit,269,738,427,228,27
+woman,8 hours,fruit,813,2312,1367,710,67
+woman,9 hours,fruit,506,1523,818,475,52
+woman,10 hours,fruit,19,56,48,33,4
+woman,More than 11 hours,fruit,0,0,0,0,0
+woman,irregularity,fruit,25,110,74,42,2
+woman,other,fruit,10,18,7,2,78
+man,Less than 8 hours,"Rice, bread, noodles",304,399,237,248,12
+man,8 hours,"Rice, bread, noodles",1133,1709,1241,1331,55
+man,9 hours,"Rice, bread, noodles",807,1216,1017,1169,39
+man,10 hours,"Rice, bread, noodles",58,47,52,53,5
+man,More than 11 hours,"Rice, bread, noodles",1,3,0,0,0
+man,irregularity,"Rice, bread, noodles",41,53,29,37,6
+man,other,"Rice, bread, noodles",7,8,7,3,91
+woman,Less than 8 hours,"Rice, bread, noodles",381,454,372,460,22
+woman,8 hours,"Rice, bread, noodles",887,1397,1272,1653,60
+woman,9 hours,"Rice, bread, noodles",522,783,786,1238,45
+woman,10 hours,"Rice, bread, noodles",27,37,40,52,4
+woman,More than 11 hours,"Rice, bread, noodles",0,0,0,0,0
+woman,irregularity,"Rice, bread, noodles",57,71,53,70,2
+woman,other,"Rice, bread, noodles",12,10,6,10,77
