@@ -49,10 +49,10 @@ index,Year,Period,Avg hrs per day sleeping,Standard Error,Type of Days,Age Group
 47,2005,Annual,9.27,0.077,All days,15 to 24 years,Sleeping,Both
 48,2006,Annual,9.19,0.064,All days,15 to 24 years,Sleeping,Both
 49,2007,Annual,9.11,0.085,All days,15 to 24 years,Sleeping,Both
-50,2008,Annual,9.2,0.0869999999999999,All days,15 to 24 years,Sleeping,Both
+50,2008,Annual,9.2,0.087,All days,15 to 24 years,Sleeping,Both
 51,2009,Annual,9.45,0.082,All days,15 to 24 years,Sleeping,Both
 52,2010,Annual,9.24,0.082,All days,15 to 24 years,Sleeping,Both
-53,2011,Annual,9.32,0.0739999999999999,All days,15 to 24 years,Sleeping,Both
+53,2011,Annual,9.32,0.074,All days,15 to 24 years,Sleeping,Both
 54,2012,Annual,9.34,0.081,All days,15 to 24 years,Sleeping,Both
 55,2013,Annual,9.34,0.093,All days,15 to 24 years,Sleeping,Both
 56,2014,Annual,9.53,0.091,All days,15 to 24 years,Sleeping,Both
@@ -69,16 +69,16 @@ index,Year,Period,Avg hrs per day sleeping,Standard Error,Type of Days,Age Group
 67,2010,Annual,8.94,0.109,Nonholiday weekdays,15 to 24 years,Sleeping,Both
 68,2011,Annual,8.99,0.093,Nonholiday weekdays,15 to 24 years,Sleeping,Both
 69,2012,Annual,8.95,0.111,Nonholiday weekdays,15 to 24 years,Sleeping,Both
-70,2013,Annual,9.0,0.116,Nonholiday weekdays,15 to 24 years,Sleeping,Both
+70,2013,Annual,9,0.116,Nonholiday weekdays,15 to 24 years,Sleeping,Both
 71,2014,Annual,9.31,0.118,Nonholiday weekdays,15 to 24 years,Sleeping,Both
 72,2015,Annual,9.39,0.129,Nonholiday weekdays,15 to 24 years,Sleeping,Both
 73,2016,Annual,9.12,0.129,Nonholiday weekdays,15 to 24 years,Sleeping,Both
 74,2017,Annual,9.38,0.133,Nonholiday weekdays,15 to 24 years,Sleeping,Both
-75,2003,Annual,10.1,0.0859999999999999,Weekend days and holidays,15 to 24 years,Sleeping,Both
+75,2003,Annual,10.1,0.086,Weekend days and holidays,15 to 24 years,Sleeping,Both
 76,2004,Annual,10.28,0.115,Weekend days and holidays,15 to 24 years,Sleeping,Both
 77,2005,Annual,9.89,0.1,Weekend days and holidays,15 to 24 years,Sleeping,Both
 78,2006,Annual,10.03,0.109,Weekend days and holidays,15 to 24 years,Sleeping,Both
-79,2007,Annual,10.0,0.123,Weekend days and holidays,15 to 24 years,Sleeping,Both
+79,2007,Annual,10,0.123,Weekend days and holidays,15 to 24 years,Sleeping,Both
 80,2008,Annual,10.04,0.128,Weekend days and holidays,15 to 24 years,Sleeping,Both
 81,2009,Annual,10.04,0.104,Weekend days and holidays,15 to 24 years,Sleeping,Both
 82,2010,Annual,9.96,0.105,Weekend days and holidays,15 to 24 years,Sleeping,Both
@@ -101,34 +101,34 @@ index,Year,Period,Avg hrs per day sleeping,Standard Error,Type of Days,Age Group
 99,2012,Annual,8.76,0.061,All days,25 to 34 years,Sleeping,Both
 100,2013,Annual,8.65,0.066,All days,25 to 34 years,Sleeping,Both
 101,2014,Annual,8.77,0.062,All days,25 to 34 years,Sleeping,Both
-102,2015,Annual,8.87,0.0739999999999999,All days,25 to 34 years,Sleeping,Both
+102,2015,Annual,8.87,0.074,All days,25 to 34 years,Sleeping,Both
 103,2016,Annual,8.71,0.066,All days,25 to 34 years,Sleeping,Both
-104,2017,Annual,8.76,0.0739999999999999,All days,25 to 34 years,Sleeping,Both
+104,2017,Annual,8.76,0.074,All days,25 to 34 years,Sleeping,Both
 105,2003,Annual,8.18,0.053,Nonholiday weekdays,25 to 34 years,Sleeping,Both
-106,2004,Annual,8.08,0.0889999999999999,Nonholiday weekdays,25 to 34 years,Sleeping,Both
+106,2004,Annual,8.08,0.089,Nonholiday weekdays,25 to 34 years,Sleeping,Both
 107,2005,Annual,8.24,0.07,Nonholiday weekdays,25 to 34 years,Sleeping,Both
 108,2006,Annual,8.19,0.082,Nonholiday weekdays,25 to 34 years,Sleeping,Both
-109,2007,Annual,8.22,0.0889999999999999,Nonholiday weekdays,25 to 34 years,Sleeping,Both
-110,2008,Annual,8.16,0.0859999999999999,Nonholiday weekdays,25 to 34 years,Sleeping,Both
+109,2007,Annual,8.22,0.089,Nonholiday weekdays,25 to 34 years,Sleeping,Both
+110,2008,Annual,8.16,0.086,Nonholiday weekdays,25 to 34 years,Sleeping,Both
 111,2009,Annual,8.18,0.083,Nonholiday weekdays,25 to 34 years,Sleeping,Both
 112,2010,Annual,8.25,0.079,Nonholiday weekdays,25 to 34 years,Sleeping,Both
 113,2011,Annual,8.26,0.077,Nonholiday weekdays,25 to 34 years,Sleeping,Both
 114,2012,Annual,8.45,0.076,Nonholiday weekdays,25 to 34 years,Sleeping,Both
-115,2013,Annual,8.34,0.0859999999999999,Nonholiday weekdays,25 to 34 years,Sleeping,Both
+115,2013,Annual,8.34,0.086,Nonholiday weekdays,25 to 34 years,Sleeping,Both
 116,2014,Annual,8.44,0.082,Nonholiday weekdays,25 to 34 years,Sleeping,Both
 117,2015,Annual,8.63,0.094,Nonholiday weekdays,25 to 34 years,Sleeping,Both
-118,2016,Annual,8.36,0.0879999999999999,Nonholiday weekdays,25 to 34 years,Sleeping,Both
+118,2016,Annual,8.36,0.088,Nonholiday weekdays,25 to 34 years,Sleeping,Both
 119,2017,Annual,8.41,0.094,Nonholiday weekdays,25 to 34 years,Sleeping,Both
 120,2003,Annual,9.34,0.064,Weekend days and holidays,25 to 34 years,Sleeping,Both
 121,2004,Annual,9.37,0.08,Weekend days and holidays,25 to 34 years,Sleeping,Both
 122,2005,Annual,9.6,0.101,Weekend days and holidays,25 to 34 years,Sleeping,Both
 123,2006,Annual,9.47,0.077,Weekend days and holidays,25 to 34 years,Sleeping,Both
-124,2007,Annual,9.4,0.0859999999999999,Weekend days and holidays,25 to 34 years,Sleeping,Both
+124,2007,Annual,9.4,0.086,Weekend days and holidays,25 to 34 years,Sleeping,Both
 125,2008,Annual,9.45,0.084,Weekend days and holidays,25 to 34 years,Sleeping,Both
 126,2009,Annual,9.43,0.084,Weekend days and holidays,25 to 34 years,Sleeping,Both
 127,2010,Annual,9.4,0.092,Weekend days and holidays,25 to 34 years,Sleeping,Both
 128,2011,Annual,9.39,0.104,Weekend days and holidays,25 to 34 years,Sleeping,Both
-129,2012,Annual,9.49,0.0879999999999999,Weekend days and holidays,25 to 34 years,Sleeping,Both
+129,2012,Annual,9.49,0.088,Weekend days and holidays,25 to 34 years,Sleeping,Both
 130,2013,Annual,9.37,0.093,Weekend days and holidays,25 to 34 years,Sleeping,Both
 131,2014,Annual,9.52,0.092,Weekend days and holidays,25 to 34 years,Sleeping,Both
 132,2015,Annual,9.43,0.092,Weekend days and holidays,25 to 34 years,Sleeping,Both
@@ -146,11 +146,11 @@ index,Year,Period,Avg hrs per day sleeping,Standard Error,Type of Days,Age Group
 144,2012,Annual,8.52,0.052,All days,35 to 44 years,Sleeping,Both
 145,2013,Annual,8.52,0.046,All days,35 to 44 years,Sleeping,Both
 146,2014,Annual,8.42,0.054,All days,35 to 44 years,Sleeping,Both
-147,2015,Annual,8.67,0.0729999999999999,All days,35 to 44 years,Sleeping,Both
+147,2015,Annual,8.67,0.073,All days,35 to 44 years,Sleeping,Both
 148,2016,Annual,8.5,0.062,All days,35 to 44 years,Sleeping,Both
 149,2017,Annual,8.57,0.065,All days,35 to 44 years,Sleeping,Both
-150,2003,Annual,8.0,0.053,Nonholiday weekdays,35 to 44 years,Sleeping,Both
-151,2004,Annual,7.95,0.0729999999999999,Nonholiday weekdays,35 to 44 years,Sleeping,Both
+150,2003,Annual,8,0.053,Nonholiday weekdays,35 to 44 years,Sleeping,Both
+151,2004,Annual,7.95,0.073,Nonholiday weekdays,35 to 44 years,Sleeping,Both
 152,2005,Annual,8.02,0.059,Nonholiday weekdays,35 to 44 years,Sleeping,Both
 153,2006,Annual,8.05,0.069,Nonholiday weekdays,35 to 44 years,Sleeping,Both
 154,2007,Annual,8.03,0.07,Nonholiday weekdays,35 to 44 years,Sleeping,Both
@@ -162,23 +162,23 @@ index,Year,Period,Avg hrs per day sleeping,Standard Error,Type of Days,Age Group
 160,2013,Annual,8.18,0.061,Nonholiday weekdays,35 to 44 years,Sleeping,Both
 161,2014,Annual,8.02,0.065,Nonholiday weekdays,35 to 44 years,Sleeping,Both
 162,2015,Annual,8.36,0.093,Nonholiday weekdays,35 to 44 years,Sleeping,Both
-163,2016,Annual,8.14,0.0859999999999999,Nonholiday weekdays,35 to 44 years,Sleeping,Both
+163,2016,Annual,8.14,0.086,Nonholiday weekdays,35 to 44 years,Sleeping,Both
 164,2017,Annual,8.23,0.084,Nonholiday weekdays,35 to 44 years,Sleeping,Both
 165,2003,Annual,9.16,0.049,Weekend days and holidays,35 to 44 years,Sleeping,Both
 166,2004,Annual,8.99,0.063,Weekend days and holidays,35 to 44 years,Sleeping,Both
 167,2005,Annual,9.21,0.067,Weekend days and holidays,35 to 44 years,Sleeping,Both
-168,2006,Annual,9.16,0.0739999999999999,Weekend days and holidays,35 to 44 years,Sleeping,Both
+168,2006,Annual,9.16,0.074,Weekend days and holidays,35 to 44 years,Sleeping,Both
 169,2007,Annual,9.12,0.064,Weekend days and holidays,35 to 44 years,Sleeping,Both
 170,2008,Annual,9.17,0.083,Weekend days and holidays,35 to 44 years,Sleeping,Both
 171,2009,Annual,9.17,0.067,Weekend days and holidays,35 to 44 years,Sleeping,Both
 172,2010,Annual,9.23,0.06,Weekend days and holidays,35 to 44 years,Sleeping,Both
-173,2011,Annual,9.25,0.0869999999999999,Weekend days and holidays,35 to 44 years,Sleeping,Both
+173,2011,Annual,9.25,0.087,Weekend days and holidays,35 to 44 years,Sleeping,Both
 174,2012,Annual,9.28,0.07,Weekend days and holidays,35 to 44 years,Sleeping,Both
 175,2013,Annual,9.32,0.072,Weekend days and holidays,35 to 44 years,Sleeping,Both
 176,2014,Annual,9.33,0.076,Weekend days and holidays,35 to 44 years,Sleeping,Both
-177,2015,Annual,9.41,0.0879999999999999,Weekend days and holidays,35 to 44 years,Sleeping,Both
+177,2015,Annual,9.41,0.088,Weekend days and holidays,35 to 44 years,Sleeping,Both
 178,2016,Annual,9.34,0.09,Weekend days and holidays,35 to 44 years,Sleeping,Both
-179,2017,Annual,9.37,0.0879999999999999,Weekend days and holidays,35 to 44 years,Sleeping,Both
+179,2017,Annual,9.37,0.088,Weekend days and holidays,35 to 44 years,Sleeping,Both
 180,2003,Annual,8.17,0.036,All days,45 to 54 years,Sleeping,Both
 181,2004,Annual,8.17,0.047,All days,45 to 54 years,Sleeping,Both
 182,2005,Annual,8.2,0.054,All days,45 to 54 years,Sleeping,Both
@@ -193,36 +193,36 @@ index,Year,Period,Avg hrs per day sleeping,Standard Error,Type of Days,Age Group
 191,2014,Annual,8.57,0.059,All days,45 to 54 years,Sleeping,Both
 192,2015,Annual,8.36,0.056,All days,45 to 54 years,Sleeping,Both
 193,2016,Annual,8.45,0.068,All days,45 to 54 years,Sleeping,Both
-194,2017,Annual,8.5,0.0729999999999999,All days,45 to 54 years,Sleeping,Both
+194,2017,Annual,8.5,0.073,All days,45 to 54 years,Sleeping,Both
 195,2003,Annual,7.85,0.046,Nonholiday weekdays,45 to 54 years,Sleeping,Both
 196,2004,Annual,7.86,0.06,Nonholiday weekdays,45 to 54 years,Sleeping,Both
 197,2005,Annual,7.89,0.07,Nonholiday weekdays,45 to 54 years,Sleeping,Both
 198,2006,Annual,7.92,0.077,Nonholiday weekdays,45 to 54 years,Sleeping,Both
 199,2007,Annual,7.95,0.071,Nonholiday weekdays,45 to 54 years,Sleeping,Both
-200,2008,Annual,7.94,0.0749999999999999,Nonholiday weekdays,45 to 54 years,Sleeping,Both
+200,2008,Annual,7.94,0.075,Nonholiday weekdays,45 to 54 years,Sleeping,Both
 201,2009,Annual,7.95,0.054,Nonholiday weekdays,45 to 54 years,Sleeping,Both
 202,2010,Annual,7.89,0.066,Nonholiday weekdays,45 to 54 years,Sleeping,Both
-203,2011,Annual,8.1,0.0739999999999999,Nonholiday weekdays,45 to 54 years,Sleeping,Both
+203,2011,Annual,8.1,0.074,Nonholiday weekdays,45 to 54 years,Sleeping,Both
 204,2012,Annual,8.07,0.07,Nonholiday weekdays,45 to 54 years,Sleeping,Both
 205,2013,Annual,8.22,0.069,Nonholiday weekdays,45 to 54 years,Sleeping,Both
-206,2014,Annual,8.23,0.0729999999999999,Nonholiday weekdays,45 to 54 years,Sleeping,Both
+206,2014,Annual,8.23,0.073,Nonholiday weekdays,45 to 54 years,Sleeping,Both
 207,2015,Annual,7.97,0.07,Nonholiday weekdays,45 to 54 years,Sleeping,Both
-208,2016,Annual,8.13,0.0869999999999999,Nonholiday weekdays,45 to 54 years,Sleeping,Both
+208,2016,Annual,8.13,0.087,Nonholiday weekdays,45 to 54 years,Sleeping,Both
 209,2017,Annual,8.22,0.1,Nonholiday weekdays,45 to 54 years,Sleeping,Both
 210,2003,Annual,8.93,0.054,Weekend days and holidays,45 to 54 years,Sleeping,Both
 211,2004,Annual,8.9,0.069,Weekend days and holidays,45 to 54 years,Sleeping,Both
-212,2005,Annual,8.95,0.0739999999999999,Weekend days and holidays,45 to 54 years,Sleeping,Both
+212,2005,Annual,8.95,0.074,Weekend days and holidays,45 to 54 years,Sleeping,Both
 213,2006,Annual,9.18,0.078,Weekend days and holidays,45 to 54 years,Sleeping,Both
-214,2007,Annual,8.92,0.0889999999999999,Weekend days and holidays,45 to 54 years,Sleeping,Both
+214,2007,Annual,8.92,0.089,Weekend days and holidays,45 to 54 years,Sleeping,Both
 215,2008,Annual,9.05,0.069,Weekend days and holidays,45 to 54 years,Sleeping,Both
 216,2009,Annual,9.06,0.084,Weekend days and holidays,45 to 54 years,Sleeping,Both
-217,2010,Annual,9.12,0.0749999999999999,Weekend days and holidays,45 to 54 years,Sleeping,Both
-218,2011,Annual,9.02,0.0739999999999999,Weekend days and holidays,45 to 54 years,Sleeping,Both
+217,2010,Annual,9.12,0.075,Weekend days and holidays,45 to 54 years,Sleeping,Both
+218,2011,Annual,9.02,0.074,Weekend days and holidays,45 to 54 years,Sleeping,Both
 219,2012,Annual,9.22,0.103,Weekend days and holidays,45 to 54 years,Sleeping,Both
-220,2013,Annual,9.17,0.0869999999999999,Weekend days and holidays,45 to 54 years,Sleeping,Both
+220,2013,Annual,9.17,0.087,Weekend days and holidays,45 to 54 years,Sleeping,Both
 221,2014,Annual,9.37,0.084,Weekend days and holidays,45 to 54 years,Sleeping,Both
 222,2015,Annual,9.32,0.081,Weekend days and holidays,45 to 54 years,Sleeping,Both
-223,2016,Annual,9.2,0.0889999999999999,Weekend days and holidays,45 to 54 years,Sleeping,Both
+223,2016,Annual,9.2,0.089,Weekend days and holidays,45 to 54 years,Sleeping,Both
 224,2017,Annual,9.15,0.092,Weekend days and holidays,45 to 54 years,Sleeping,Both
 225,2003,Annual,8.36,0.04,All days,55 to 64 years,Sleeping,Both
 226,2004,Annual,8.3,0.054,All days,55 to 64 years,Sleeping,Both
@@ -244,14 +244,14 @@ index,Year,Period,Avg hrs per day sleeping,Standard Error,Type of Days,Age Group
 242,2005,Annual,8.07,0.068,Nonholiday weekdays,55 to 64 years,Sleeping,Both
 243,2006,Annual,8.16,0.078,Nonholiday weekdays,55 to 64 years,Sleeping,Both
 244,2007,Annual,8.06,0.076,Nonholiday weekdays,55 to 64 years,Sleeping,Both
-245,2008,Annual,8.0,0.066,Nonholiday weekdays,55 to 64 years,Sleeping,Both
+245,2008,Annual,8,0.066,Nonholiday weekdays,55 to 64 years,Sleeping,Both
 246,2009,Annual,8.17,0.07,Nonholiday weekdays,55 to 64 years,Sleeping,Both
 247,2010,Annual,8.26,0.066,Nonholiday weekdays,55 to 64 years,Sleeping,Both
 248,2011,Annual,8.24,0.069,Nonholiday weekdays,55 to 64 years,Sleeping,Both
 249,2012,Annual,8.25,0.077,Nonholiday weekdays,55 to 64 years,Sleeping,Both
-250,2013,Annual,8.32,0.0749999999999999,Nonholiday weekdays,55 to 64 years,Sleeping,Both
+250,2013,Annual,8.32,0.075,Nonholiday weekdays,55 to 64 years,Sleeping,Both
 251,2014,Annual,8.21,0.063,Nonholiday weekdays,55 to 64 years,Sleeping,Both
-252,2015,Annual,8.31,0.0749999999999999,Nonholiday weekdays,55 to 64 years,Sleeping,Both
+252,2015,Annual,8.31,0.075,Nonholiday weekdays,55 to 64 years,Sleeping,Both
 253,2016,Annual,8.28,0.077,Nonholiday weekdays,55 to 64 years,Sleeping,Both
 254,2017,Annual,8.15,0.076,Nonholiday weekdays,55 to 64 years,Sleeping,Both
 255,2003,Annual,8.92,0.064,Weekend days and holidays,55 to 64 years,Sleeping,Both
@@ -260,15 +260,15 @@ index,Year,Period,Avg hrs per day sleeping,Standard Error,Type of Days,Age Group
 258,2006,Annual,8.96,0.093,Weekend days and holidays,55 to 64 years,Sleeping,Both
 259,2007,Annual,8.73,0.081,Weekend days and holidays,55 to 64 years,Sleeping,Both
 260,2008,Annual,8.89,0.081,Weekend days and holidays,55 to 64 years,Sleeping,Both
-261,2009,Annual,9.06,0.0859999999999999,Weekend days and holidays,55 to 64 years,Sleeping,Both
+261,2009,Annual,9.06,0.086,Weekend days and holidays,55 to 64 years,Sleeping,Both
 262,2010,Annual,9.08,0.077,Weekend days and holidays,55 to 64 years,Sleeping,Both
 263,2011,Annual,9.02,0.085,Weekend days and holidays,55 to 64 years,Sleeping,Both
-264,2012,Annual,8.98,0.0879999999999999,Weekend days and holidays,55 to 64 years,Sleeping,Both
+264,2012,Annual,8.98,0.088,Weekend days and holidays,55 to 64 years,Sleeping,Both
 265,2013,Annual,8.88,0.071,Weekend days and holidays,55 to 64 years,Sleeping,Both
 266,2014,Annual,8.97,0.071,Weekend days and holidays,55 to 64 years,Sleeping,Both
 267,2015,Annual,8.98,0.085,Weekend days and holidays,55 to 64 years,Sleeping,Both
 268,2016,Annual,9.12,0.093,Weekend days and holidays,55 to 64 years,Sleeping,Both
-269,2017,Annual,9.02,0.0739999999999999,Weekend days and holidays,55 to 64 years,Sleeping,Both
+269,2017,Annual,9.02,0.074,Weekend days and holidays,55 to 64 years,Sleeping,Both
 270,2003,Annual,8.86,0.039,All days,65 years and over,Sleeping,Both
 271,2004,Annual,8.86,0.041,All days,65 years and over,Sleeping,Both
 272,2005,Annual,8.96,0.057,All days,65 years and over,Sleeping,Both
@@ -280,7 +280,7 @@ index,Year,Period,Avg hrs per day sleeping,Standard Error,Type of Days,Age Group
 278,2011,Annual,9.08,0.056,All days,65 years and over,Sleeping,Both
 279,2012,Annual,8.84,0.053,All days,65 years and over,Sleeping,Both
 280,2013,Annual,8.87,0.051,All days,65 years and over,Sleeping,Both
-281,2014,Annual,9.0,0.055,All days,65 years and over,Sleeping,Both
+281,2014,Annual,9,0.055,All days,65 years and over,Sleeping,Both
 282,2015,Annual,8.97,0.047,All days,65 years and over,Sleeping,Both
 283,2016,Annual,8.94,0.047,All days,65 years and over,Sleeping,Both
 284,2017,Annual,8.84,0.054,All days,65 years and over,Sleeping,Both
@@ -307,7 +307,7 @@ index,Year,Period,Avg hrs per day sleeping,Standard Error,Type of Days,Age Group
 305,2008,Annual,9.14,0.08,Weekend days and holidays,65 years and over,Sleeping,Both
 306,2009,Annual,9.2,0.067,Weekend days and holidays,65 years and over,Sleeping,Both
 307,2010,Annual,9.2,0.076,Weekend days and holidays,65 years and over,Sleeping,Both
-308,2011,Annual,9.27,0.0729999999999999,Weekend days and holidays,65 years and over,Sleeping,Both
+308,2011,Annual,9.27,0.073,Weekend days and holidays,65 years and over,Sleeping,Both
 309,2012,Annual,9.08,0.077,Weekend days and holidays,65 years and over,Sleeping,Both
 310,2013,Annual,9.12,0.063,Weekend days and holidays,65 years and over,Sleeping,Both
 311,2014,Annual,9.12,0.072,Weekend days and holidays,65 years and over,Sleeping,Both
@@ -420,7 +420,7 @@ index,Year,Period,Avg hrs per day sleeping,Standard Error,Type of Days,Age Group
 418,2016,Annual,8.54,0.101,All days,25 to 34 years,Sleeping,Men
 419,2017,Annual,8.47,0.116,All days,25 to 34 years,Sleeping,Men
 420,2003,Annual,7.91,0.079,Nonholiday weekdays,25 to 34 years,Sleeping,Men
-421,2004,Annual,8.0,0.157,Nonholiday weekdays,25 to 34 years,Sleeping,Men
+421,2004,Annual,8,0.157,Nonholiday weekdays,25 to 34 years,Sleeping,Men
 422,2005,Annual,8.01,0.114,Nonholiday weekdays,25 to 34 years,Sleeping,Men
 423,2006,Annual,7.94,0.121,Nonholiday weekdays,25 to 34 years,Sleeping,Men
 424,2007,Annual,8.02,0.143,Nonholiday weekdays,25 to 34 years,Sleeping,Men
@@ -460,11 +460,11 @@ index,Year,Period,Avg hrs per day sleeping,Standard Error,Type of Days,Age Group
 458,2011,Annual,8.35,0.077,All days,35 to 44 years,Sleeping,Men
 459,2012,Annual,8.33,0.076,All days,35 to 44 years,Sleeping,Men
 460,2013,Annual,8.37,0.068,All days,35 to 44 years,Sleeping,Men
-461,2014,Annual,8.19,0.0859999999999999,All days,35 to 44 years,Sleeping,Men
+461,2014,Annual,8.19,0.086,All days,35 to 44 years,Sleeping,Men
 462,2015,Annual,8.67,0.123,All days,35 to 44 years,Sleeping,Men
 463,2016,Annual,8.41,0.107,All days,35 to 44 years,Sleeping,Men
 464,2017,Annual,8.36,0.097,All days,35 to 44 years,Sleeping,Men
-465,2003,Annual,7.86,0.0749999999999999,Nonholiday weekdays,35 to 44 years,Sleeping,Men
+465,2003,Annual,7.86,0.075,Nonholiday weekdays,35 to 44 years,Sleeping,Men
 466,2004,Annual,7.88,0.111,Nonholiday weekdays,35 to 44 years,Sleeping,Men
 467,2005,Annual,8.03,0.096,Nonholiday weekdays,35 to 44 years,Sleeping,Men
 468,2006,Annual,7.95,0.102,Nonholiday weekdays,35 to 44 years,Sleeping,Men
@@ -472,18 +472,18 @@ index,Year,Period,Avg hrs per day sleeping,Standard Error,Type of Days,Age Group
 470,2008,Annual,7.99,0.09,Nonholiday weekdays,35 to 44 years,Sleeping,Men
 471,2009,Annual,7.93,0.092,Nonholiday weekdays,35 to 44 years,Sleeping,Men
 472,2010,Annual,7.96,0.097,Nonholiday weekdays,35 to 44 years,Sleeping,Men
-473,2011,Annual,8.0,0.107,Nonholiday weekdays,35 to 44 years,Sleeping,Men
+473,2011,Annual,8,0.107,Nonholiday weekdays,35 to 44 years,Sleeping,Men
 474,2012,Annual,8.01,0.102,Nonholiday weekdays,35 to 44 years,Sleeping,Men
-475,2013,Annual,8.01,0.0869999999999999,Nonholiday weekdays,35 to 44 years,Sleeping,Men
+475,2013,Annual,8.01,0.087,Nonholiday weekdays,35 to 44 years,Sleeping,Men
 476,2014,Annual,7.78,0.102,Nonholiday weekdays,35 to 44 years,Sleeping,Men
 477,2015,Annual,8.33,0.162,Nonholiday weekdays,35 to 44 years,Sleeping,Men
 478,2016,Annual,8.06,0.153,Nonholiday weekdays,35 to 44 years,Sleeping,Men
 479,2017,Annual,7.97,0.126,Nonholiday weekdays,35 to 44 years,Sleeping,Men
-480,2003,Annual,9.0,0.07,Weekend days and holidays,35 to 44 years,Sleeping,Men
+480,2003,Annual,9,0.07,Weekend days and holidays,35 to 44 years,Sleeping,Men
 481,2004,Annual,8.99,0.099,Weekend days and holidays,35 to 44 years,Sleeping,Men
 482,2005,Annual,9.16,0.1,Weekend days and holidays,35 to 44 years,Sleeping,Men
 483,2006,Annual,9.05,0.099,Weekend days and holidays,35 to 44 years,Sleeping,Men
-484,2007,Annual,9.0,0.101,Weekend days and holidays,35 to 44 years,Sleeping,Men
+484,2007,Annual,9,0.101,Weekend days and holidays,35 to 44 years,Sleeping,Men
 485,2008,Annual,9.06,0.128,Weekend days and holidays,35 to 44 years,Sleeping,Men
 486,2009,Annual,9.08,0.097,Weekend days and holidays,35 to 44 years,Sleeping,Men
 487,2010,Annual,9.11,0.118,Weekend days and holidays,35 to 44 years,Sleeping,Men
@@ -498,18 +498,18 @@ index,Year,Period,Avg hrs per day sleeping,Standard Error,Type of Days,Age Group
 496,2004,Annual,8.11,0.082,All days,45 to 54 years,Sleeping,Men
 497,2005,Annual,8.03,0.08,All days,45 to 54 years,Sleeping,Men
 498,2006,Annual,8.2,0.082,All days,45 to 54 years,Sleeping,Men
-499,2007,Annual,8.18,0.0859999999999999,All days,45 to 54 years,Sleeping,Men
+499,2007,Annual,8.18,0.086,All days,45 to 54 years,Sleeping,Men
 500,2008,Annual,8.16,0.076,All days,45 to 54 years,Sleeping,Men
 501,2009,Annual,8.17,0.064,All days,45 to 54 years,Sleeping,Men
 502,2010,Annual,8.15,0.072,All days,45 to 54 years,Sleeping,Men
 503,2011,Annual,8.23,0.072,All days,45 to 54 years,Sleeping,Men
-504,2012,Annual,8.38,0.0859999999999999,All days,45 to 54 years,Sleeping,Men
+504,2012,Annual,8.38,0.086,All days,45 to 54 years,Sleeping,Men
 505,2013,Annual,8.4,0.083,All days,45 to 54 years,Sleeping,Men
 506,2014,Annual,8.46,0.082,All days,45 to 54 years,Sleeping,Men
 507,2015,Annual,8.22,0.08,All days,45 to 54 years,Sleeping,Men
 508,2016,Annual,8.17,0.079,All days,45 to 54 years,Sleeping,Men
 509,2017,Annual,8.47,0.109,All days,45 to 54 years,Sleeping,Men
-510,2003,Annual,7.76,0.0739999999999999,Nonholiday weekdays,45 to 54 years,Sleeping,Men
+510,2003,Annual,7.76,0.074,Nonholiday weekdays,45 to 54 years,Sleeping,Men
 511,2004,Annual,7.83,0.109,Nonholiday weekdays,45 to 54 years,Sleeping,Men
 512,2005,Annual,7.72,0.102,Nonholiday weekdays,45 to 54 years,Sleeping,Men
 513,2006,Annual,7.87,0.108,Nonholiday weekdays,45 to 54 years,Sleeping,Men
@@ -543,7 +543,7 @@ index,Year,Period,Avg hrs per day sleeping,Standard Error,Type of Days,Age Group
 541,2004,Annual,8.3,0.076,All days,55 to 64 years,Sleeping,Men
 542,2005,Annual,8.2,0.077,All days,55 to 64 years,Sleeping,Men
 543,2006,Annual,8.32,0.095,All days,55 to 64 years,Sleeping,Men
-544,2007,Annual,8.32,0.0879999999999999,All days,55 to 64 years,Sleeping,Men
+544,2007,Annual,8.32,0.088,All days,55 to 64 years,Sleeping,Men
 545,2008,Annual,8.24,0.071,All days,55 to 64 years,Sleeping,Men
 546,2009,Annual,8.37,0.084,All days,55 to 64 years,Sleeping,Men
 547,2010,Annual,8.51,0.077,All days,55 to 64 years,Sleeping,Men
@@ -551,9 +551,9 @@ index,Year,Period,Avg hrs per day sleeping,Standard Error,Type of Days,Age Group
 549,2012,Annual,8.31,0.093,All days,55 to 64 years,Sleeping,Men
 550,2013,Annual,8.52,0.084,All days,55 to 64 years,Sleeping,Men
 551,2014,Annual,8.35,0.068,All days,55 to 64 years,Sleeping,Men
-552,2015,Annual,8.38,0.0869999999999999,All days,55 to 64 years,Sleeping,Men
+552,2015,Annual,8.38,0.087,All days,55 to 64 years,Sleeping,Men
 553,2016,Annual,8.45,0.106,All days,55 to 64 years,Sleeping,Men
-554,2017,Annual,8.3,0.0859999999999999,All days,55 to 64 years,Sleeping,Men
+554,2017,Annual,8.3,0.086,All days,55 to 64 years,Sleeping,Men
 555,2003,Annual,8.07,0.083,Nonholiday weekdays,55 to 64 years,Sleeping,Men
 556,2004,Annual,8.1,0.095,Nonholiday weekdays,55 to 64 years,Sleeping,Men
 557,2005,Annual,7.96,0.096,Nonholiday weekdays,55 to 64 years,Sleeping,Men
@@ -583,19 +583,19 @@ index,Year,Period,Avg hrs per day sleeping,Standard Error,Type of Days,Age Group
 581,2014,Annual,8.88,0.103,Weekend days and holidays,55 to 64 years,Sleeping,Men
 582,2015,Annual,8.93,0.124,Weekend days and holidays,55 to 64 years,Sleeping,Men
 583,2016,Annual,9.14,0.169,Weekend days and holidays,55 to 64 years,Sleeping,Men
-584,2017,Annual,9.0,0.12,Weekend days and holidays,55 to 64 years,Sleeping,Men
+584,2017,Annual,9,0.12,Weekend days and holidays,55 to 64 years,Sleeping,Men
 585,2003,Annual,8.89,0.066,All days,65 years and over,Sleeping,Men
 586,2004,Annual,8.76,0.067,All days,65 years and over,Sleeping,Men
 587,2005,Annual,8.98,0.098,All days,65 years and over,Sleeping,Men
 588,2006,Annual,9.03,0.081,All days,65 years and over,Sleeping,Men
 589,2007,Annual,8.91,0.102,All days,65 years and over,Sleeping,Men
-590,2008,Annual,8.95,0.0879999999999999,All days,65 years and over,Sleeping,Men
+590,2008,Annual,8.95,0.088,All days,65 years and over,Sleeping,Men
 591,2009,Annual,8.83,0.085,All days,65 years and over,Sleeping,Men
-592,2010,Annual,9.0,0.081,All days,65 years and over,Sleeping,Men
+592,2010,Annual,9,0.081,All days,65 years and over,Sleeping,Men
 593,2011,Annual,9.05,0.092,All days,65 years and over,Sleeping,Men
-594,2012,Annual,8.81,0.0749999999999999,All days,65 years and over,Sleeping,Men
+594,2012,Annual,8.81,0.075,All days,65 years and over,Sleeping,Men
 595,2013,Annual,8.83,0.078,All days,65 years and over,Sleeping,Men
-596,2014,Annual,8.96,0.0869999999999999,All days,65 years and over,Sleeping,Men
+596,2014,Annual,8.96,0.087,All days,65 years and over,Sleeping,Men
 597,2015,Annual,8.97,0.078,All days,65 years and over,Sleeping,Men
 598,2016,Annual,8.9,0.072,All days,65 years and over,Sleeping,Men
 599,2017,Annual,8.75,0.077,All days,65 years and over,Sleeping,Men
@@ -693,7 +693,7 @@ index,Year,Period,Avg hrs per day sleeping,Standard Error,Type of Days,Age Group
 691,2004,Annual,10.32,0.137,Weekend days and holidays,15 to 24 years,Sleeping,Women
 692,2005,Annual,9.83,0.122,Weekend days and holidays,15 to 24 years,Sleeping,Women
 693,2006,Annual,10.18,0.131,Weekend days and holidays,15 to 24 years,Sleeping,Women
-694,2007,Annual,10.0,0.141,Weekend days and holidays,15 to 24 years,Sleeping,Women
+694,2007,Annual,10,0.141,Weekend days and holidays,15 to 24 years,Sleeping,Women
 695,2008,Annual,9.96,0.167,Weekend days and holidays,15 to 24 years,Sleeping,Women
 696,2009,Annual,9.78,0.16,Weekend days and holidays,15 to 24 years,Sleeping,Women
 697,2010,Annual,9.93,0.151,Weekend days and holidays,15 to 24 years,Sleeping,Women
@@ -711,7 +711,7 @@ index,Year,Period,Avg hrs per day sleeping,Standard Error,Type of Days,Age Group
 709,2007,Annual,8.84,0.133,Nonholiday weekdays,15 to 24 years,Sleeping,Women
 710,2008,Annual,8.76,0.15,Nonholiday weekdays,15 to 24 years,Sleeping,Women
 711,2009,Annual,9.13,0.13,Nonholiday weekdays,15 to 24 years,Sleeping,Women
-712,2010,Annual,9.0,0.15,Nonholiday weekdays,15 to 24 years,Sleeping,Women
+712,2010,Annual,9,0.15,Nonholiday weekdays,15 to 24 years,Sleeping,Women
 713,2011,Annual,8.96,0.134,Nonholiday weekdays,15 to 24 years,Sleeping,Women
 714,2012,Annual,9.22,0.152,Nonholiday weekdays,15 to 24 years,Sleeping,Women
 715,2013,Annual,9.07,0.174,Nonholiday weekdays,15 to 24 years,Sleeping,Women
@@ -723,19 +723,19 @@ index,Year,Period,Avg hrs per day sleeping,Standard Error,Type of Days,Age Group
 721,2004,Annual,8.51,0.069,All days,25 to 34 years,Sleeping,Women
 722,2005,Annual,8.85,0.067,All days,25 to 34 years,Sleeping,Women
 723,2006,Annual,8.75,0.082,All days,25 to 34 years,Sleeping,Women
-724,2007,Annual,8.69,0.0749999999999999,All days,25 to 34 years,Sleeping,Women
-725,2008,Annual,8.6,0.0889999999999999,All days,25 to 34 years,Sleeping,Women
+724,2007,Annual,8.69,0.075,All days,25 to 34 years,Sleeping,Women
+725,2008,Annual,8.6,0.089,All days,25 to 34 years,Sleeping,Women
 726,2009,Annual,8.61,0.072,All days,25 to 34 years,Sleeping,Women
 727,2010,Annual,8.89,0.072,All days,25 to 34 years,Sleeping,Women
 728,2011,Annual,8.83,0.064,All days,25 to 34 years,Sleeping,Women
-729,2012,Annual,8.97,0.0739999999999999,All days,25 to 34 years,Sleeping,Women
+729,2012,Annual,8.97,0.074,All days,25 to 34 years,Sleeping,Women
 730,2013,Annual,8.85,0.081,All days,25 to 34 years,Sleeping,Women
 731,2014,Annual,8.91,0.077,All days,25 to 34 years,Sleeping,Women
 732,2015,Annual,8.96,0.084,All days,25 to 34 years,Sleeping,Women
 733,2016,Annual,8.87,0.093,All days,25 to 34 years,Sleeping,Women
-734,2017,Annual,9.04,0.0889999999999999,All days,25 to 34 years,Sleeping,Women
-735,2003,Annual,9.45,0.0749999999999999,Weekend days and holidays,25 to 34 years,Sleeping,Women
-736,2004,Annual,9.37,0.0879999999999999,Weekend days and holidays,25 to 34 years,Sleeping,Women
+734,2017,Annual,9.04,0.089,All days,25 to 34 years,Sleeping,Women
+735,2003,Annual,9.45,0.075,Weekend days and holidays,25 to 34 years,Sleeping,Women
+736,2004,Annual,9.37,0.088,Weekend days and holidays,25 to 34 years,Sleeping,Women
 737,2005,Annual,9.74,0.105,Weekend days and holidays,25 to 34 years,Sleeping,Women
 738,2006,Annual,9.44,0.099,Weekend days and holidays,25 to 34 years,Sleeping,Women
 739,2007,Annual,9.36,0.102,Weekend days and holidays,25 to 34 years,Sleeping,Women
@@ -749,13 +749,13 @@ index,Year,Period,Avg hrs per day sleeping,Standard Error,Type of Days,Age Group
 747,2015,Annual,9.52,0.118,Weekend days and holidays,25 to 34 years,Sleeping,Women
 748,2016,Annual,9.65,0.13,Weekend days and holidays,25 to 34 years,Sleeping,Women
 749,2017,Annual,9.68,0.144,Weekend days and holidays,25 to 34 years,Sleeping,Women
-750,2003,Annual,8.44,0.0749999999999999,Nonholiday weekdays,25 to 34 years,Sleeping,Women
-751,2004,Annual,8.16,0.0879999999999999,Nonholiday weekdays,25 to 34 years,Sleeping,Women
+750,2003,Annual,8.44,0.075,Nonholiday weekdays,25 to 34 years,Sleeping,Women
+751,2004,Annual,8.16,0.088,Nonholiday weekdays,25 to 34 years,Sleeping,Women
 752,2005,Annual,8.47,0.084,Nonholiday weekdays,25 to 34 years,Sleeping,Women
 753,2006,Annual,8.45,0.111,Nonholiday weekdays,25 to 34 years,Sleeping,Women
 754,2007,Annual,8.41,0.099,Nonholiday weekdays,25 to 34 years,Sleeping,Women
 755,2008,Annual,8.2,0.119,Nonholiday weekdays,25 to 34 years,Sleeping,Women
-756,2009,Annual,8.23,0.0869999999999999,Nonholiday weekdays,25 to 34 years,Sleeping,Women
+756,2009,Annual,8.23,0.087,Nonholiday weekdays,25 to 34 years,Sleeping,Women
 757,2010,Annual,8.59,0.09,Nonholiday weekdays,25 to 34 years,Sleeping,Women
 758,2011,Annual,8.57,0.084,Nonholiday weekdays,25 to 34 years,Sleeping,Women
 759,2012,Annual,8.65,0.091,Nonholiday weekdays,25 to 34 years,Sleeping,Women
@@ -767,7 +767,7 @@ index,Year,Period,Avg hrs per day sleeping,Standard Error,Type of Days,Age Group
 765,2003,Annual,8.48,0.053,All days,35 to 44 years,Sleeping,Women
 766,2004,Annual,8.3,0.062,All days,35 to 44 years,Sleeping,Women
 767,2005,Annual,8.38,0.054,All days,35 to 44 years,Sleeping,Women
-768,2006,Annual,8.49,0.0729999999999999,All days,35 to 44 years,Sleeping,Women
+768,2006,Annual,8.49,0.073,All days,35 to 44 years,Sleeping,Women
 769,2007,Annual,8.41,0.071,All days,35 to 44 years,Sleeping,Women
 770,2008,Annual,8.44,0.06,All days,35 to 44 years,Sleeping,Women
 771,2009,Annual,8.53,0.069,All days,35 to 44 years,Sleeping,Women
@@ -778,15 +778,15 @@ index,Year,Period,Avg hrs per day sleeping,Standard Error,Type of Days,Age Group
 776,2014,Annual,8.63,0.064,All days,35 to 44 years,Sleeping,Women
 777,2015,Annual,8.68,0.083,All days,35 to 44 years,Sleeping,Women
 778,2016,Annual,8.58,0.064,All days,35 to 44 years,Sleeping,Women
-779,2017,Annual,8.77,0.0879999999999999,All days,35 to 44 years,Sleeping,Women
+779,2017,Annual,8.77,0.088,All days,35 to 44 years,Sleeping,Women
 780,2003,Annual,9.31,0.06,Weekend days and holidays,35 to 44 years,Sleeping,Women
 781,2004,Annual,8.98,0.08,Weekend days and holidays,35 to 44 years,Sleeping,Women
 782,2005,Annual,9.26,0.083,Weekend days and holidays,35 to 44 years,Sleeping,Women
 783,2006,Annual,9.28,0.113,Weekend days and holidays,35 to 44 years,Sleeping,Women
-784,2007,Annual,9.23,0.0869999999999999,Weekend days and holidays,35 to 44 years,Sleeping,Women
+784,2007,Annual,9.23,0.087,Weekend days and holidays,35 to 44 years,Sleeping,Women
 785,2008,Annual,9.27,0.108,Weekend days and holidays,35 to 44 years,Sleeping,Women
 786,2009,Annual,9.25,0.09,Weekend days and holidays,35 to 44 years,Sleeping,Women
-787,2010,Annual,9.35,0.0889999999999999,Weekend days and holidays,35 to 44 years,Sleeping,Women
+787,2010,Annual,9.35,0.089,Weekend days and holidays,35 to 44 years,Sleeping,Women
 788,2011,Annual,9.33,0.13,Weekend days and holidays,35 to 44 years,Sleeping,Women
 789,2012,Annual,9.47,0.097,Weekend days and holidays,35 to 44 years,Sleeping,Women
 790,2013,Annual,9.42,0.105,Weekend days and holidays,35 to 44 years,Sleeping,Women
@@ -799,12 +799,12 @@ index,Year,Period,Avg hrs per day sleeping,Standard Error,Type of Days,Age Group
 797,2005,Annual,8.01,0.069,Nonholiday weekdays,35 to 44 years,Sleeping,Women
 798,2006,Annual,8.16,0.092,Nonholiday weekdays,35 to 44 years,Sleeping,Women
 799,2007,Annual,8.07,0.095,Nonholiday weekdays,35 to 44 years,Sleeping,Women
-800,2008,Annual,8.08,0.0729999999999999,Nonholiday weekdays,35 to 44 years,Sleeping,Women
-801,2009,Annual,8.23,0.0879999999999999,Nonholiday weekdays,35 to 44 years,Sleeping,Women
+800,2008,Annual,8.08,0.073,Nonholiday weekdays,35 to 44 years,Sleeping,Women
+801,2009,Annual,8.23,0.088,Nonholiday weekdays,35 to 44 years,Sleeping,Women
 802,2010,Annual,8.14,0.097,Nonholiday weekdays,35 to 44 years,Sleeping,Women
 803,2011,Annual,8.15,0.08,Nonholiday weekdays,35 to 44 years,Sleeping,Women
 804,2012,Annual,8.36,0.102,Nonholiday weekdays,35 to 44 years,Sleeping,Women
-805,2013,Annual,8.34,0.0869999999999999,Nonholiday weekdays,35 to 44 years,Sleeping,Women
+805,2013,Annual,8.34,0.087,Nonholiday weekdays,35 to 44 years,Sleeping,Women
 806,2014,Annual,8.25,0.084,Nonholiday weekdays,35 to 44 years,Sleeping,Women
 807,2015,Annual,8.39,0.106,Nonholiday weekdays,35 to 44 years,Sleeping,Women
 808,2016,Annual,8.22,0.078,Nonholiday weekdays,35 to 44 years,Sleeping,Women
@@ -816,7 +816,7 @@ index,Year,Period,Avg hrs per day sleeping,Standard Error,Type of Days,Age Group
 814,2007,Annual,8.29,0.072,All days,45 to 54 years,Sleeping,Women
 815,2008,Annual,8.39,0.085,All days,45 to 54 years,Sleeping,Women
 816,2009,Annual,8.42,0.067,All days,45 to 54 years,Sleeping,Women
-817,2010,Annual,8.36,0.0739999999999999,All days,45 to 54 years,Sleeping,Women
+817,2010,Annual,8.36,0.074,All days,45 to 54 years,Sleeping,Women
 818,2011,Annual,8.51,0.092,All days,45 to 54 years,Sleeping,Women
 819,2012,Annual,8.46,0.077,All days,45 to 54 years,Sleeping,Women
 820,2013,Annual,8.61,0.071,All days,45 to 54 years,Sleeping,Women
@@ -825,7 +825,7 @@ index,Year,Period,Avg hrs per day sleeping,Standard Error,Type of Days,Age Group
 823,2016,Annual,8.71,0.112,All days,45 to 54 years,Sleeping,Women
 824,2017,Annual,8.52,0.098,All days,45 to 54 years,Sleeping,Women
 825,2003,Annual,9.04,0.076,Weekend days and holidays,45 to 54 years,Sleeping,Women
-826,2004,Annual,9.05,0.0879999999999999,Weekend days and holidays,45 to 54 years,Sleeping,Women
+826,2004,Annual,9.05,0.088,Weekend days and holidays,45 to 54 years,Sleeping,Women
 827,2005,Annual,9.08,0.099,Weekend days and holidays,45 to 54 years,Sleeping,Women
 828,2006,Annual,9.4,0.106,Weekend days and holidays,45 to 54 years,Sleeping,Women
 829,2007,Annual,8.89,0.111,Weekend days and holidays,45 to 54 years,Sleeping,Women
@@ -840,12 +840,12 @@ index,Year,Period,Avg hrs per day sleeping,Standard Error,Type of Days,Age Group
 838,2016,Annual,9.3,0.145,Weekend days and holidays,45 to 54 years,Sleeping,Women
 839,2017,Annual,9.22,0.149,Weekend days and holidays,45 to 54 years,Sleeping,Women
 840,2003,Annual,7.93,0.061,Nonholiday weekdays,45 to 54 years,Sleeping,Women
-841,2004,Annual,7.9,0.0729999999999999,Nonholiday weekdays,45 to 54 years,Sleeping,Women
+841,2004,Annual,7.9,0.073,Nonholiday weekdays,45 to 54 years,Sleeping,Women
 842,2005,Annual,8.06,0.093,Nonholiday weekdays,45 to 54 years,Sleeping,Women
 843,2006,Annual,7.97,0.105,Nonholiday weekdays,45 to 54 years,Sleeping,Women
 844,2007,Annual,8.04,0.092,Nonholiday weekdays,45 to 54 years,Sleeping,Women
 845,2008,Annual,8.07,0.111,Nonholiday weekdays,45 to 54 years,Sleeping,Women
-846,2009,Annual,8.08,0.0869999999999999,Nonholiday weekdays,45 to 54 years,Sleeping,Women
+846,2009,Annual,8.08,0.087,Nonholiday weekdays,45 to 54 years,Sleeping,Women
 847,2010,Annual,7.99,0.102,Nonholiday weekdays,45 to 54 years,Sleeping,Women
 848,2011,Annual,8.25,0.112,Nonholiday weekdays,45 to 54 years,Sleeping,Women
 849,2012,Annual,8.12,0.1,Nonholiday weekdays,45 to 54 years,Sleeping,Women
@@ -855,20 +855,20 @@ index,Year,Period,Avg hrs per day sleeping,Standard Error,Type of Days,Age Group
 853,2016,Annual,8.47,0.143,Nonholiday weekdays,45 to 54 years,Sleeping,Women
 854,2017,Annual,8.22,0.128,Nonholiday weekdays,45 to 54 years,Sleeping,Women
 855,2003,Annual,8.39,0.055,All days,55 to 64 years,Sleeping,Women
-856,2004,Annual,8.3,0.0729999999999999,All days,55 to 64 years,Sleeping,Women
+856,2004,Annual,8.3,0.073,All days,55 to 64 years,Sleeping,Women
 857,2005,Annual,8.35,0.069,All days,55 to 64 years,Sleeping,Women
 858,2006,Annual,8.47,0.083,All days,55 to 64 years,Sleeping,Women
 859,2007,Annual,8.2,0.081,All days,55 to 64 years,Sleeping,Women
 860,2008,Annual,8.29,0.084,All days,55 to 64 years,Sleeping,Women
 861,2009,Annual,8.49,0.072,All days,55 to 64 years,Sleeping,Women
-862,2010,Annual,8.49,0.0739999999999999,All days,55 to 64 years,Sleeping,Women
+862,2010,Annual,8.49,0.074,All days,55 to 64 years,Sleeping,Women
 863,2011,Annual,8.54,0.076,All days,55 to 64 years,Sleeping,Women
-864,2012,Annual,8.61,0.0729999999999999,All days,55 to 64 years,Sleeping,Women
+864,2012,Annual,8.61,0.073,All days,55 to 64 years,Sleeping,Women
 865,2013,Annual,8.46,0.08,All days,55 to 64 years,Sleeping,Women
 866,2014,Annual,8.51,0.065,All days,55 to 64 years,Sleeping,Women
-867,2015,Annual,8.63,0.0879999999999999,All days,55 to 64 years,Sleeping,Women
+867,2015,Annual,8.63,0.088,All days,55 to 64 years,Sleeping,Women
 868,2016,Annual,8.61,0.078,All days,55 to 64 years,Sleeping,Women
-869,2017,Annual,8.51,0.0859999999999999,All days,55 to 64 years,Sleeping,Women
+869,2017,Annual,8.51,0.086,All days,55 to 64 years,Sleeping,Women
 870,2003,Annual,8.93,0.077,Weekend days and holidays,55 to 64 years,Sleeping,Women
 871,2004,Annual,8.79,0.103,Weekend days and holidays,55 to 64 years,Sleeping,Women
 872,2005,Annual,8.78,0.103,Weekend days and holidays,55 to 64 years,Sleeping,Women
@@ -884,7 +884,7 @@ index,Year,Period,Avg hrs per day sleeping,Standard Error,Type of Days,Age Group
 882,2015,Annual,9.02,0.11,Weekend days and holidays,55 to 64 years,Sleeping,Women
 883,2016,Annual,9.09,0.106,Weekend days and holidays,55 to 64 years,Sleeping,Women
 884,2017,Annual,9.04,0.098,Weekend days and holidays,55 to 64 years,Sleeping,Women
-885,2003,Annual,8.17,0.0729999999999999,Nonholiday weekdays,55 to 64 years,Sleeping,Women
+885,2003,Annual,8.17,0.073,Nonholiday weekdays,55 to 64 years,Sleeping,Women
 886,2004,Annual,8.1,0.092,Nonholiday weekdays,55 to 64 years,Sleeping,Women
 887,2005,Annual,8.17,0.093,Nonholiday weekdays,55 to 64 years,Sleeping,Women
 888,2006,Annual,8.32,0.102,Nonholiday weekdays,55 to 64 years,Sleeping,Women
@@ -926,21 +926,21 @@ index,Year,Period,Avg hrs per day sleeping,Standard Error,Type of Days,Age Group
 924,2012,Annual,9.06,0.104,Weekend days and holidays,65 years and over,Sleeping,Women
 925,2013,Annual,9.06,0.091,Weekend days and holidays,65 years and over,Sleeping,Women
 926,2014,Annual,9.13,0.094,Weekend days and holidays,65 years and over,Sleeping,Women
-927,2015,Annual,9.3,0.0859999999999999,Weekend days and holidays,65 years and over,Sleeping,Women
+927,2015,Annual,9.3,0.086,Weekend days and holidays,65 years and over,Sleeping,Women
 928,2016,Annual,9.1,0.081,Weekend days and holidays,65 years and over,Sleeping,Women
 929,2017,Annual,9.15,0.1,Weekend days and holidays,65 years and over,Sleeping,Women
 930,2003,Annual,8.7,0.06,Nonholiday weekdays,65 years and over,Sleeping,Women
 931,2004,Annual,8.88,0.071,Nonholiday weekdays,65 years and over,Sleeping,Women
 932,2005,Annual,8.81,0.081,Nonholiday weekdays,65 years and over,Sleeping,Women
 933,2006,Annual,8.77,0.097,Nonholiday weekdays,65 years and over,Sleeping,Women
-934,2007,Annual,8.82,0.0879999999999999,Nonholiday weekdays,65 years and over,Sleeping,Women
-935,2008,Annual,8.79,0.0859999999999999,Nonholiday weekdays,65 years and over,Sleeping,Women
+934,2007,Annual,8.82,0.088,Nonholiday weekdays,65 years and over,Sleeping,Women
+935,2008,Annual,8.79,0.086,Nonholiday weekdays,65 years and over,Sleeping,Women
 936,2009,Annual,8.86,0.083,Nonholiday weekdays,65 years and over,Sleeping,Women
 937,2010,Annual,8.96,0.092,Nonholiday weekdays,65 years and over,Sleeping,Women
 938,2011,Annual,9.02,0.085,Nonholiday weekdays,65 years and over,Sleeping,Women
-939,2012,Annual,8.79,0.0889999999999999,Nonholiday weekdays,65 years and over,Sleeping,Women
+939,2012,Annual,8.79,0.089,Nonholiday weekdays,65 years and over,Sleeping,Women
 940,2013,Annual,8.83,0.085,Nonholiday weekdays,65 years and over,Sleeping,Women
-941,2014,Annual,8.98,0.0859999999999999,Nonholiday weekdays,65 years and over,Sleeping,Women
-942,2015,Annual,8.83,0.0739999999999999,Nonholiday weekdays,65 years and over,Sleeping,Women
+941,2014,Annual,8.98,0.086,Nonholiday weekdays,65 years and over,Sleeping,Women
+942,2015,Annual,8.83,0.074,Nonholiday weekdays,65 years and over,Sleeping,Women
 943,2016,Annual,8.92,0.071,Nonholiday weekdays,65 years and over,Sleeping,Women
 944,2017,Annual,8.81,0.091,Nonholiday weekdays,65 years and over,Sleeping,Women
