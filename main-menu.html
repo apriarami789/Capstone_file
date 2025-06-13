@@ -1,35 +1,40 @@
 <!DOCTYPE html>
-<html>
+<html lang="id">
 <head>
-  <title>Menu Utama SleepWell AI</title>
   <meta charset="UTF-8">
+  <title>Menu Utama • SleepWell AI</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Jika ingin pisah file CSS, tinggal copas <style> ke file sendiri -->
 </head>
 <body>
-  <h2>Menu Utama SleepWell</h2>
-  <div id="userWelcome">Memuat...</div>
-  <button onclick="window.location.href='form-input.html'">Input Data Tidur</button>
-  <button onclick="window.location.href='riwayat.html'">Riwayat Prediksi</button>
-  <button onclick="logout()">Logout</button>
-
+  <div class="mainmenu-container">
+    <div class="mainmenu-card">
+      <img src="img/logo-sinyal-tenang.png" alt="SleepWell Logo" class="logo">
+      <h2 class="title">Menu Utama SleepWell</h2>
+      <div id="userWelcome" class="user-welcome">Memuat...</div>
+      <div class="menu-btn-group">
+        <button onclick="window.location.href='form-input.html'" class="btn-mainmenu">Input Data Tidur</button>
+        <button onclick="window.location.href='riwayat.html'" class="btn-mainmenu">Riwayat Prediksi</button>
+        <button onclick="logout()" class="btn-mainmenu btn-logout">Logout</button>
+      </div>
+    </div>
+  </div>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
   <script>
     const supabaseUrl = 'https://vnbqtnhcxlhygfajoulf.supabase.co';
     const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZuYnF0bmhjeGxoeWdmYWpvdWxmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDk3MjEwOTQsImV4cCI6MjA2NTI5NzA5NH0.iFEHsnjgufQuZ6kcaH1gtNT9qyNFfCu8JuxW_clgKRc';
     const supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
 
-    // Cek login dengan Auth (bukan sessionStorage manual)
     async function showUser() {
       const { data: { user }, error } = await supabase.auth.getUser();
       if (!user) {
         window.location.href = "login-user.html";
         return;
       }
-      // Ambil nama dari metadata Auth (hasil sign-up)
       const name = user.user_metadata && user.user_metadata.name
         ? user.user_metadata.name
         : user.email;
       document.getElementById("userWelcome").innerText = `Halo, ${name}!`;
-      // Simpan user_id (uuid) di sessionStorage biar halaman lain bisa pakai
       sessionStorage.setItem("user_id", user.id);
     }
     showUser();
@@ -40,5 +45,92 @@
       window.location.href = "login-user.html";
     }
   </script>
-</body>
-</html>
+  <style>
+    :root {
+      --primary: #6751ef;
+      --primary-dark: #4a3ec8;
+      --blue: #2563eb;
+      --background: #f5f7fa;
+      --card-bg: #fff;
+      --gray: #eef2fe;
+      --border: #e5e7eb;
+      --danger: #e11d48;
+      --radius: 18px;
+    }
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #e0e7ff 0%, #f6dfff 100%);
+      font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+      min-height: 100vh;
+    }
+    .mainmenu-container {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255,255,255,0.10);
+    }
+    .mainmenu-card {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      box-shadow: 0 8px 32px rgba(66,71,112,0.13);
+      padding: 32px 28px 26px 28px;
+      max-width: 400px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      border: 1.5px solid var(--border);
+      transition: box-shadow 0.2s;
+    }
+    .mainmenu-card:hover {
+      box-shadow: 0 12px 36px rgba(103,81,239,0.15);
+    }
+    .logo {
+      width: 60px;
+      height: 60px;
+      object-fit: contain;
+      margin-bottom: 14px;
+    }
+    .title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 16px;
+      text-align: center;
+      letter-spacing: .5px;
+    }
+    .user-welcome {
+      font-size: 1.09rem;
+      font-weight: 500;
+      color: #333;
+      background: var(--gray);
+      border-radius: 10px;
+      padding: 8px 0 8px 0;
+      margin-bottom: 24px;
+      text-align: center;
+      width: 100%;
+      transition: background .2s;
+    }
+    .menu-btn-group {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      gap: 15px;
+    }
+    .btn-mainmenu {
+      background: var(--primary);
+      color: #fff;
+      font-weight: 600;
+      border: none;
+      border-radius: 10px;
+      padding: 13px 0;
+      font-size: 1.08rem;
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(103,81,239,0.07);
+      transition: background .15s, box-shadow .15s;
+      margin: 0;
+      width: 100%;
+      lett
