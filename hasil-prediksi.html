@@ -3,29 +3,23 @@
 <head>
   <title>Hasil Prediksi Tidur</title>
   <meta charset="UTF-8">
+  <link rel="stylesheet" href="style/hasil-prediksi.css" />
 </head>
 <body>
-  <h2>Hasil Prediksi Tidur Anda</h2>
-  
-  <!-- Loader -->
-  <div id="loader" style="display:none; margin-bottom:15px;">⏳ Memproses prediksi, mohon tunggu...</div>
-  
-  <!-- Hasil prediksi utama -->
-  <div id="predictionResult">Memuat...</div>
-  
-  <!-- Tips/deskripsi hasil -->
-  <div id="predictionTips" style="margin-top:10px;"></div>
-  
-  <!-- Saran CBTI / tombol selengkapnya -->
-  <div id="cbtiAdvice" style="margin-top:15px;"></div>
-  
-  <!-- Pesan error update DB -->
-  <div id="dbErrorMsg" style="color:red;margin-top:10px;"></div>
-  
-  <button onclick="window.location.href='form-input.html'">Input Data Baru</button>
-  <button onclick="window.location.href='riwayat.html'">Lihat Riwayat</button>
-  <button onclick="window.location.href='main-menu.html'">Menu Utama</button>
-  
+  <div class="container">
+    <h2>Hasil Prediksi Tidur Anda</h2>
+    
+    <div id="loader" class="loader">⏳ Memproses prediksi, mohon tunggu...</div>
+    <div id="predictionResult" class="prediction-result">Memuat...</div>
+    <div id="predictionTips" class="prediction-tips"></div>
+    <div id="cbtiAdvice" class="cbti-advice"></div>
+    <div id="dbErrorMsg" class="db-error-msg"></div>
+    <div class="actions">
+      <button onclick="window.location.href='form-input.html'">Input Data Baru</button>
+      <button onclick="window.location.href='riwayat.html'">Lihat Riwayat</button>
+      <button onclick="window.location.href='main-menu.html'">Menu Utama</button>
+    </div>
+  </div>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
   <script>
     // Setup Supabase
@@ -33,15 +27,20 @@
     const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZuYnF0bmhjeGxoeWdmYWpvdWxmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDk3MjEwOTQsImV4cCI6MjA2NTI5NzA5NH0.iFEHsnjgufQuZ6kcaH1gtNT9qyNFfCu8JuxW_clgKRc';
     const supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
 
-    // (Opsional tapi dianjurkan) Cek Auth login
+    // (Opsional) Cek Auth login
     supabase.auth.getUser().then(({ data }) => {
       if (!data.user) window.location.href = "login-user.html";
     });
 
     // Ambil input dari sessionStorage
     const input = JSON.parse(sessionStorage.getItem('sleep_input') || '{}');
-    if (!input || !input.gender || !input.age || !input.occupation || !input.bmi_category || !input.Physical_Activity_Level || !input.Stress_Level || !input.Heart_Rate || !input.Daily_Steps || !input.sleep_data_id) {
-      document.getElementById('predictionResult').innerHTML = "<span style='color:red;'>Data tidak lengkap, silakan input ulang.</span>";
+    if (
+      !input || !input.gender || !input.age || !input.occupation ||
+      !input.bmi_category || !input.Physical_Activity_Level || !input.Stress_Level ||
+      !input.Heart_Rate || !input.Daily_Steps || !input.sleep_data_id
+    ) {
+      document.getElementById('predictionResult').innerHTML =
+        "<span style='color:red;'>Data tidak lengkap, silakan input ulang.</span>";
       setTimeout(() => { window.location.href = "form-input.html"; }, 2000);
     } else {
       // Tampilkan loader
@@ -49,8 +48,8 @@
       document.getElementById('predictionResult').innerHTML = "";
       document.getElementById('dbErrorMsg').innerText = "";
 
-      // Panggil API model ML
-      fetch("https://ardhi-17-sleepwellapp.hf.space/predict", {
+      // Panggil API model ML - endpoint BARU
+      fetch("https://ardhi-17-sleep-well-tf.hf.space/predict", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
