@@ -1,127 +1,211 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Hasil Prediksi Tidur</title>
+  <title>Hasil Prediksi Tidur Anda • SleepWell AI</title>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="icon" href="img/logo-sinyal-tenang.png" />
   <style>
-    body {
-      background: linear-gradient(135deg, #e0e7ff 0%, #f6dfff 100%);
-      font-family: 'Inter', Arial, sans-serif;
-      margin: 0;
-      color: #21243d;
+    :root {
+      --primary: #6751ef;
+      --blue: #2563eb;
+      --background: #f5f7fa;
+      --gray: #eef2fe;
+      --danger: #e11d48;
+      --radius: 20px;
     }
-    .container {
+    body {
+      min-height: 100vh;
+      background: linear-gradient(135deg, #e0e7ff 0%, #f6dfff 100%);
+      font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+      margin: 0;
+      color: #23233b;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .main-wrapper {
       background: #fff;
+      border-radius: var(--radius);
+      box-shadow: 0 8px 42px 0 rgba(66,71,112,0.11);
       max-width: 420px;
-      margin: 3.2rem auto 0 auto;
-      padding: 2.3rem 2rem 1.6rem 2rem;
-      border-radius: 18px;
-      box-shadow: 0 6px 38px 0 rgba(66,71,112,0.09);
+      width: 98vw;
+      padding: 2.2rem 2rem 1.5rem 2rem;
+      margin: 3.3rem 0 2.5rem 0;
+      position: relative;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: .7rem;
+      justify-content: center;
+      margin-bottom: .3rem;
+    }
+    .logo img {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+    }
+    .logo span {
+      font-size: 1.19rem;
+      font-weight: 700;
+      color: var(--primary);
+      letter-spacing: 1.2px;
     }
     h2 {
       text-align: center;
       font-weight: 700;
-      font-size: 1.4rem;
-      color: #6751ef;
-      margin-bottom: 1.8rem;
+      font-size: 1.38rem;
+      color: #23233b;
+      margin-bottom: 1.5rem;
+      letter-spacing: .1px;
     }
     .loader {
-      display: none;
-      text-align: center;
-      color: #6751ef;
-      font-size: 1.1rem;
-      margin-bottom: 15px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: var(--primary);
+      font-weight: 600;
+      font-size: 1.07rem;
+      margin: 22px 0 13px 0;
+      letter-spacing: 0.3px;
     }
-    .prediction-result {
-      font-size: 1.08rem;
-      background: #eef2fe;
-      border-radius: 12px;
-      padding: 1.1rem 1.2rem;
-      color: #2e2e4d;
-      margin-bottom: 14px;
-      min-height: 44px;
+    .loader:before {
+      content: "";
+      display: inline-block;
+      width: 23px; height: 23px;
+      border: 3.2px solid #d8d5fa;
+      border-top: 3.2px solid var(--primary);
+      border-radius: 50%;
+      margin-right: 11px;
+      animation: spin 1.1s linear infinite;
+      vertical-align: middle;
     }
-    .prediction-result ul {
-      margin: 0;
-      padding: 0 0 0 20px;
+    @keyframes spin { 100% { transform: rotate(360deg); } }
+    .card {
+      background: var(--gray);
+      border-radius: 15px;
+      box-shadow: 0 2px 12px rgba(103,81,239,0.07);
+      padding: 1.2rem 1.2rem 1rem 1.2rem;
+      margin-bottom: 1.1rem;
+      min-height: 40px;
+      font-size: 1.07rem;
+      color: #3a346b;
+      border: 1.1px solid #e1e4f7;
+      word-break: break-word;
+    }
+    .card ul {
+      margin: 0 0 0 1.1em;
+      padding: 0;
+      font-size: 1.04rem;
     }
     .prediction-tips {
-      font-size: .98rem;
-      background: #fdf6ff;
-      color: #614488;
-      border-radius: 8px;
-      padding: .7rem 1.1rem;
-      margin-bottom: 10px;
+      background: #f9f3ff;
+      color: #564082;
+      border-radius: 11px;
+      padding: .83rem 1.1rem .83rem 1.2rem;
+      font-size: 1.01rem;
+      margin-bottom: 8px;
+      border: 1px solid #ece8ff;
+      box-shadow: 0 1px 6px 0 rgba(120,100,200,0.07);
     }
     .cbti-advice {
-      margin-top: 15px;
-      text-align: left;
+      margin: 1.2rem 0 .8rem 0;
+      text-align: center;
     }
     .cbti-advice button {
-      margin-top: 6px;
-      background: #6751ef;
+      margin-top: 4px;
+      background: var(--primary);
       color: #fff;
       border: none;
-      padding: .6rem 1.2rem;
+      padding: .7rem 1.2rem;
       border-radius: 9px;
-      font-size: 1rem;
+      font-size: 1.01rem;
+      font-weight: 600;
       cursor: pointer;
-      transition: background .14s;
+      box-shadow: 0 2px 14px rgba(103,81,239,0.07);
+      transition: background .14s, transform .12s;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      margin-left: auto;
+      margin-right: auto;
     }
     .cbti-advice button:hover {
       background: #5043c3;
+      transform: translateY(-1.5px) scale(1.03);
     }
     .db-error-msg {
-      color: #e11d48;
-      margin-top: 10px;
+      color: var(--danger);
+      margin-top: 11px;
       font-size: .97rem;
       min-height: 20px;
+      text-align: center;
     }
     .actions {
       display: flex;
       justify-content: center;
-      gap: 12px;
-      margin-top: 22px;
+      gap: 10px;
+      margin-top: 26px;
+      flex-wrap: wrap;
     }
     .actions button {
-      background: #2563eb;
+      background: var(--blue);
       color: #fff;
       border: none;
-      padding: .65rem 1.3rem;
+      padding: .68rem 1.3rem;
       border-radius: 8px;
-      font-size: .98rem;
+      font-size: 1.01rem;
       font-weight: 600;
       cursor: pointer;
       box-shadow: 0 1px 8px rgba(66,71,112,0.07);
-      transition: background .15s;
+      transition: background .15s, transform .12s;
+      display: flex;
+      align-items: center;
+      gap: 6px;
     }
     .actions button:hover {
       background: #183d90;
+      transform: scale(1.035);
     }
     @media (max-width: 600px) {
-      .container {
-        padding: 1.3rem .7rem .8rem .7rem;
-        max-width: 96vw;
+      .main-wrapper {
+        padding: 1.1rem .6rem .7rem .6rem;
+        max-width: 99vw;
       }
+      .logo img { width: 29px; height: 29px;}
+      .logo span { font-size: 1.02rem;}
       h2 { font-size: 1.05rem; }
-      .prediction-result, .prediction-tips { font-size: .95rem;}
+      .card, .prediction-tips { font-size: .97rem;}
+      .cbti-advice button, .actions button { font-size: .98rem; padding: .57rem 1rem;}
     }
   </style>
 </head>
 <body>
-  <div class="container">
+  <div class="main-wrapper">
+    <div class="logo">
+      <img src="img/logo-sinyal-tenang.png" alt="Logo SleepWell"/>
+      <span>SleepWell <span style="color:var(--blue)">AI</span></span>
+    </div>
     <h2>Hasil Prediksi Tidur Anda</h2>
-    
     <div id="loader" class="loader">⏳ Memproses prediksi, mohon tunggu...</div>
-    <div id="predictionResult" class="prediction-result">Memuat...</div>
+    <div id="predictionResult" class="card">Memuat...</div>
     <div id="predictionTips" class="prediction-tips"></div>
     <div id="cbtiAdvice" class="cbti-advice"></div>
     <div id="dbErrorMsg" class="db-error-msg"></div>
     <div class="actions">
-      <button onclick="window.location.href='form-input.html'">Input Data Baru</button>
-      <button onclick="window.location.href='riwayat.html'">Lihat Riwayat</button>
-      <
-      <button onclick="window.location.href='main-menu.html'">Menu Utama</button>
+      <button onclick="window.location.href='form-input.html'">
+        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:middle;" viewBox="0 0 24 24"><path d="M12 5v14m7-7H5"/></svg>
+        Input Baru
+      </button>
+      <button onclick="window.location.href='riwayat.html'">
+        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:middle;" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        Riwayat
+      </button>
+      <button onclick="window.location.href='main-menu.html'">
+        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:middle;" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>
+        Menu
+      </button>
     </div>
   </div>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
@@ -148,7 +232,7 @@
       setTimeout(() => { window.location.href = "form-input.html"; }, 2000);
     } else {
       // Tampilkan loader
-      document.getElementById('loader').style.display = 'block';
+      document.getElementById('loader').style.display = 'flex';
       document.getElementById('predictionResult').innerHTML = "";
       document.getElementById('dbErrorMsg').innerText = "";
 
@@ -170,7 +254,6 @@
       .then(res => res.json())
       .then(async result => {
         document.getElementById('loader').style.display = 'none';
-        // Tampilkan hasil prediksi utama
         document.getElementById('predictionResult').innerHTML =
           `<ul>
             <li><b>Kualitas Tidur:</b> ${result.quality_of_sleep}</li>
