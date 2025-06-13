@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Menu Utama SleepWell AI</title>
+  <meta charset="UTF-8">
+</head>
+<body>
+  <h2>Menu Utama SleepWell</h2>
+  <div id="userWelcome">Memuat...</div>
+  <button onclick="window.location.href='form-input.html'">Input Data Tidur</button>
+  <button onclick="window.location.href='riwayat.html'">Riwayat Prediksi</button>
+  <button onclick="logout()">Logout</button>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+  <script>
+    const supabaseUrl = 'https://vnbqtnhcxlhygfajoulf.supabase.co';
+    const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZuYnF0bmhjeGxoeWdmYWpvdWxmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDk3MjEwOTQsImV4cCI6MjA2NTI5NzA5NH0.iFEHsnjgufQuZ6kcaH1gtNT9qyNFfCu8JuxW_clgKRc';
+    const supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
+
+    // Cek login dengan Auth (bukan sessionStorage manual)
+    async function showUser() {
+      const { data: { user }, error } = await supabase.auth.getUser();
+      if (!user) {
+        window.location.href = "login-user.html";
+        return;
+      }
+      // Ambil nama dari metadata Auth (hasil sign-up)
+      const name = user.user_metadata && user.user_metadata.name
+        ? user.user_metadata.name
+        : user.email;
+      document.getElementById("userWelcome").innerText = `Halo, ${name}!`;
+      // Simpan user_id (uuid) di sessionStorage biar halaman lain bisa pakai
+      sessionStorage.setItem("user_id", user.id);
+    }
+    showUser();
+
+    async function logout() {
+      sessionStorage.clear();
+      await supabase.auth.signOut();
+      window.location.href = "login-user.html";
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login SleepWell AI</title>
+  <meta charset="UTF-8">
+</head>
+<body>
+  <h2>Login SleepWell</h2>
+  <form id="loginForm">
+    <label>Email:</label><br>
+    <input name="email" type="email" required><br><br>
+    <label>Password:</label><br>
+    <input name="password" type="password" required><br><br>
+    <button type="submit">Login</button>
+  </form>
+  <div id="loginMsg" style="color:red; margin:10px 0;"></div>
+  <p>Belum punya akun? <a href="sign-up.html">Daftar di sini</a></p>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+  <script>
+    const supabaseUrl = 'https://vnbqtnhcxlhygfajoulf.supabase.co';
+    const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZuYnF0bmhjeGxoeWdmYWpvdWxmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDk3MjEwOTQsImV4cCI6MjA2NTI5NzA5NH0.iFEHsnjgufQuZ6kcaH1gtNT9qyNFfCu8JuxW_clgKRc';
+    const supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
+
+    document.getElementById("loginForm").onsubmit = async function(e) {
+      e.preventDefault();
+      const fd = new FormData(this);
+      const email = fd.get("email");
+      const password = fd.get("password");
+
+      const { data, error } = await supabase.auth.signInWithPassword({ email, password });
+
+      if (error) {
+        document.getElementById("loginMsg").innerText = "Email atau password salah!";
+      } else if (!data.user.email_confirmed_at) {
+        document.getElementById("loginMsg").innerText = "Email belum diverifikasi! Silakan cek inbox email kamu.";
+      } else {
+        // Simpan ID user ke sessionStorage
+        sessionStorage.setItem("user_id", data.user.id);
+        window.location.href = "main-menu.html";
+      }
+    };
+  </script>
+</body>
+</html>

@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Riwayat Prediksi Tidur</title>
+  <meta charset="UTF-8">
+</head>
+<body>
+  <h2>Riwayat Data & Prediksi Tidur Anda</h2>
+
+  <!-- Loader -->
+  <div id="loader" style="display:none; margin-bottom:12px;">⏳ Mengambil data riwayat...</div>
+  
+  <!-- Tabel Riwayat -->
+  <table border="1" id="riwayatTable">
+    <tr>
+      <th>Tanggal</th>
+      <th>Aktivitas Fisik</th>
+      <th>Tingkat Stres</th>
+      <th>Detak Jantung</th>
+      <th>Langkah Harian</th>
+      <th>Kualitas Tidur</th>
+      <th>Durasi Tidur</th>
+      <th>Gangguan Tidur</th>
+    </tr>
+  </table>
+
+  <!-- Grafik Chart.js -->
+  <div style="margin-top:24px; max-width:600px;">
+    <canvas id="sleepChart"></canvas>
+  </div>
+
+  <button onclick="window.location.href='form-input.html'">Input Baru</button>
+  <button onclick="window.location.href='main-menu.html'">Menu Utama</button>
+  <button onclick="logout()">Logout</button>
+  <button onclick="downloadCSV()">Download CSV</button>
+  
+  <div id="errorMsg" style="color:red; margin-top:10px;"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+    const supabaseUrl = 'https://vnbqtnhcxlhygfajoulf.supabase.co';
+    const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZuYnF0bmhjeGxoeWdmYWpvdWxmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDk3MjEwOTQsImV4cCI6MjA2NTI5NzA5NH0.iFEHsnjgufQuZ6kcaH1gtNT9qyNFfCu8JuxW_clgKRc';
+    const supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
+
+    let lastRiwayatData = [];
+
+    // Logout handler, sign out dari Auth juga!
+    async function logout() {
+      sessionStorage.clear();
+      await supabase.auth.signOut();
+      window.location.href = "login-user.html";
+    }
+
+    // Ambil riwayat setelah cek login via Auth
+    async function tampilRiwayat() {
+      document.getElementById('loader').style.display = 'block';
+      document.getElementById('errorMsg').innerText = '';
+
+      // Cek login via Supabase Auth
+      const { data: { user } } = await supabase.auth.getUser();
+      if (!user) {
+        window.location.href = "login-user.html";
+        return;
+      }
+      // Sync user_id ke sessionStorage untuk halaman lain (optional, biar seragam)
+      sessionStorage.setItem("user_id", user.id);
+
+      try {
+        const { data, error } = await supabase.from('sleep_data')
+          .select('*')
+          .eq('user_id', user.id)
+          .order('created_at', { ascending: false });
+        document.getElementById('loader').style.display = 'none';
+        let rows = '';
+        let labels = [], qualities = [], durations = [];
+        lastRiwayatData = data || [];
+
+        if (error) throw error;
+        if (data && data.length > 0) {
+          for (const r of data) {
+            rows += `
+              <tr>
+                <td>${r.created_at?.slice(0, 10) || ''}</td>
+                <td>${r.physical_activity_level ?? ''}</td>
+                <td>${r.stress_level ?? ''}</td>
+                <td>${r.heart_rate ?? ''}</td>
+                <td>${r.daily_steps ?? ''}</td>
+                <td>${r.quality_of_sleep ?? '-'}</td>
+                <td>${r.sleep_duration ?? '-'}</td>
+                <td>${r.sleep_disorder ?? '-'}</td>
+              </tr>`;
+            // Untuk grafik, masukkan walau null (Chart.js akan handle gap)
+            labels.push(r.created_at?.slice(0, 10) || '');
+            qualities.push((r.quality_of_sleep !== undefined && r.quality_of_sleep !== null && r.quality_of_sleep !== '') ? Number(r.quality_of_sleep) : null);
+            durations.push((r.sleep_duration !== undefined && r.sleep_duration !== null && r.sleep_duration !== '') ? Number(r.sleep_duration) : null);
+          }
+          document.getElementById('riwayatTable').innerHTML += rows;
+        } else {
+          document.getElementById('riwayatTable').innerHTML += `<tr><td colspan="8">Belum ada data riwayat.</td></tr>`;
+        }
+
+        // Render grafik jika ada minimal 1 data
+        const chartEl = document.getElementById('sleepChart').getContext('2d');
+        if (window.sleepChartInstance) window.sleepChartInstance.destroy();
+
+        if (labels.length >= 2) {
+          const reversedLabels = [...labels].reverse();
+          const reversedQualities = [...qualities].reverse();
+          const reversedDurations = [...durations].reverse();
+          window.sleepChartInstance = new Chart(chartEl, {
+            type: 'line',
+            data: {
+              labels: reversedLabels,
+              datasets: [
+                { label: 'Kualitas Tidur', data: reversedQualities, borderWidth: 2, fill: false, spanGaps: true },
+                { label: 'Durasi Tidur (jam)', data: reversedDurations, borderWidth: 2, fill: false, spanGaps: true }
+              ]
+            },
+            options: {
+              responsive: true,
+              plugins: { legend: { display: true }},
+              scales: { y: { beginAtZero: true } }
+            }
+          });
+        } else if (labels.length === 1) {
+          window.sleepChartInstance = new Chart(chartEl, {
+            type: 'scatter',
+            data: {
+              datasets: [
+                {
+                  label: 'Kualitas Tidur',
+                  data: [{x: labels[0], y: qualities[0]}],
+                  borderWidth: 2,
+                  showLine: false
+                },
+                {
+                  label: 'Durasi Tidur (jam)',
+                  data: [{x: labels[0], y: durations[0]}],
+                  borderWidth: 2,
+                  showLine: false
+                }
+              ]
+            },
+            options: {
+              responsive: true,
+              plugins: { legend: { display: true }},
+              scales: {
+                x: { type: 'category', labels: [labels[0]] },
+                y: { beginAtZero: true }
+              }
+            }
+          });
+        }
+        // Jika tidak ada data, grafik akan kosong.
+      } catch (err) {
+        document.getElementById('loader').style.display = 'none';
+        document.getElementById('errorMsg').innerText = "Gagal mengambil riwayat: " + (err.message || err);
+      }
+    }
+    tampilRiwayat();
+
+    // Download CSV fungsi
+    function downloadCSV() {
+      if (!lastRiwayatData.length) {
+        alert("Tidak ada data untuk diunduh!");
+        return;
+      }
+      const header = [
+        "Tanggal",
+        "Aktivitas Fisik",
+        "Tingkat Stres",
+        "Detak Jantung",
+        "Langkah Harian",
+        "Kualitas Tidur",
+        "Durasi Tidur",
+        "Gangguan Tidur"
+      ];
+      const rows = lastRiwayatData.map(r => [
+        (r.created_at || "").slice(0,10),
+        r.physical_activity_level ?? "",
+        r.stress_level ?? "",
+        r.heart_rate ?? "",
+        r.daily_steps ?? "",
+        r.quality_of_sleep ?? "",
+        r.sleep_duration ?? "",
+        r.sleep_disorder ?? ""
+      ]);
+      const csvContent = [header, ...rows].map(e => e.map(String).map(s => `"${s.replace(/"/g,'""')}"`).join(",")).join("\r\n");
+      const blob = new Blob([csvContent], {type: "text/csv"});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "riwayat_tidur_sleepwell.csv";
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    }
+  </script>
+</body>
+</html>

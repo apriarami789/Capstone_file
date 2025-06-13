@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Input Data Tidur</title>
+  <meta charset="UTF-8">
+</head>
+<body>
+  <h2>Input Data Tidur Harian</h2>
+  <div id="userProfile"></div>
+  <form id="sleepForm">
+    <label>Aktivitas Fisik (1-100):</label>
+    <input type="range" id="Physical_Activity_Level" min="1" max="100" value="50">
+    <span id="physicalActivityValue">50</span><br><br>
+
+    <label>Tingkat Stres (1-10):</label>
+    <input type="range" id="Stress_Level" min="1" max="10" value="5">
+    <span id="stressLevelValue">5</span><br><br>
+
+    <label>Detak Jantung (BPM):</label>
+    <input type="number" id="Heart_Rate" min="40" max="200" required><br><br>
+
+    <label>Langkah Harian:</label>
+    <input type="number" id="Daily_Steps" min="0" max="30000" required><br><br>
+
+    <button type="submit">Kirim & Analisis</button>
+  </form>
+  <div id="inputMsg" style="margin:12px 0; color:red;"></div>
+  <div id="loader" style="display:none; margin-bottom:12px;">⏳ Menyimpan data, mohon tunggu...</div>
+  <button onclick="window.location.href='main-menu.html'">Kembali ke Menu</button>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+  <script>
+    // Setup Supabase
+    const supabaseUrl = 'https://vnbqtnhcxlhygfajoulf.supabase.co';
+    const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZuYnF0bmhjeGxoeWdmYWpvdWxmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDk3MjEwOTQsImV4cCI6MjA2NTI5NzA5NH0.iFEHsnjgufQuZ6kcaH1gtNT9qyNFfCu8JuxW_clgKRc';
+    const supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
+
+    let userProfile = {};
+    let userId = null;
+
+    async function fillProfile() {
+      const { data: { user }, error } = await supabase.auth.getUser();
+      if (!user) {
+        window.location.href = "login-user.html";
+        return;
+      }
+      userId = user.id;
+      // Simpan userId di sessionStorage jika belum ada (untuk halaman lain)
+      sessionStorage.setItem("user_id", userId);
+
+      // Ambil profil dari metadata Auth
+      userProfile = user.user_metadata || {};
+      document.getElementById("userProfile").innerHTML = `
+        <fieldset>
+          <legend>Profil Anda</legend>
+          Nama: <input value="${userProfile.name || ''}" readonly><br>
+          Gender: <input value="${userProfile.gender || ''}" readonly><br>
+          Umur: <input value="${userProfile.age || ''}" readonly><br>
+          Pekerjaan: <input value="${userProfile.occupation || ''}" readonly><br>
+          BMI: <input value="${userProfile.bmi_category || ''}" readonly><br>
+        </fieldset>
+        <br>
+      `;
+    }
+    fillProfile();
+
+    // Slider value display
+    document.getElementById("Physical_Activity_Level").oninput = function() {
+      document.getElementById("physicalActivityValue").innerText = this.value;
+    };
+    document.getElementById("Stress_Level").oninput = function() {
+      document.getElementById("stressLevelValue").innerText = this.value;
+    };
+
+    // Submit handler dengan validasi & loader
+    document.getElementById("sleepForm").onsubmit = async function(e) {
+      e.preventDefault();
+      document.getElementById("inputMsg").innerText = "";
+      document.getElementById("loader").style.display = 'block';
+
+      const activity = parseInt(document.getElementById("Physical_Activity_Level").value);
+      const stress = parseInt(document.getElementById("Stress_Level").value);
+      const heart = parseInt(document.getElementById("Heart_Rate").value);
+      const steps = parseInt(document.getElementById("Daily_Steps").value);
+
+      // Validasi
+      if (isNaN(heart) || heart < 40 || heart > 200) {
+        document.getElementById("inputMsg").innerText = "Detak jantung harus antara 40–200 BPM.";
+        document.getElementById("loader").style.display = 'none';
+        return;
+      }
+      if (isNaN(steps) || steps < 0 || steps > 30000) {
+        document.getElementById("inputMsg").innerText = "Langkah harian harus antara 0–30000.";
+        document.getElementById("loader").style.display = 'none';
+        return;
+      }
+
+      // Simpan ke sleep_data
+      try {
+        const { data: insertData, error } = await supabase.from("sleep_data").insert([{
+          user_id: userId,
+          physical_activity_level: activity,
+          stress_level: stress,
+          heart_rate: heart,
+          daily_steps: steps,
+          created_at: new Date()
+        }]).select("id").single();
+        if (error) throw error;
+        // Simpan input + profil ke sessionStorage (untuk hasil prediksi)
+        sessionStorage.setItem("sleep_input", JSON.stringify({
+          gender: userProfile.gender,
+          age: userProfile.age,
+          occupation: userProfile.occupation,
+          bmi_category: userProfile.bmi_category,
+          Physical_Activity_Level: activity,
+          Stress_Level: stress,
+          Heart_Rate: heart,
+          Daily_Steps: steps,
+          sleep_data_id: insertData.id
+        }));
+        document.getElementById("loader").style.display = 'none';
+        window.location.href = "hasil-prediksi.html";
+      } catch (err) {
+        document.getElementById("loader").style.display = 'none';
+        document.getElementById("inputMsg").innerText = "Gagal input data: " + (err.message || err);
+      }
+    };
+  </script>
+</body>
+</html>

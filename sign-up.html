@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Daftar Akun SleepWell</title>
+  <meta charset="UTF-8">
+</head>
+<body>
+  <h2>Registrasi Akun SleepWell</h2>
+  <form id="signupForm">
+    <label>Nama Lengkap:</label><br>
+    <input name="name" required><br><br>
+    
+    <label>Email:</label><br>
+    <input name="email" type="email" required><br><br>
+    
+    <label>Password:</label><br>
+    <input name="password" type="password" required><br><br>
+    
+    <label>Jenis Kelamin:</label><br>
+    <select name="gender" required>
+      <option value="">-- Pilih --</option>
+      <option value="Male">Pria</option>
+      <option value="Female">Wanita</option>
+    </select><br><br>
+    
+    <label>Umur:</label><br>
+    <input name="age" type="number" min="10" max="100" required><br><br>
+    
+    <label>Pekerjaan:</label><br>
+    <select name="occupation" required>
+      <option value="">-- Pilih --</option>
+      <option value="Accountant">Accountant</option>
+      <option value="Doctor">Doctor</option>
+      <option value="Engineer">Engineer</option>
+      <option value="Lawyer">Lawyer</option>
+      <option value="Manager">Manager</option>
+      <option value="Nurse">Nurse</option>
+      <option value="Sales Representative">Sales Representative</option>
+      <option value="Salesperson">Salesperson</option>
+      <option value="Scientist">Scientist</option>
+      <option value="Software Engineer">Software Engineer</option>
+      <option value="Teacher">Teacher</option>
+    </select><br><br>
+    
+    <label>Kategori BMI:</label><br>
+    <select name="bmi_category" required>
+      <option value="">-- Pilih --</option>
+      <option value="Normal">Normal</option>
+      <option value="Overweight">Overweight</option>
+      <option value="Obese">Obese</option>
+    </select><br><br>
+    
+    <button type="submit">Daftar</button>
+  </form>
+  <div id="signupMsg" style="margin:10px 0; color:blue;"></div>
+  <p>Sudah punya akun? <a href="login-user.html">Login di sini</a></p>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+  <script>
+    const supabaseUrl = 'https://vnbqtnhcxlhygfajoulf.supabase.co';
+    const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZuYnF0bmhjeGxoeWdmYWpvdWxmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDk3MjEwOTQsImV4cCI6MjA2NTI5NzA5NH0.iFEHsnjgufQuZ6kcaH1gtNT9qyNFfCu8JuxW_clgKRc';
+    const supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
+
+    document.getElementById("signupForm").onsubmit = async function(e) {
+      e.preventDefault();
+      const fd = new FormData(this);
+      const name = fd.get("name");
+      const email = fd.get("email");
+      const password = fd.get("password");
+      const gender = fd.get("gender");
+      const age = fd.get("age");
+      const occupation = fd.get("occupation");
+      const bmi_category = fd.get("bmi_category");
+
+      // Signup Supabase Auth + metadata profil
+      const { error } = await supabase.auth.signUp({
+        email,
+        password,
+        options: {
+          data: {
+            name,
+            gender,
+            age,
+            occupation,
+            bmi_category
+          }
+        }
+      });
+
+      document.getElementById("signupMsg").innerText = error
+        ? "Gagal daftar: " + error.message
+        : "Registrasi sukses! Cek email kamu untuk verifikasi sebelum login.";
+    };
+  </script>
+</body>
+</html>

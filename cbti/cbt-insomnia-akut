@@ -1,0 +1,49 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>CBTI untuk Insomnia Akut</title>
+  <meta charset="UTF-8">
+</head>
+<body>
+  <h2>CBTI untuk Insomnia Akut</h2>
+  <p>
+    <b>Insomnia akut</b> adalah kesulitan tidur yang terjadi secara mendadak dan berlangsung singkat, biasanya kurang dari 3 bulan. Kondisi ini sering dipicu oleh stres, perubahan lingkungan, atau masalah fisik/mental sementara.
+  </p>
+  <h3>Penjelasan Ilmiah</h3>
+  <p>
+    Berdasarkan penelitian <i>National Institutes of Health (NIH)</i> dan <i>American Academy of Sleep Medicine (AASM)</i>, <b>Cognitive Behavioral Therapy for Insomnia (CBTI)</b> merupakan standar emas (gold standard) untuk mengatasi insomnia akut maupun kronis.<br>
+    CBTI terbukti <b>lebih efektif daripada obat tidur</b> dalam jangka panjang, karena mengubah kebiasaan, pola pikir, dan lingkungan tidur yang memicu insomnia.
+  </p>
+  <h3>Langkah Intervensi CBTI untuk Insomnia Akut</h3>
+  <ol>
+    <li>
+      <b>Sleep Restriction Therapy</b>: Batasi waktu di tempat tidur hanya sesuai dengan waktu tidur rata-rata agar "tidur" lebih efisien, tidak terlalu lama di kasur sambil terjaga.
+    </li>
+    <li>
+      <b>Stimulus Control</b>: Hanya gunakan tempat tidur untuk tidur (dan aktivitas seksual), hindari bekerja/menonton di kasur.
+    </li>
+    <li>
+      <b>Relaksasi sebelum Tidur</b>: Coba teknik pernapasan, meditasi ringan, atau mendengarkan musik santai 30 menit sebelum tidur.
+    </li>
+    <li>
+      <b>Perbaiki Sleep Hygiene</b>: Hindari kafein/rokok/screen time sebelum tidur, atur suhu & cahaya kamar, buat rutinitas tidur yang sama setiap hari.
+    </li>
+    <li>
+      <b>Cognitive Restructuring</b>: Ubah pola pikir negatif (“saya pasti tidak akan bisa tidur!”) menjadi lebih realistis (“tidur kadang memang sulit, tapi tubuh saya akan menyesuaikan”).
+    </li>
+  </ol>
+  <h3>Efektivitas</h3>
+  <p>
+    Riset meta-analisis (Trauer JM et al., 2015, Annals of Internal Medicine) menyimpulkan bahwa <b>CBTI meningkatkan waktu tidur dan kualitas tidur secara signifikan</b> pada penderita insomnia akut.
+  </p>
+  <h3>Sumber dan Referensi:</h3>
+  <ul>
+    <li><a href="https://www.sleepfoundation.org/insomnia/treatment/cognitive-behavioral-therapy-for-insomnia">Sleep Foundation – CBTI</a></li>
+    <li><a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5353816/">NIH: Behavioral and Psychological Treatments for Chronic Insomnia</a></li>
+    <li><a href="https://pubmed.ncbi.nlm.nih.gov/26237720/">Trauer JM, et al. (2015). Effectiveness of CBTI: Meta-analysis</a></li>
+  </ul>
+  <br>
+  <button onclick="window.history.back()">Kembali</button>
+</body>
+</html>

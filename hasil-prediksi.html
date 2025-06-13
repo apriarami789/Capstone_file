@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Hasil Prediksi Tidur</title>
+  <meta charset="UTF-8">
+</head>
+<body>
+  <h2>Hasil Prediksi Tidur Anda</h2>
+  
+  <!-- Loader -->
+  <div id="loader" style="display:none; margin-bottom:15px;">⏳ Memproses prediksi, mohon tunggu...</div>
+  
+  <!-- Hasil prediksi utama -->
+  <div id="predictionResult">Memuat...</div>
+  
+  <!-- Tips/deskripsi hasil -->
+  <div id="predictionTips" style="margin-top:10px;"></div>
+  
+  <!-- Saran CBTI / tombol selengkapnya -->
+  <div id="cbtiAdvice" style="margin-top:15px;"></div>
+  
+  <!-- Pesan error update DB -->
+  <div id="dbErrorMsg" style="color:red;margin-top:10px;"></div>
+  
+  <button onclick="window.location.href='form-input.html'">Input Data Baru</button>
+  <button onclick="window.location.href='riwayat.html'">Lihat Riwayat</button>
+  <button onclick="window.location.href='main-menu.html'">Menu Utama</button>
+  
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+  <script>
+    // Setup Supabase
+    const supabaseUrl = 'https://vnbqtnhcxlhygfajoulf.supabase.co';
+    const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZuYnF0bmhjeGxoeWdmYWpvdWxmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDk3MjEwOTQsImV4cCI6MjA2NTI5NzA5NH0.iFEHsnjgufQuZ6kcaH1gtNT9qyNFfCu8JuxW_clgKRc';
+    const supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
+
+    // (Opsional tapi dianjurkan) Cek Auth login
+    supabase.auth.getUser().then(({ data }) => {
+      if (!data.user) window.location.href = "login-user.html";
+    });
+
+    // Ambil input dari sessionStorage
+    const input = JSON.parse(sessionStorage.getItem('sleep_input') || '{}');
+    if (!input || !input.gender || !input.age || !input.occupation || !input.bmi_category || !input.Physical_Activity_Level || !input.Stress_Level || !input.Heart_Rate || !input.Daily_Steps || !input.sleep_data_id) {
+      document.getElementById('predictionResult').innerHTML = "<span style='color:red;'>Data tidak lengkap, silakan input ulang.</span>";
+      setTimeout(() => { window.location.href = "form-input.html"; }, 2000);
+    } else {
+      // Tampilkan loader
+      document.getElementById('loader').style.display = 'block';
+      document.getElementById('predictionResult').innerHTML = "";
+      document.getElementById('dbErrorMsg').innerText = "";
+
+      // Panggil API model ML
+      fetch("https://ardhi-17-sleepwellapp.hf.space/predict", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          Gender: input.gender,
+          Age: Number(input.age),
+          Occupation: input.occupation,
+          BMI_Category: input.bmi_category,
+          Physical_Activity_Level: input.Physical_Activity_Level,
+          Stress_Level: input.Stress_Level,
+          Heart_Rate: input.Heart_Rate,
+          Daily_Steps: input.Daily_Steps
+        })
+      })
+      .then(res => res.json())
+      .then(async result => {
+        document.getElementById('loader').style.display = 'none';
+        // Tampilkan hasil prediksi utama
+        document.getElementById('predictionResult').innerHTML =
+          `<ul>
+            <li><b>Kualitas Tidur:</b> ${result.quality_of_sleep}</li>
+            <li><b>Durasi Tidur:</b> ${parseFloat(result.sleep_duration).toFixed(1)} jam</li>
+            <li><b>Gangguan Tidur:</b> ${result.sleep_disorder}</li>
+          </ul>`;
+
+        // Tips & CBTI dinamis
+        let tips = "", cbtLink = "";
+        const q = Number(result.quality_of_sleep), d = Number(result.sleep_duration), dis = result.sleep_disorder;
+
+        if (dis === "Insomnia" && q <= 5 && d < 6.5) {
+          tips = "Tidur Anda tergolong buruk dengan kemungkinan insomnia akut. Anda butuh intervensi CBT-I intensif, seperti pembatasan waktu di kasur, relaksasi, dan perbaikan rutinitas tidur.";
+          cbtLink = '<button onclick="window.location.href=\'cbti/cbt-insomnia-akut.html\'">Selengkapnya: Panduan CBT-I untuk Insomnia Akut</button>';
+        } else if (dis === "Insomnia" && q <= 5 && d >= 6.5) {
+          tips = "Tidur Anda cukup lama tapi kualitas tetap rendah. Mungkin Anda mengalami insomnia dengan masalah persepsi tidur. Disarankan fokus ke CBT-I kognitif untuk memperbaiki pola pikir tentang tidur.";
+          cbtLink = '<button onclick="window.location.href=\'cbti/cbt-insomnia-kognitif.html\'">Selengkapnya: CBT-I Kognitif untuk Insomnia</button>';
+        } else if (dis === "Insomnia" && q >= 6 && d < 6.5) {
+          tips = "Tidur Anda kurang durasi, meski kualitas cukup baik. Cobalah latihan sleep restriction & stimulus control agar waktu tidur lebih efektif.";
+          cbtLink = '<button onclick="window.location.href=\'cbti/cbt-insomnia-sleeprestriction.html\'">Selengkapnya: CBT-I Sleep Restriction</button>';
+        } else if (dis === "Insomnia" && q >= 6 && d >= 6.5) {
+          tips = "Insomnia Anda mulai terkendali. Fokus pada pemeliharaan pola tidur sehat dan cegah kambuhnya insomnia dengan teknik relaksasi ringan.";
+          cbtLink = '<button onclick="window.location.href=\'cbti/cbt-insomnia-maintenance.html\'">Selengkapnya: CBT-I Maintenance</button>';
+        } else if (dis === "Sleep Apnea" && d < 6.5) {
+          tips = "Anda memiliki risiko sleep apnea dan durasi tidur pendek. Disarankan evaluasi medis, posisi tidur miring, serta menjaga berat badan.";
+          cbtLink = '<button onclick="window.location.href=\'cbti/cbt-apnea-akut.html\'">Selengkapnya: Tips Apnea & Kurang Tidur</button>';
+        } else if (dis === "Sleep Apnea" && d >= 6.5) {
+          tips = "Sleep apnea terdeteksi, namun durasi tidur sudah cukup. Tingkatkan sleep hygiene dan konsultasi ke dokter jika sering terbangun atau mendengkur keras.";
+          cbtLink = '<button onclick="window.location.href=\'cbti/cbt-apnea-sleephygiene.html\'">Selengkapnya: Sleep Hygiene untuk Apnea</button>';
+        } else if (dis === "None" && q <= 5 && d < 6.5) {
+          tips = "Tidur Anda kurang dan kualitasnya rendah, meski tanpa gangguan spesifik. Coba perbaiki sleep hygiene dan lakukan latihan relaksasi sebelum tidur.";
+          cbtLink = '<button onclick="window.location.href=\'cbti/cbt-hygiene-buruk.html\'">Selengkapnya: Hygiene & Relaksasi</button>';
+        } else if (dis === "None" && q >= 8 && d >= 6.5) {
+          tips = "Selamat! Kualitas dan durasi tidur Anda sangat baik. Pertahankan kebiasaan sehat ini agar tetap optimal.";
+          cbtLink = '<button onclick="window.location.href=\'cbti/cbt-pemeliharaan.html\'">Tips Lanjut: Pemeliharaan Tidur Baik</button>';
+        } else if (dis === "None" && q >= 6 && d < 6.5) {
+          tips = "Kualitas tidur Anda cukup baik, tapi durasinya masih kurang. Usahakan untuk tidur sedikit lebih lama dan atur waktu tidur-bangun yang konsisten.";
+          cbtLink = '<button onclick="window.location.href=\'cbti/cbt-tidurpendek.html\'">Tips Menambah Durasi Tidur</button>';
+        } else if (dis === "None" && q <= 5 && d >= 8) {
+          tips = "Durasi tidur Anda berlebihan, tapi kualitasnya rendah (hypersomnia). Evaluasi kebiasaan tidur Anda dan hindari tidur siang terlalu lama.";
+          cbtLink = '<button onclick="window.location.href=\'cbti/cbt-hypersomnia.html\'">CBT-I untuk Hypersomnia</button>';
+        } else {
+          tips = "Untuk hasil tidur Anda, disarankan cek tips umum menjaga pola tidur sehat agar kualitas meningkat.";
+          cbtLink = '<button onclick="window.location.href=\'cbti/cbt-umum.html\'">Selengkapnya: Tips Umum Tidur Sehat</button>';
+        }
+
+        document.getElementById('predictionTips').innerText = tips;
+        document.getElementById('cbtiAdvice').innerHTML = "<br>" + cbtLink;
+
+        // Update hasil ke tabel sleep_data (untuk riwayat)
+        try {
+          const { error: updateError } = await supabase.from("sleep_data").update({
+            quality_of_sleep: result.quality_of_sleep,
+            sleep_duration: result.sleep_duration,
+            sleep_disorder: result.sleep_disorder
+          }).eq("id", input.sleep_data_id);
+
+          if (updateError) {
+            document.getElementById('dbErrorMsg').innerText = "Gagal menyimpan hasil ke riwayat: " + updateError.message;
+          }
+        } catch (errUpdate) {
+          document.getElementById('dbErrorMsg').innerText = "Gagal update database: " + (errUpdate.message || errUpdate);
+        }
+      })
+      .catch(err => {
+        document.getElementById('loader').style.display = 'none';
+        document.getElementById('predictionResult').innerHTML = "<span style='color:red;'>Gagal memproses prediksi: " + err + "</span>";
+      });
+    }
+  </script>
+</body>
+</html>
