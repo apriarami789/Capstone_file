@@ -449,3 +449,48 @@ footer {
   .cta-section { padding: 1.3rem .7rem; }
   .why-grid, .fitur-grid { grid-template-columns: 1fr; }
 }
+
+/* About Section Content */
+.about-title {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--primary);
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.about-desc {
+  color: #444;
+  font-size: 1.05rem;
+  text-align: center;
+  line-height: 1.5;
+  max-width: 700px;
+  margin: 0 auto 2rem auto;
+}
+
+/* Stats Row */
+.stats-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 2rem;
+  margin-top: 1.5rem;
+}
+
+.stat-card {
+  text-align: center;
+  flex: 1 1 160px; /* agar responsif */
+}
+
+.stat-card h3 {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--blue);
+  margin-bottom: 0.5rem;
+}
+
+.stat-card p {
+  font-size: 0.95rem;
+  color: #555;
+  margin: 0;
+}
