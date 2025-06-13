@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SleepWell AI – Prediksi & Edukasi Kesehatan Tidur Anda</title>
+  <link rel="icon" href="img/logo-sinyal-tenang.png" />
+  <link rel="stylesheet" href="style/index.css" />
+</head>
+<body>
+
+<!-- Navbar -->
+<nav>
+  <div class="container flex navbar">
+    <div class="flex" style="gap:.7rem">
+      <img src="img/logo-sinyal-tenang.png" style="width:38px;border-radius:.6rem;" alt="Logo SleepWell"/>
+      <span class="navbar-logo">SleepWell <span style="color:var(--blue)">AI</span></span>
+    </div>
+    <div class="navbar-links">
+      <a href="#features">Fitur</a>
+      <a href="#why">Keunggulan</a>
+      <a href="#about">Tentang</a>
+      <a href="#faq">FAQ</a>
+      <a href="#testi">Testimoni</a>
+      <a href="#contact">Kontak</a>
+      <a href="login-user.html" class="cta">Masuk</a>
+      <a href="sign-up.html" class="cta" style="background:var(--blue);margin-left:.8rem;">Coba Gratis</a>
+    </div>
+  </div>
+</nav>
+<div class="navspacer"></div>
+
+<!-- Hero -->
+<section class="container flex hero" style="margin-top:2.2rem;">
+  <div class="hero-text">
+    <div class="hero-title">Bangun Hidup Lebih Sehat<br>dengan <span>Tidur Berkualitas</span></div>
+    <div class="hero-sub">SleepWell AI membantu Anda memahami dan meningkatkan kualitas tidur lewat prediksi AI, insight kesehatan, dan solusi personal terpercaya.</div>
+    <div class="hero-cta">
+      <a href="sign-up.html" class="btn">Coba Gratis</a>
+      <a href="#features" class="btn btn-outline">Lihat Fitur</a>
+    </div>
+    <div class="hero-trust"><span>✔️</span>Privasi terjaga & 100% gratis selamanya</div>
+  </div>
+  <div class="hero-img">
+    <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=cover&w=500&q=80" alt="Tidur Sehat" />
+  </div>
+</section>
+
+<!-- Why SleepWell -->
+<section class="container why-section" id="why">
+  <div class="why-title">Kenapa Memilih SleepWell AI?</div>
+  <div class="grid why-grid">
+    <div class="why-card">
+      <img src="https://img.icons8.com/color/96/sleeping.png"/>
+      <h3>Akurat & Personal</h3>
+      <p>Prediksi & rekomendasi berbasis AI yang menyesuaikan kebutuhan tidur Anda.</p>
+    </div>
+    <div class="why-card">
+      <img src="https://img.icons8.com/color/96/statistics.png"/>
+      <h3>Visualisasi Interaktif</h3>
+      <p>Progress tidur disajikan dengan grafik interaktif yang mudah dimengerti.</p>
+    </div>
+    <div class="why-card">
+      <img src="https://img.icons8.com/color/96/security-checked.png"/>
+      <h3>Privasi Aman</h3>
+      <p>Data Anda terenkripsi dan tidak pernah dijual ke pihak ketiga.</p>
+    </div>
+    <div class="why-card">
+      <img src="https://img.icons8.com/color/96/idea.png"/>
+      <h3>Solusi Komprehensif</h3>
+      <p>Rekomendasi CBT-I, sleep hygiene, & edukasi pola hidup sehat.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Fitur Section -->
+<section class="container fitur-section" id="features">
+  <div class="fitur-title">Fitur SleepWell AI</div>
+  <div class="grid fitur-grid">
+    <div class="fitur-card">
+      <img src="https://img.icons8.com/color/96/smart-watch.png"/>
+      <h3>Analisis Tidur Otomatis</h3>
+      <p>Input data harian, SleepWell otomatis menganalisis durasi, kualitas, & gangguan tidur Anda.</p>
+    </div>
+    <div class="fitur-card">
+      <img src="https://img.icons8.com/color/96/brain.png"/>
+      <h3>Rekomendasi Personal</h3>
+      <p>Saran CBT-I, pola tidur, olahraga, dan stress management khusus sesuai hasil analisis.</p>
+    </div>
+    <div class="fitur-card">
+      <img src="https://img.icons8.com/color/96/statistics.png"/>
+      <h3>Visualisasi & Progress</h3>
+      <p>Riwayat dan tren tidur divisualisasikan dengan grafik menarik, mudah dipahami semua usia.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Statistik/About -->
+<section class="container about-section" id="about">
+  <div class="about-title">Tentang SleepWell AI</div>
+  <div class="about-desc">
+    SleepWell AI dikembangkan oleh tim multidisiplin di bidang kesehatan, data, dan teknologi.<br>
+    Visi kami: menghadirkan kualitas tidur optimal, edukasi kesehatan, dan kebiasaan sehat untuk masyarakat Indonesia.
+  </div>
+  <div class="stats-row">
+    <div class="stat-card"><h3>13.000+</h3><p>Data tidur diproses</p></div>
+    <div class="stat-card"><h3>4.9/5</h3><p>Rating pengguna</p></div>
+    <div class="stat-card"><h3>#1</h3><p>Aplikasi prediksi tidur di Indonesia</p></div>
+    <div class="stat-card"><h3>100%</h3><p>Data terenkripsi</p></div>
+  </div>
+</section>
+
+<!-- FAQ Section -->
+<section class="faq-section" id="faq">
+  <div class="faq-title">FAQ</div>
+  <!-- ...faq items... -->
+</section>
+
+<script>
+function toggleFaq(el) {
+  document.querySelectorAll('.faq-item').forEach(i=>i!==el&&i.classList.remove('open'));
+  el.classList.toggle('open');
+}
+</script>
+
+<!-- Testimoni Section -->
+<section class="testi-section" id="testi">
+  <!-- ...testimonial HTML and script... -->
+</section>
+
+<!-- CTA Section -->
+<section class="cta-section">
+  <!-- ...cta content... -->
+</section>
+
+<!-- Footer -->
+<footer id="contact">
+  <!-- ...footer content... -->
+</footer>
+
+</body>
+</html>
