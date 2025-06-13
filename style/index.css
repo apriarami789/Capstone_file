@@ -1,0 +1,150 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+:root {
+  --primary: #6751ef;
+  --secondary: #4eadeb;
+  --background: #f6f8fc;
+  --text: #2d2e32;
+  --shadow: 0 4px 32px 0 rgba(66, 71, 112, 0.08);
+}
+
+/* Navbar */
+nav, .navbar {
+  background: #fff;
+  box-shadow: var(--shadow);
+  padding: 1rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.navbar-logo img { height: 40px; }
+
+.navbar-links a {
+  margin-left: 1.5rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+/* Hero Section */
+.hero {
+  display: flex;
+  align-items: center;
+  padding: 4rem 2rem;
+}
+
+.hero-text {
+  flex: 1;
+}
+
+.hero-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.hero-sub {
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+}
+
+.hero-cta .btn {
+  background: var(--primary);
+}
+
+.hero-img img { max-width: 100%; }
+
+/* Why Section */
+.why-section {
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+.why-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
+  gap: 2rem;
+}
+
+.why-card {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+}
+
+/* Fitur Section */
+.fitur-section { padding: 4rem 2rem; text-align: center; }
+.fitur-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
+  gap: 2rem;
+}
+.fitur-card {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+}
+
+/* About & Stats */
+.about-section {
+  background: var(--background); /* sama seperti body bg */
+  padding: 4rem 0;              /* spasi atas-bawah */
+}
+.about-section .about-card {
+  background: var(--foreground);
+  border-radius: 2rem;
+  box-shadow: var(--shadow);
+  padding: 3.2rem 2rem;
+  /* buat card melebar hingga max‑width */
+  max-width: 1200px;
+  margin: 0 auto; /* center */
+}
+.stats-row {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 2rem;
+}
+.stat-card {
+  text-align: center;
+}
+
+/* FAQ */
+.faq-section { padding: 4rem 2rem; }
+.faq-item {
+  margin-bottom: 1rem;
+}
+.faq-q {
+  font-weight: 600;
+  cursor: pointer;
+}
+.faq-a { display: none; padding-left: 1rem; }
+
+/* Testimonial */
+.testi-section { padding: 4rem 2rem; background: var(--foreground); }
+.testi-box {
+  position: relative;
+  padding: 2rem;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+}
+.testi-img img { border-radius: 50%; }
+.testi-arrows { position: absolute; top: 50%; width: 100%; display: flex; justify-content: space-between; }
+
+/* CTA */
+.cta-section { padding: 4rem 2rem; text-align: center; }
+.cta-btn {
+  margin-top: 1rem;
+}
+
+/* Footer */
+footer {
+  background: #fff;
+  padding: 2rem;
+  box-shadow: var(--shadow);
+}
+.footer-row { display: flex; justify-content: space-between; }
+.footer-link { margin-left: 1rem; }
+.footer-partner img { max-height: 30px; }
+.footer-copy { text-align: center; margin-top: 1rem; font-size: 0.9rem; }
