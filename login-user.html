@@ -1,20 +1,31 @@
 <!DOCTYPE html>
-<html>
+<html lang="id">
 <head>
-  <title>Login SleepWell AI</title>
   <meta charset="UTF-8">
+  <title>Login • SleepWell AI</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Jika pakai file eksternal, hapus <style> di bawah dan gunakan <link rel="stylesheet" href="style-login.css"> -->
 </head>
 <body>
-  <h2>Login SleepWell</h2>
-  <form id="loginForm">
-    <label>Email:</label><br>
-    <input name="email" type="email" required><br><br>
-    <label>Password:</label><br>
-    <input name="password" type="password" required><br><br>
-    <button type="submit">Login</button>
-  </form>
-  <div id="loginMsg" style="color:red; margin:10px 0;"></div>
-  <p>Belum punya akun? <a href="sign-up.html">Daftar di sini</a></p>
+  <div class="login-container">
+    <div class="login-card">
+      <img src="img/logo-sinyal-tenang.png" alt="SleepWell Logo" class="logo">
+      <h2 class="title">Login SleepWell</h2>
+      <form id="loginForm" autocomplete="off">
+        <div class="form-group">
+          <label>Email</label>
+          <input name="email" type="email" required placeholder="Email aktif...">
+        </div>
+        <div class="form-group">
+          <label>Password</label>
+          <input name="password" type="password" required placeholder="Password">
+        </div>
+        <button type="submit" class="btn-login">Login</button>
+      </form>
+      <div id="loginMsg" class="login-msg"></div>
+      <p class="redirect">Belum punya akun? <a href="sign-up.html">Daftar di sini</a></p>
+    </div>
+  </div>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
   <script>
     const supabaseUrl = 'https://vnbqtnhcxlhygfajoulf.supabase.co';
@@ -31,14 +42,148 @@
 
       if (error) {
         document.getElementById("loginMsg").innerText = "Email atau password salah!";
+        document.getElementById("loginMsg").style.color = "#e11d48";
       } else if (!data.user.email_confirmed_at) {
         document.getElementById("loginMsg").innerText = "Email belum diverifikasi! Silakan cek inbox email kamu.";
+        document.getElementById("loginMsg").style.color = "#e11d48";
       } else {
-        // Simpan ID user ke sessionStorage
         sessionStorage.setItem("user_id", data.user.id);
         window.location.href = "main-menu.html";
       }
     };
   </script>
+  <!-- CSS di bawah, jika ingin eksternal silakan pindahkan ke file style-login.css -->
+  <style>
+    :root {
+      --primary: #6751ef;
+      --primary-dark: #4a3ec8;
+      --blue: #2563eb;
+      --background: #f5f7fa;
+      --card-bg: #fff;
+      --gray: #eef2fe;
+      --border: #e5e7eb;
+      --danger: #e11d48;
+      --radius: 18px;
+    }
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #e0e7ff 0%, #f6dfff 100%);
+      font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+      min-height: 100vh;
+    }
+    .login-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      background: rgba(255,255,255,0.13);
+    }
+    .login-card {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      box-shadow: 0 8px 32px rgba(66,71,112,0.14);
+      padding: 32px 28px 24px 28px;
+      width: 100%;
+      max-width: 400px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      border: 1.5px solid var(--border);
+      transition: box-shadow 0.2s;
+    }
+    .login-card:hover {
+      box-shadow: 0 12px 36px rgba(103,81,239,0.15);
+    }
+    .logo {
+      width: 60px;
+      height: 60px;
+      object-fit: contain;
+      margin-bottom: 16px;
+    }
+    .title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 20px;
+      text-align: center;
+      letter-spacing: .5px;
+    }
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 14px;
+      width: 100%;
+    }
+    label {
+      font-size: 1rem;
+      color: #495057;
+      font-weight: 500;
+      margin-bottom: 5px;
+    }
+    input {
+      border: 1.3px solid var(--border);
+      border-radius: 10px;
+      padding: 10px 12px;
+      font-size: 1rem;
+      background: var(--gray);
+      outline: none;
+      transition: border .15s;
+    }
+    input:focus {
+      border: 1.6px solid var(--primary);
+      background: #fff;
+    }
+    .btn-login {
+      margin-top: 8px;
+      background: var(--primary);
+      color: #fff;
+      font-weight: 600;
+      border: none;
+      border-radius: 10px;
+      padding: 12px 0;
+      font-size: 1.09rem;
+      width: 100%;
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(103,81,239,0.07);
+      transition: background .13s;
+      letter-spacing: .3px;
+    }
+    .btn-login:hover {
+      background: var(--primary-dark);
+    }
+    .login-msg {
+      min-height: 18px;
+      margin: 14px 0 0 0;
+      font-weight: 500;
+      font-size: 1rem;
+      text-align: center;
+      letter-spacing: .2px;
+      transition: color .2s;
+    }
+    .redirect {
+      margin-top: 18px;
+      font-size: .99rem;
+      text-align: center;
+      color: #777;
+    }
+    .redirect a {
+      color: var(--blue);
+      text-decoration: none;
+      font-weight: 600;
+      transition: color .15s;
+    }
+    .redirect a:hover {
+      color: var(--primary);
+      text-decoration: underline;
+    }
+    @media (max-width: 520px) {
+      .login-card { padding: 20px 6vw 18px 6vw; }
+      .title { font-size: 1.18rem; }
+      .logo { width: 42px; height: 42px; }
+      .btn-login { font-size: .97rem; }
+    }
+  </style>
 </body>
 </html>
