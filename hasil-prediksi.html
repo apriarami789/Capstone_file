@@ -2,267 +2,70 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <title>Hasil Prediksi Tidur • SleepWell AI</title>
+  <title>Input Data Tidur Harian • SleepWell AI</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
-<body>
-  <div class="result-container">
-    <div class="result-card">
-      <img src="style/img/logo-sinyal-tenang.png" alt="SleepWell Logo" class="logo">
-      <h2 class="title">Hasil Prediksi Tidur Anda</h2>
-      <div id="loader" class="loader">⏳ Memproses prediksi, mohon tunggu...</div>
-      <div id="predictionResult" class="prediksi-hasil">Memuat...</div>
-      <div id="predictionTips" class="tips-hasil"></div>
-      <div id="cbtiAdvice" class="cbti-advice"></div>
-      <div id="dbErrorMsg" class="db-error"></div>
-      <div class="result-btn-group">
-        <button onclick="window.location.href='form-input.html'" class="btn-main">Input Data Baru</button>
-        <button onclick="window.location.href='riwayat.html'" class="btn-main btn-alt">Lihat Riwayat</button>
-        <button onclick="window.location.href='main-menu.html'" class="btn-main btn-alt">Menu Utama</button>
-      </div>
-    </div>
-  </div>
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
-  <script>
-    // Setup Supabase
-    const supabaseUrl = 'https://vnbqtnhcxlhygfajoulf.supabase.co';
-    const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZuYnF0bmhjeGxoeWdmYWpvdWxmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDk3MjEwOTQsImV4cCI6MjA2NTI5NzA5NH0.iFEHsnjgufQuZ6kcaH1gtNT9qyNFfCu8JuxW_clgKRc';
-    const supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
-
-    // (Opsional tapi dianjurkan) Cek Auth login
-    supabase.auth.getUser().then(({ data }) => {
-      if (!data.user) window.location.href = "login-user.html";
-    });
-
-    // Ambil input dari sessionStorage
-    const input = JSON.parse(sessionStorage.getItem('sleep_input') || '{}');
-    if (!input || !input.gender || !input.age || !input.occupation || !input.bmi_category || !input.Physical_Activity_Level || !input.Stress_Level || !input.Heart_Rate || !input.Daily_Steps || !input.sleep_data_id) {
-      document.getElementById('predictionResult').innerHTML = "<span style='color:#e11d48;'>Data tidak lengkap, silakan input ulang.</span>";
-      setTimeout(() => { window.location.href = "form-input.html"; }, 2000);
-    } else {
-      // Tampilkan loader
-      document.getElementById('loader').style.display = 'block';
-      document.getElementById('predictionResult').innerHTML = "";
-      document.getElementById('dbErrorMsg').innerText = "";
-
-      // Panggil API model ML
-      fetch("https://ardhi-17-sleepwellapp.hf.space/predict", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          Gender: input.gender,
-          Age: Number(input.age),
-          Occupation: input.occupation,
-          BMI_Category: input.bmi_category,
-          Physical_Activity_Level: input.Physical_Activity_Level,
-          Stress_Level: input.Stress_Level,
-          Heart_Rate: input.Heart_Rate,
-          Daily_Steps: input.Daily_Steps
-        })
-      })
-      .then(res => res.json())
-      .then(async result => {
-        document.getElementById('loader').style.display = 'none';
-        // Tampilkan hasil prediksi utama
-        document.getElementById('predictionResult').innerHTML =
-          `<ul>
-            <li><b>Kualitas Tidur:</b> <span class="nilai">${result.quality_of_sleep}</span></li>
-            <li><b>Durasi Tidur:</b> <span class="nilai">${parseFloat(result.sleep_duration).toFixed(1)} jam</span></li>
-            <li><b>Gangguan Tidur:</b> <span class="nilai">${result.sleep_disorder}</span></li>
-          </ul>`;
-
-        // Tips & CBTI dinamis
-        let tips = "", cbtLink = "";
-        const q = Number(result.quality_of_sleep), d = Number(result.sleep_duration), dis = result.sleep_disorder;
-
-        if (dis === "Insomnia" && q <= 5 && d < 6.5) {
-          tips = "Tidur Anda tergolong buruk dengan kemungkinan insomnia akut. Anda butuh intervensi CBT-I intensif, seperti pembatasan waktu di kasur, relaksasi, dan perbaikan rutinitas tidur.";
-          cbtLink = '<button onclick="window.location.href=\'cbti/cbt-insomnia-akut.html\'" class="btn-cbti">Selengkapnya: Panduan CBT-I untuk Insomnia Akut</button>';
-        } else if (dis === "Insomnia" && q <= 5 && d >= 6.5) {
-          tips = "Tidur Anda cukup lama tapi kualitas tetap rendah. Mungkin Anda mengalami insomnia dengan masalah persepsi tidur. Disarankan fokus ke CBT-I kognitif untuk memperbaiki pola pikir tentang tidur.";
-          cbtLink = '<button onclick="window.location.href=\'cbti/cbt-insomnia-kognitif.html\'" class="btn-cbti">Selengkapnya: CBT-I Kognitif untuk Insomnia</button>';
-        } else if (dis === "Insomnia" && q >= 6 && d < 6.5) {
-          tips = "Tidur Anda kurang durasi, meski kualitas cukup baik. Cobalah latihan sleep restriction & stimulus control agar waktu tidur lebih efektif.";
-          cbtLink = '<button onclick="window.location.href=\'cbti/cbt-insomnia-sleeprestriction.html\'" class="btn-cbti">Selengkapnya: CBT-I Sleep Restriction</button>';
-        } else if (dis === "Insomnia" && q >= 6 && d >= 6.5) {
-          tips = "Insomnia Anda mulai terkendali. Fokus pada pemeliharaan pola tidur sehat dan cegah kambuhnya insomnia dengan teknik relaksasi ringan.";
-          cbtLink = '<button onclick="window.location.href=\'cbti/cbt-insomnia-maintenance.html\'" class="btn-cbti">Selengkapnya: CBT-I Maintenance</button>';
-        } else if (dis === "Sleep Apnea" && d < 6.5) {
-          tips = "Anda memiliki risiko sleep apnea dan durasi tidur pendek. Disarankan evaluasi medis, posisi tidur miring, serta menjaga berat badan.";
-          cbtLink = '<button onclick="window.location.href=\'cbti/cbt-apnea-akut.html\'" class="btn-cbti">Selengkapnya: Tips Apnea & Kurang Tidur</button>';
-        } else if (dis === "Sleep Apnea" && d >= 6.5) {
-          tips = "Sleep apnea terdeteksi, namun durasi tidur sudah cukup. Tingkatkan sleep hygiene dan konsultasi ke dokter jika sering terbangun atau mendengkur keras.";
-          cbtLink = '<button onclick="window.location.href=\'cbti/cbt-apnea-sleephygiene.html\'" class="btn-cbti">Selengkapnya: Sleep Hygiene untuk Apnea</button>';
-        } else if (dis === "None" && q <= 5 && d < 6.5) {
-          tips = "Tidur Anda kurang dan kualitasnya rendah, meski tanpa gangguan spesifik. Coba perbaiki sleep hygiene dan lakukan latihan relaksasi sebelum tidur.";
-          cbtLink = '<button onclick="window.location.href=\'cbti/cbt-hygiene-buruk.html\'" class="btn-cbti">Selengkapnya: Hygiene & Relaksasi</button>';
-        } else if (dis === "None" && q >= 8 && d >= 6.5) {
-          tips = "Selamat! Kualitas dan durasi tidur Anda sangat baik. Pertahankan kebiasaan sehat ini agar tetap optimal.";
-          cbtLink = '<button onclick="window.location.href=\'cbti/cbt-pemeliharaan.html\'" class="btn-cbti">Tips Lanjut: Pemeliharaan Tidur Baik</button>';
-        } else if (dis === "None" && q >= 6 && d < 6.5) {
-          tips = "Kualitas tidur Anda cukup baik, tapi durasinya masih kurang. Usahakan untuk tidur sedikit lebih lama dan atur waktu tidur-bangun yang konsisten.";
-          cbtLink = '<button onclick="window.location.href=\'cbti/cbt-tidurpendek.html\'" class="btn-cbti">Tips Menambah Durasi Tidur</button>';
-        } else if (dis === "None" && q <= 5 && d >= 8) {
-          tips = "Durasi tidur Anda berlebihan, tapi kualitasnya rendah (hypersomnia). Evaluasi kebiasaan tidur Anda dan hindari tidur siang terlalu lama.";
-          cbtLink = '<button onclick="window.location.href=\'cbti/cbt-hypersomnia.html\'" class="btn-cbti">CBT-I untuk Hypersomnia</button>';
-        } else {
-          tips = "Untuk hasil tidur Anda, disarankan cek tips umum menjaga pola tidur sehat agar kualitas meningkat.";
-          cbtLink = '<button onclick="window.location.href=\'cbti/cbt-umum.html\'" class="btn-cbti">Selengkapnya: Tips Umum Tidur Sehat</button>';
-        }
-
-        document.getElementById('predictionTips').innerText = tips;
-        document.getElementById('cbtiAdvice').innerHTML = "<br>" + cbtLink;
-
-        // Update hasil ke tabel sleep_data (untuk riwayat)
-        try {
-          const { error: updateError } = await supabase.from("sleep_data").update({
-            quality_of_sleep: result.quality_of_sleep,
-            sleep_duration: result.sleep_duration,
-            sleep_disorder: result.sleep_disorder
-          }).eq("id", input.sleep_data_id);
-
-          if (updateError) {
-            document.getElementById('dbErrorMsg').innerText = "Gagal menyimpan hasil ke riwayat: " + updateError.message;
-          }
-        } catch (errUpdate) {
-          document.getElementById('dbErrorMsg').innerText = "Gagal update database: " + (errUpdate.message || errUpdate);
-        }
-      })
-      .catch(err => {
-        document.getElementById('loader').style.display = 'none';
-        document.getElementById('predictionResult').innerHTML = "<span style='color:#e11d48;'>Gagal memproses prediksi: " + err + "</span>";
-      });
-    }
-  </script>
+  <link rel="icon" href="img/logo-sinyal-tenang.png"/>
   <style>
     :root {
       --primary: #6751ef;
-      --primary-dark: #4a3ec8;
       --blue: #2563eb;
       --background: #f5f7fa;
-      --card-bg: #fff;
       --gray: #eef2fe;
-      --border: #e5e7eb;
+      --shadow: 0 4px 24px 0 rgba(66,71,112,0.07);
       --danger: #e11d48;
-      --radius: 18px;
     }
-    html, body {
+    body {
+      background: linear-gradient(135deg, #e0e7ff 0%, #f6dfff 100%);
+      font-family: 'Segoe UI', 'Inter', Arial, sans-serif;
       min-height: 100vh;
       margin: 0;
       padding: 0;
-      background: linear-gradient(135deg, #e0e7ff 0%, #f6dfff 100%);
-      font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
-    }
-    .result-container {
-      min-height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
-      background: rgba(255,255,255,0.10);
     }
-    .result-card {
-      background: var(--card-bg);
-      border-radius: var(--radius);
+    .input-card {
+      background: #fff;
+      border-radius: 18px;
       box-shadow: 0 8px 32px rgba(66,71,112,0.13);
-      padding: 30px 28px 20px 28px;
-      max-width: 420px;
+      padding: 28px 24px 20px 24px;
+      max-width: 400px;
       width: 100%;
       display: flex;
       flex-direction: column;
       align-items: center;
-      border: 1.5px solid var(--border);
-      transition: box-shadow 0.2s;
+      border: 1.5px solid #e5e7eb;
+      margin: 24px 0;
     }
-    .result-card:hover {
-      box-shadow: 0 12px 36px rgba(103,81,239,0.15);
-    }
-    .logo {
-      width: 56px;
-      height: 56px;
-      object-fit: contain;
-      margin-bottom: 15px;
-    }
-    .title {
-      font-size: 1.35rem;
-      font-weight: 700;
+    .input-card h2 {
       color: var(--primary);
-      margin-bottom: 14px;
-      text-align: center;
-      letter-spacing: .5px;
+      font-size: 1.18rem;
+      margin-bottom: 10px;
     }
-    .loader {
-      display: none;
-      margin-bottom: 15px;
-      color: #555;
-      font-size: .98rem;
-      text-align: center;
-    }
-    .prediksi-hasil ul {
-      margin: 0 0 6px 0;
-      padding-left: 16px;
-    }
-    .prediksi-hasil li {
-      font-size: 1.09rem;
-      margin-bottom: 5px;
-      color: #333;
-      line-height: 1.65;
-    }
-    .nilai {
-      color: var(--primary);
-      font-weight: 600;
-      font-size: 1.09em;
-      margin-left: 4px;
-    }
-    .tips-hasil {
-      font-size: .98rem;
-      color: #444;
-      margin-top: 2px;
-      background: #f6f6fe;
-      padding: 8px 14px;
-      border-radius: 8px;
-      border-left: 4px solid var(--primary);
-      min-height: 32px;
-      font-style: italic;
+    .input-form {
       width: 100%;
-      box-sizing: border-box;
-    }
-    .cbti-advice {
-      margin: 12px 0 0 0;
-      width: 100%;
-      text-align: center;
-    }
-    .btn-cbti {
-      background: var(--primary);
-      color: #fff;
-      font-weight: 600;
-      border: none;
-      border-radius: 10px;
-      padding: 10px 22px;
-      font-size: 1rem;
-      margin-top: 6px;
-      cursor: pointer;
-      box-shadow: 0 2px 8px rgba(103,81,239,0.07);
-      transition: background .13s;
-      letter-spacing: .2px;
-    }
-    .btn-cbti:hover {
-      background: var(--primary-dark);
-    }
-    .db-error {
-      min-height: 16px;
-      color: var(--danger);
-      margin: 12px 0 0 0;
-      font-weight: 500;
-      font-size: .98rem;
-      text-align: center;
-      letter-spacing: .18px;
-    }
-    .result-btn-group {
       display: flex;
       flex-direction: column;
+      gap: 15px;
+    }
+    label {
+      font-weight: 500;
+      color: #222;
+      margin-bottom: 5px;
+      font-size: .98rem;
+    }
+    input, select {
       width: 100%;
-      gap: 13px;
-      margin-top: 22px;
+      border: 1.2px solid #e5e7eb;
+      border-radius: 8px;
+      padding: 10px 10px;
+      font-size: 1rem;
+      outline: none;
+      margin-bottom: 2px;
+      box-sizing: border-box;
+    }
+    input:focus, select:focus {
+      border-color: var(--primary);
     }
     .btn-main {
       background: var(--primary);
@@ -279,22 +82,142 @@
       letter-spacing: .3px;
     }
     .btn-main:hover {
-      background: var(--primary-dark);
+      background: #4a3ec8;
     }
-    .btn-alt {
-      background: var(--blue);
-    }
-    .btn-alt:hover {
-      background: #2042b3;
-    }
-    @media (max-width: 520px) {
-      .result-card { padding: 16px 4vw 10px 4vw; }
-      .logo { width: 36px; height: 36px; }
-      .title { font-size: 1.09rem; }
-      .btn-main { font-size: .97rem; }
-      .tips-hasil { font-size: .96rem; padding: 7px 7px; }
-      .result-btn-group { gap: 8px; }
+    .form-error {
+      color: var(--danger);
+      margin: 4px 0 0 0;
+      font-size: .99rem;
+      text-align: center;
+      min-height: 18px;
     }
   </style>
+</head>
+<body>
+  <div class="input-card">
+    <h2>Input Data Tidur Anda</h2>
+    <form class="input-form" id="sleepForm">
+      <div>
+        <label for="gender">Jenis Kelamin</label>
+        <select id="gender" required>
+          <option value="">Pilih...</option>
+          <option value="Male">Laki-laki</option>
+          <option value="Female">Perempuan</option>
+        </select>
+      </div>
+      <div>
+        <label for="age">Usia</label>
+        <input type="number" id="age" min="10" max="100" required>
+      </div>
+      <div>
+        <label for="occupation">Pekerjaan</label>
+        <select id="occupation" required>
+          <option value="">Pilih...</option>
+          <option value="student">Student</option>
+          <option value="teacher">Teacher</option>
+          <option value="health worker">Health Worker</option>
+          <option value="entrepreneur">Entrepreneur</option>
+          <option value="athlete">Athlete</option>
+          <option value="others">Others</option>
+        </select>
+      </div>
+      <div>
+        <label for="bmi_category">Kategori BMI</label>
+        <select id="bmi_category" required>
+          <option value="">Pilih...</option>
+          <option value="underweight">Underweight</option>
+          <option value="normal">Normal</option>
+          <option value="overweight">Overweight</option>
+          <option value="obese">Obese</option>
+        </select>
+      </div>
+      <div>
+        <label for="activity">Aktivitas Fisik</label>
+        <select id="activity" required>
+          <option value="">Pilih...</option>
+          <option value="low">Rendah</option>
+          <option value="moderate">Sedang</option>
+          <option value="high">Tinggi</option>
+        </select>
+      </div>
+      <div>
+        <label for="stress">Tingkat Stres</label>
+        <select id="stress" required>
+          <option value="">Pilih...</option>
+          <option value="low">Rendah</option>
+          <option value="moderate">Sedang</option>
+          <option value="high">Tinggi</option>
+        </select>
+      </div>
+      <div>
+        <label for="heart">Detak Jantung Rata-rata</label>
+        <input type="number" id="heart" min="40" max="130" required>
+      </div>
+      <div>
+        <label for="steps">Langkah Harian</label>
+        <input type="number" id="steps" min="0" max="40000" required>
+      </div>
+      <button type="submit" class="btn-main">Prediksi Tidur</button>
+      <div class="form-error" id="formError"></div>
+    </form>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+  <script>
+    // Setup Supabase
+    const supabaseUrl = 'https://vnbqtnhcxlhygfajoulf.supabase.co';
+    const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZuYnF0bmhjeGxoeWdmYWpvdWxmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDk3MjEwOTQsImV4cCI6MjA2NTI5NzA5NH0.iFEHsnjgufQuZ6kcaH1gtNT9qyNFfCu8JuxW_clgKRc';
+    const supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
+
+    // (Opsional tapi dianjurkan) Cek Auth login
+    supabase.auth.getUser().then(({ data }) => {
+      if (!data.user) window.location.href = "login-user.html";
+    });
+
+    document.getElementById('sleepForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      document.getElementById('formError').innerText = "";
+      // Ambil nilai form
+      const gender = document.getElementById('gender').value;
+      const age = document.getElementById('age').value;
+      const occupation = document.getElementById('occupation').value;
+      const bmi_category = document.getElementById('bmi_category').value;
+      const activity = document.getElementById('activity').value;
+      const stress = document.getElementById('stress').value;
+      const heart = document.getElementById('heart').value;
+      const steps = document.getElementById('steps').value;
+
+      // Validasi sederhana
+      if (!gender || !age || !occupation || !bmi_category || !activity || !stress || !heart || !steps) {
+        document.getElementById('formError').innerText = "Mohon lengkapi semua data.";
+        return;
+      }
+
+      // Simpan ke Supabase (tabel sleep_data)
+      try {
+        const { data: insertData, error } = await supabase.from("sleep_data").insert([{
+          gender, age, occupation, bmi_category,
+          physical_activity_level: activity,
+          stress_level: stress,
+          heart_rate: heart,
+          daily_steps: steps,
+          created_at: new Date()
+        }]).select("id").single();
+        if (error) throw error;
+
+        // Simpan ke sessionStorage untuk halaman hasil
+        sessionStorage.setItem("sleep_input", JSON.stringify({
+          gender, age, occupation, bmi_category,
+          Physical_Activity_Level: activity,
+          Stress_Level: stress,
+          Heart_Rate: heart,
+          Daily_Steps: steps,
+          sleep_data_id: insertData.id
+        }));
+        window.location.href = "hasil-prediksi.html";
+      } catch (err) {
+        document.getElementById('formError').innerText = "Gagal menyimpan data, coba lagi!";
+      }
+    });
+  </script>
 </body>
 </html>
