@@ -4,8 +4,202 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>SleepWell AI – Prediksi & Edukasi Kesehatan Tidur Anda</title>
-  <link rel="icon" href="style/img/logo-sinyal-tenang.png" />
-  <link rel="stylesheet" href="./style/index.css" />
+  <link rel="icon" href="https://api.iconify.design/lucide:moon-star.svg?color=%236751ef" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:400,600,700&display=swap"/>
+  <style>
+    :root {
+      --primary: #6751ef;
+      --blue: #2563eb;
+      --background: #f5f7fa;
+      --gray: #eef2fe;
+      --card-bg: #fff;
+      --border: #e5e7eb;
+      --danger: #e11d48;
+      --radius: 18px;
+    }
+    body {
+      background: linear-gradient(135deg, #e0e7ff 0%, #f6dfff 100%);
+      font-family: 'Inter', Arial, sans-serif;
+      margin: 0;
+      color: #222;
+    }
+    /* Navbar */
+    nav {
+      background: var(--card-bg);
+      border-bottom: 1.2px solid var(--border);
+      position: fixed;
+      width: 100%;
+      z-index: 9;
+      top: 0;
+      left: 0;
+      box-shadow: 0 2px 12px rgba(103,81,239,0.05);
+    }
+    .container { max-width: 1100px; margin: 0 auto; }
+    .flex { display: flex; align-items: center; }
+    .navbar {
+      justify-content: space-between;
+      padding: 10px 4vw;
+    }
+    .navbar-logo {
+      font-weight: 700;
+      font-size: 1.23rem;
+      margin-left: .4rem;
+      letter-spacing: 1px;
+      color: #222;
+    }
+    .navbar-links a {
+      text-decoration: none;
+      color: #444;
+      margin: 0 0.6rem;
+      font-weight: 500;
+      padding: 6px 15px;
+      border-radius: 7px;
+      transition: background .13s, color .13s;
+    }
+    .navbar-links a:hover, .navbar-links a.cta {
+      background: var(--primary);
+      color: #fff;
+    }
+    .navbar-links a.cta {
+      background: var(--blue);
+      margin-left: .7rem;
+      color: #fff;
+      font-weight: 700;
+    }
+    .navspacer { height: 58px; }
+    /* Hero */
+    .hero { justify-content: space-between; gap: 30px; margin-top: 2.4rem; }
+    .hero-text { flex: 1.3; }
+    .hero-title {
+      font-size: 2.1rem;
+      font-weight: 700;
+      margin-bottom: 1.1rem;
+      color: #23283b;
+    }
+    .hero-title span { color: var(--primary);}
+    .hero-sub {
+      font-size: 1.09rem;
+      margin-bottom: 1.1rem;
+      color: #434b67;
+      line-height: 1.7;
+    }
+    .hero-cta .btn { margin-right: .9rem;}
+    .hero-cta .btn, .cta-btn, .btn {
+      padding: 12px 28px;
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: 1.03rem;
+      border: none;
+      cursor: pointer;
+      background: var(--primary);
+      color: #fff;
+      margin-top: .3rem;
+      box-shadow: 0 2px 10px rgba(103,81,239,0.07);
+      text-decoration: none;
+      transition: background .15s;
+      display: inline-block;
+    }
+    .btn-outline {
+      background: #fff;
+      color: var(--primary);
+      border: 2px solid var(--primary);
+      margin-left: .2rem;
+    }
+    .btn-outline:hover { background: var(--gray); }
+    .hero-img img {
+      border-radius: 1.1rem;
+      box-shadow: 0 8px 32px rgba(103,81,239,0.11);
+      width: 320px; max-width: 95vw;
+    }
+    .hero-trust {
+      font-size: .95rem;
+      margin-top: 1.2rem;
+      color: #3b4166;
+      opacity: .96;
+    }
+    /* Why */
+    .why-section { margin-top: 5.3rem; }
+    .why-title, .fitur-title, .about-title, .faq-title, .testi-title {
+      font-weight: 700;
+      font-size: 1.37rem;
+      margin-bottom: 1.1rem;
+      text-align: center;
+      color: var(--primary);
+      letter-spacing: .5px;
+    }
+    .why-grid, .fitur-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
+      gap: 26px;
+    }
+    .why-card, .fitur-card {
+      background: var(--card-bg);
+      border-radius: 15px;
+      box-shadow: 0 2px 14px rgba(103,81,239,0.07);
+      padding: 26px 17px;
+      text-align: center;
+      border: 1.2px solid var(--border);
+      transition: box-shadow .17s;
+    }
+    .why-card:hover, .fitur-card:hover { box-shadow: 0 8px 38px rgba(103,81,239,0.16);}
+    .why-card img, .fitur-card img { width: 56px; margin-bottom: 10px;}
+    .why-card h3, .fitur-card h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 8px;}
+    .why-card p, .fitur-card p { color: #566; font-size: .98rem;}
+    /* Fitur */
+    .fitur-section { margin-top: 3.5rem;}
+    /* About */
+    .about-section { margin-top: 3.5rem;}
+    .about-title { text-align: center;}
+    .about-desc { text-align: center; color: #444; margin-bottom: 1.6rem; line-height: 1.8;}
+    .stats-row { display: flex; gap: 20px; justify-content: center; margin-top: 12px; flex-wrap: wrap;}
+    .stat-card { background: #f3f6fd; border-radius: 13px; box-shadow: 0 1px 7px rgba(103,81,239,0.08); padding: 14px 28px; text-align: center; }
+    .stat-card h3 { color: var(--primary); font-size: 1.3rem; margin: 0;}
+    .stat-card p { color: #555; margin: 0; font-size: .97rem;}
+    /* FAQ */
+    .faq-section { margin: 3.2rem auto; max-width: 600px;}
+    .faq-title { text-align: center;}
+    .faq-item { background: #fff; border-radius: 8px; box-shadow: 0 2px 10px rgba(103,81,239,0.07); margin-bottom: 12px; cursor: pointer; border: 1px solid var(--border);}
+    .faq-q { padding: 16px 18px; font-weight: 600; color: var(--primary);}
+    .faq-a { padding: 0 18px 16px 18px; display: none; color: #444;}
+    .faq-item.open .faq-a { display: block;}
+    .faq-item.open .faq-q span { transform: rotate(180deg);}
+    .faq-q span { float:right; transition: transform .13s;}
+    /* Testimoni */
+    .testi-section { margin: 3.2rem auto 0 auto; max-width: 540px; text-align: center;}
+    .testi-box { background: var(--card-bg); border-radius: 12px; padding: 30px 19px 19px 19px; box-shadow: 0 2px 13px rgba(103,81,239,0.08);}
+    .testi-img { width: 63px; height: 63px; border-radius: 50%; object-fit: cover; margin-bottom: 14px;}
+    .testi-quote { font-style: italic; color: #4a447a; margin-bottom: 9px;}
+    .testi-name { color: #222; font-size: .99rem; margin-bottom: 7px;}
+    .testi-arrows { margin-top: 7px;}
+    .testi-arrow { background: var(--gray); border: none; border-radius: 50%; width: 30px; height: 30px; margin: 0 6px; font-size: 1.1rem; color: var(--primary); cursor: pointer;}
+    .testi-arrow:hover { background: var(--primary); color: #fff;}
+    /* CTA */
+    .cta-section { text-align: center; margin: 3.5rem auto 0 auto;}
+    .cta-title { font-size: 1.4rem; font-weight: 700; color: var(--primary); margin-bottom: 12px;}
+    .cta-btn { font-size: 1.15rem; margin-top: 1.2rem;}
+    /* Footer */
+    footer { background: #f3f6fd; margin-top: 3.5rem; padding: 28px 0 12px 0;}
+    .footer-row { display: flex; align-items: center; gap: 24px; flex-wrap: wrap; justify-content: center; margin-bottom: 10px;}
+    .footer-logo { width: 32px; height: 32px; border-radius: 7px;}
+    .footer-link { color: #2563eb; margin: 0 9px; font-weight: 500; text-decoration: none;}
+    .footer-link:hover { text-decoration: underline;}
+    .footer-partner { text-align: center; margin-bottom: 11px;}
+    .footer-partner img { width: 32px; margin: 0 6px; vertical-align: middle;}
+    .footer-copy { color: #777; text-align: center; font-size: .97rem; margin-top: 10px;}
+    /* Responsive */
+    @media (max-width: 900px) {
+      .container { max-width: 96vw; }
+      .hero { flex-direction: column; gap: 16px;}
+      .hero-img img { width: 98vw; max-width: 370px;}
+    }
+    @media (max-width: 600px) {
+      .hero-title { font-size: 1.3rem;}
+      .navbar-logo { font-size: 1.01rem;}
+      .why-title, .fitur-title, .about-title, .faq-title, .testi-title, .cta-title { font-size: 1.04rem;}
+      .footer-logo { width: 22px; height: 22px;}
+      .footer-partner img { width: 22px;}
+    }
+  </style>
 </head>
 <body>
 
@@ -13,7 +207,7 @@
 <nav>
   <div class="container flex navbar">
     <div class="flex" style="gap:.7rem">
-      <img src="style/img/logo-sinyal-tenang.png" style="width:38px;border-radius:.6rem;" alt="Logo SleepWell"/>
+      <img src="https://api.iconify.design/lucide:moon-star.svg?color=%236751ef&width=38" alt="Logo SleepWell"/>
       <span class="navbar-logo">SleepWell <span style="color:var(--blue)">AI</span></span>
     </div>
     <div class="navbar-links">
@@ -31,7 +225,7 @@
 <div class="navspacer"></div>
 
 <!-- Hero -->
-<section class="container flex hero" style="margin-top:2.2rem;">
+<section class="container flex hero">
   <div class="hero-text">
     <div class="hero-title">Bangun Hidup Lebih Sehat<br>dengan <span>Tidur Berkualitas</span></div>
     <div class="hero-sub">SleepWell AI membantu Anda memahami dan meningkatkan kualitas tidur lewat prediksi AI, insight kesehatan, dan solusi personal terpercaya.</div>
@@ -49,24 +243,24 @@
 <!-- Why SleepWell -->
 <section class="container why-section" id="why">
   <div class="why-title">Kenapa Memilih SleepWell AI?</div>
-  <div class="grid why-grid">
+  <div class="why-grid">
     <div class="why-card">
-      <img src="https://img.icons8.com/color/96/sleeping.png"/>
+      <img src="https://api.iconify.design/lucide:moon-star.svg?color=%236751ef&width=56" alt="Akurat & Personal"/>
       <h3>Akurat & Personal</h3>
       <p>Prediksi & rekomendasi berbasis AI yang menyesuaikan kebutuhan tidur Anda.</p>
     </div>
     <div class="why-card">
-      <img src="https://img.icons8.com/color/96/statistics.png"/>
+      <img src="https://api.iconify.design/lucide:bar-chart-3.svg?color=%236751ef&width=56" alt="Visualisasi Interaktif"/>
       <h3>Visualisasi Interaktif</h3>
       <p>Progress tidur disajikan dengan grafik interaktif yang mudah dimengerti.</p>
     </div>
     <div class="why-card">
-      <img src="https://img.icons8.com/color/96/security-checked.png"/>
+      <img src="https://api.iconify.design/lucide:shield-check.svg?color=%236751ef&width=56" alt="Privasi Aman"/>
       <h3>Privasi Aman</h3>
       <p>Data Anda terenkripsi dan tidak pernah dijual ke pihak ketiga.</p>
     </div>
     <div class="why-card">
-      <img src="https://img.icons8.com/color/96/idea.png"/>
+      <img src="https://api.iconify.design/lucide:brain-circuit.svg?color=%236751ef&width=56" alt="Solusi Komprehensif"/>
       <h3>Solusi Komprehensif</h3>
       <p>Rekomendasi CBT-I, sleep hygiene, & edukasi pola hidup sehat.</p>
     </div>
@@ -76,19 +270,19 @@
 <!-- Fitur Section -->
 <section class="container fitur-section" id="features">
   <div class="fitur-title">Fitur SleepWell AI</div>
-  <div class="grid fitur-grid">
+  <div class="fitur-grid">
     <div class="fitur-card">
-      <img src="https://img.icons8.com/color/96/smart-watch.png"/>
+      <img src="https://api.iconify.design/lucide:smartphone.svg?color=%236751ef&width=56" alt="Analisis Tidur Otomatis"/>
       <h3>Analisis Tidur Otomatis</h3>
       <p>Input data harian, SleepWell otomatis menganalisis durasi, kualitas, & gangguan tidur Anda.</p>
     </div>
     <div class="fitur-card">
-      <img src="https://img.icons8.com/color/96/brain.png"/>
+      <img src="https://api.iconify.design/lucide:brain-cog.svg?color=%236751ef&width=56" alt="Rekomendasi Personal"/>
       <h3>Rekomendasi Personal</h3>
       <p>Saran CBT-I, pola tidur, olahraga, dan stress management khusus sesuai hasil analisis.</p>
     </div>
     <div class="fitur-card">
-      <img src="https://img.icons8.com/color/96/statistics.png"/>
+      <img src="https://api.iconify.design/lucide:bar-chart-horizontal.svg?color=%236751ef&width=56" alt="Visualisasi & Progress"/>
       <h3>Visualisasi & Progress</h3>
       <p>Riwayat dan tren tidur divisualisasikan dengan grafik menarik, mudah dipahami semua usia.</p>
     </div>
@@ -96,21 +290,17 @@
 </section>
 
 <!-- Statistik/About -->
-<section class="about-section" id="about">
-  <div class="container">
-    <div class="about-card">
-      <h2 class="about-title">Tentang SleepWell AI</h2>
-      <p class="about-desc">
-        SleepWell AI dikembangkan oleh tim multidisiplin di bidang kesehatan, data, dan teknologi.<br>
-        Visi kami: menghadirkan kualitas tidur optimal, edukasi kesehatan, dan kebiasaan sehat untuk masyarakat Indonesia.
-      </p>
-      <div class="stats-row">
-        <div class="stat-card"><h3>13.000+</h3><p>Data tidur diproses</p></div>
-        <div class="stat-card"><h3>4.9/5</h3><p>Rating pengguna</p></div>
-        <div class="stat-card"><h3>#1</h3><p>Aplikasi prediksi tidur di Indonesia</p></div>
-        <div class="stat-card"><h3>100%</h3><p>Data terenkripsi</p></div>
-      </div>
-    </div>
+<section class="container about-section" id="about">
+  <div class="about-title">Tentang SleepWell AI</div>
+  <div class="about-desc">
+    SleepWell AI dikembangkan oleh tim multidisiplin di bidang kesehatan, data, dan teknologi.<br>
+    Visi kami: menghadirkan kualitas tidur optimal, edukasi kesehatan, dan kebiasaan sehat untuk masyarakat Indonesia.
+  </div>
+  <div class="stats-row">
+    <div class="stat-card"><h3>13.000+</h3><p>Data tidur diproses</p></div>
+    <div class="stat-card"><h3>4.9/5</h3><p>Rating pengguna</p></div>
+    <div class="stat-card"><h3>#1</h3><p>Aplikasi prediksi tidur di Indonesia</p></div>
+    <div class="stat-card"><h3>100%</h3><p>Data terenkripsi</p></div>
   </div>
 </section>
 
@@ -198,7 +388,7 @@ setInterval(()=>{testiIdx=(testiIdx+1)%testimonials.length;updateTesti(testiIdx)
 <!-- Footer -->
 <footer id="contact">
   <div class="footer-row">
-    <img src="style/img/logo-sinyal-tenang.png" class="footer-logo" alt="Logo SleepWell"/>
+    <img src="https://api.iconify.design/lucide:moon-star.svg?color=%236751ef&width=32" class="footer-logo" alt="Logo SleepWell"/>
     <span class="navbar-logo" style="font-size:1.11rem">SleepWell <span style="color:var(--blue)">AI</span></span>
     <a href="mailto:support@sleepwellai.id" class="footer-link">support@sleepwellai.id</a>
     <a href="#" class="footer-link">Kebijakan Privasi</a>
@@ -206,12 +396,11 @@ setInterval(()=>{testiIdx=(testiIdx+1)%testimonials.length;updateTesti(testiIdx)
     <a href="#" class="footer-link">LinkedIn</a>
   </div>
   <div class="footer-partner">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Google-flutter-logo.svg" alt="Flutter"/>
-    <img src="https://upload.wikimedia.org/wikipedia/commons/2/2d/Tailwind_CSS_Logo.svg" alt="TailwindCSS"/>
-    <img src="https://upload.wikimedia.org/wikipedia/commons/7/7e/Supabase_logo.png" alt="Supabase"/>
+    <img src="https://unpkg.com/simple-icons@latest/icons/flutter.svg" alt="Flutter"/>
+    <img src="https://unpkg.com/simple-icons@latest/icons/tailwindcss.svg" alt="TailwindCSS"/>
+    <img src="https://unpkg.com/simple-icons@latest/icons/supabase.svg" alt="Supabase"/>
   </div>
   <div class="footer-copy">SleepWell AI &copy; 2025 &middot; Powered by DevAcademy.id &middot; All rights reserved.</div>
 </footer>
 </body>
 </html>
-
