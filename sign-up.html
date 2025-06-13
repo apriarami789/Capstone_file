@@ -1,59 +1,74 @@
 <!DOCTYPE html>
-<html>
+<html lang="id">
 <head>
-  <title>Daftar Akun SleepWell</title>
   <meta charset="UTF-8">
+  <title>Registrasi Akun • SleepWell AI</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Link ke style.css di bawah -->
 </head>
 <body>
-  <h2>Registrasi Akun SleepWell</h2>
-  <form id="signupForm">
-    <label>Nama Lengkap:</label><br>
-    <input name="name" required><br><br>
-    
-    <label>Email:</label><br>
-    <input name="email" type="email" required><br><br>
-    
-    <label>Password:</label><br>
-    <input name="password" type="password" required><br><br>
-    
-    <label>Jenis Kelamin:</label><br>
-    <select name="gender" required>
-      <option value="">-- Pilih --</option>
-      <option value="Male">Pria</option>
-      <option value="Female">Wanita</option>
-    </select><br><br>
-    
-    <label>Umur:</label><br>
-    <input name="age" type="number" min="10" max="100" required><br><br>
-    
-    <label>Pekerjaan:</label><br>
-    <select name="occupation" required>
-      <option value="">-- Pilih --</option>
-      <option value="Accountant">Accountant</option>
-      <option value="Doctor">Doctor</option>
-      <option value="Engineer">Engineer</option>
-      <option value="Lawyer">Lawyer</option>
-      <option value="Manager">Manager</option>
-      <option value="Nurse">Nurse</option>
-      <option value="Sales Representative">Sales Representative</option>
-      <option value="Salesperson">Salesperson</option>
-      <option value="Scientist">Scientist</option>
-      <option value="Software Engineer">Software Engineer</option>
-      <option value="Teacher">Teacher</option>
-    </select><br><br>
-    
-    <label>Kategori BMI:</label><br>
-    <select name="bmi_category" required>
-      <option value="">-- Pilih --</option>
-      <option value="Normal">Normal</option>
-      <option value="Overweight">Overweight</option>
-      <option value="Obese">Obese</option>
-    </select><br><br>
-    
-    <button type="submit">Daftar</button>
-  </form>
-  <div id="signupMsg" style="margin:10px 0; color:blue;"></div>
-  <p>Sudah punya akun? <a href="login-user.html">Login di sini</a></p>
+  <div class="register-container">
+    <div class="register-card">
+      <img src="img/logo-sinyal-tenang.png" alt="SleepWell Logo" class="logo">
+      <h2 class="title">Buat Akun SleepWell</h2>
+      <form id="signupForm" autocomplete="off">
+        <div class="form-group">
+          <label>Nama Lengkap</label>
+          <input name="name" required placeholder="Masukkan nama lengkap...">
+        </div>
+        <div class="form-group">
+          <label>Email</label>
+          <input name="email" type="email" required placeholder="Email aktif...">
+        </div>
+        <div class="form-group">
+          <label>Password</label>
+          <input name="password" type="password" required placeholder="Minimal 6 karakter">
+        </div>
+        <div class="form-group">
+          <label>Jenis Kelamin</label>
+          <select name="gender" required>
+            <option value="">-- Pilih --</option>
+            <option value="Male">Pria</option>
+            <option value="Female">Wanita</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Umur</label>
+          <input name="age" type="number" min="10" max="100" required placeholder="Usia kamu">
+        </div>
+        <div class="form-group">
+          <label>Pekerjaan</label>
+          <select name="occupation" required>
+            <option value="">-- Pilih --</option>
+            <option value="Accountant">Accountant</option>
+            <option value="Doctor">Doctor</option>
+            <option value="Engineer">Engineer</option>
+            <option value="Lawyer">Lawyer</option>
+            <option value="Manager">Manager</option>
+            <option value="Nurse">Nurse</option>
+            <option value="Sales Representative">Sales Representative</option>
+            <option value="Salesperson">Salesperson</option>
+            <option value="Scientist">Scientist</option>
+            <option value="Software Engineer">Software Engineer</option>
+            <option value="Teacher">Teacher</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Kategori BMI</label>
+          <select name="bmi_category" required>
+            <option value="">-- Pilih --</option>
+            <option value="Normal">Normal</option>
+            <option value="Overweight">Overweight</option>
+            <option value="Obese">Obese</option>
+          </select>
+        </div>
+        <button type="submit" class="btn-register">Daftar</button>
+      </form>
+      <div id="signupMsg" class="signup-msg"></div>
+      <p class="redirect">Sudah punya akun? <a href="login-user.html">Login di sini</a></p>
+    </div>
+  </div>
+
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
   <script>
     const supabaseUrl = 'https://vnbqtnhcxlhygfajoulf.supabase.co';
@@ -89,7 +104,143 @@
       document.getElementById("signupMsg").innerText = error
         ? "Gagal daftar: " + error.message
         : "Registrasi sukses! Cek email kamu untuk verifikasi sebelum login.";
+      document.getElementById("signupMsg").style.color = error ? "#e11d48" : "#2563eb";
     };
   </script>
+  <!-- Style langsung di bawah -->
+  <style>
+    :root {
+      --primary: #6751ef;
+      --primary-dark: #4a3ec8;
+      --blue: #2563eb;
+      --background: #f5f7fa;
+      --card-bg: #fff;
+      --gray: #eef2fe;
+      --border: #e5e7eb;
+      --danger: #e11d48;
+      --radius: 18px;
+    }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #e0e7ff 0%, #f6dfff 100%);
+      font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+      min-height: 100vh;
+    }
+    .register-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      background: rgba(255,255,255,0.18);
+    }
+    .register-card {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      box-shadow: 0 8px 32px rgba(66,71,112,0.15);
+      padding: 32px 28px 24px 28px;
+      width: 100%;
+      max-width: 400px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      border: 1.5px solid var(--border);
+      transition: box-shadow 0.2s;
+    }
+    .register-card:hover {
+      box-shadow: 0 12px 36px rgba(103,81,239,0.15);
+    }
+    .logo {
+      width: 60px;
+      height: 60px;
+      object-fit: contain;
+      margin-bottom: 16px;
+    }
+    .title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 20px;
+      text-align: center;
+      letter-spacing: .5px;
+    }
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 14px;
+      width: 100%;
+    }
+    label {
+      font-size: 1rem;
+      color: #495057;
+      font-weight: 500;
+      margin-bottom: 5px;
+    }
+    input, select {
+      border: 1.3px solid var(--border);
+      border-radius: 10px;
+      padding: 10px 12px;
+      font-size: 1rem;
+      background: var(--gray);
+      outline: none;
+      transition: border .15s;
+    }
+    input:focus, select:focus {
+      border: 1.6px solid var(--primary);
+      background: #fff;
+    }
+    .btn-register {
+      margin-top: 8px;
+      background: var(--primary);
+      color: #fff;
+      font-weight: 600;
+      border: none;
+      border-radius: 10px;
+      padding: 12px 0;
+      font-size: 1.09rem;
+      width: 100%;
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(103,81,239,0.07);
+      transition: background .13s;
+      letter-spacing: .3px;
+    }
+    .btn-register:hover {
+      background: var(--primary-dark);
+    }
+    .signup-msg {
+      min-height: 18px;
+      margin: 14px 0 0 0;
+      font-weight: 500;
+      font-size: 1rem;
+      text-align: center;
+      letter-spacing: .2px;
+      transition: color .2s;
+    }
+    .redirect {
+      margin-top: 18px;
+      font-size: .99rem;
+      text-align: center;
+      color: #777;
+    }
+    .redirect a {
+      color: var(--blue);
+      text-decoration: none;
+      font-weight: 600;
+      transition: color .15s;
+    }
+    .redirect a:hover {
+      color: var(--primary);
+      text-decoration: underline;
+    }
+
+    @media (max-width: 520px) {
+      .register-card { padding: 20px 6vw 18px 6vw; }
+      .title { font-size: 1.18rem; }
+      .logo { width: 42px; height: 42px; }
+      .btn-register { font-size: .97rem; }
+    }
+  </style>
 </body>
 </html>
