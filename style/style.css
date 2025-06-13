@@ -1,15 +1,27 @@
-/* style.css - CSS terpusat untuk semua halaman Tips CBT Tidur */
+/* style.css – Modern UI untuk SleepWell AI & CBT Tips */
 
 /* 1. Reset & Dasar */
-* { margin: 0; padding: 0; box-sizing: border-box; }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+}
 body {
   font-family: 'Inter', sans-serif;
-  background: #F8FAFF;
+  background: #F5F6FF;
   color: #333;
   line-height: 1.6;
 }
-a { color: #7C5DD3; text-decoration: none; }
-a:hover { text-decoration: underline; }
+a {
+  color: #7C5DD3;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
 
 /* 2. Navigasi */
 nav {
@@ -17,85 +29,197 @@ nav {
   box-shadow: 0 2px 10px rgba(0,0,0,0.05);
   position: sticky;
   top: 0;
-  z-index: 10;
+  z-index: 1000;
+  animation: fadeInDown 0.6s ease;
 }
 nav .container {
-  max-width: 900px;
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 0.5rem 1rem;
+  padding: 1rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+nav .logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 nav .nav-list {
   display: flex;
-  gap: 1rem;
-  overflow-x: auto;
+  gap: 2rem;
 }
 nav .nav-list a {
-  padding: 0.75rem 1rem;
-  color: #7C5DD3;
+  position: relative;
+  padding: 0.5rem;
   font-weight: 500;
-  border-radius: 999px;
-  transition: background 0.3s;
+  color: #444;
+  transition: color 0.3s;
 }
-nav .nav-list a.active,
-nav .nav-list a:hover {
+nav .nav-list a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  width: 0;
+  height: 2px;
+  background: #7C5DD3;
+  transition: width 0.3s;
+}
+nav .nav-list a:hover,
+nav .nav-list a.active {
+  color: #7C5DD3;
+}
+nav .nav-list a:hover::after,
+nav .nav-list a.active::after {
+  width: 100%;
+}
+nav .cta-group {
+  display: flex;
+  gap: 1rem;
+}
+.nav-btn {
+  padding: 0.5rem 1.25rem;
+  border: none;
+  border-radius: 999px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+}
+.nav-btn.primary {
+  background: #7C5DD3;
+  color: #FFF;
+}
+.nav-btn.primary:hover {
+  background: #6b4bc1;
+  transform: translateY(-2px);
+}
+.nav-btn.secondary {
+  background: transparent;
+  color: #7C5DD3;
+  border: 2px solid #7C5DD3;
+}
+.nav-btn.secondary:hover {
   background: rgba(124,93,211,0.1);
+  transform: translateY(-2px);
 }
 
-/* 3. Kontainer & Section */
+/* 3. Hero Section */
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 4rem 2rem;
+  background: linear-gradient(135deg, #E8E7FF 0%, #F5F6FF 100%);
+  animation: fadeIn 1s ease;
+}
+.hero-content {
+  max-width: 600px;
+}
+.hero h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #1F2937;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+.hero h1 span {
+  color: #7C5DD3;
+}
+.hero p {
+  font-size: 1.125rem;
+  margin-bottom: 2rem;
+  color: #4B5563;
+}
+.hero .hero-cta {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.hero .hero-cta .btn {
+  padding: 0.75rem 2rem;
+  border-radius: 0.75rem;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  animation: popIn 0.6s ease;
+}
+.hero .btn.primary {
+  background: #7C5DD3;
+  color: #FFF;
+}
+.hero .btn.primary:hover {
+  transform: translateY(-3px);
+}
+.hero .btn.outline {
+  background: transparent;
+  color: #7C5DD3;
+  border: 2px solid #7C5DD3;
+}
+.hero .btn.outline:hover {
+  background: rgba(124,93,211,0.1);
+  transform: translateY(-3px);
+}
+.hero img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 1rem;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  margin-top: 2rem;
+}
+
+/* 4. Section Title (untuk judul tiap bagian) */
+.section-title {
+  text-align: center;
+  font-size: 2rem;
+  color: #1F2937;
+  margin: 4rem 0 2rem;
+  position: relative;
+}
+.section-title::after {
+  content: '';
+  display: block;
+  width: 4rem;
+  height: 4px;
+  background: #7C5DD3;
+  margin: 0.5rem auto 0;
+  border-radius: 2px;
+  animation: slideIn 0.8s ease;
+}
+
+/* 5. CBT Sections */
 .container {
   max-width: 900px;
-  margin: 2rem auto;
+  margin: 3rem auto;
   padding: 0 1rem;
 }
 section {
   background: #FFF;
   margin-bottom: 2rem;
-  padding: 2rem;
+  padding: 2.5rem;
   border-radius: 1rem;
   box-shadow: 0 8px 30px rgba(0,0,0,0.05);
   animation: fadeInUp 0.8s ease-out;
 }
-
-/* 4. Heading */
 section h2 {
   font-size: 1.75rem;
   color: #7C5DD3;
   margin-bottom: 1rem;
-  position: relative;
 }
-section h2::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  bottom: -5px;
-  width: 50px;
-  height: 4px;
-  background: linear-gradient(90deg, #7C5DD3, #22C55E);
-  animation: slideIn 1s ease-out;
+section h3 {
+  font-size: 1.25rem;
+  color: #1F2937;
+  margin-top: 1.5rem;
 }
-
-/* 5. Teks & Daftar */
-section p,
-section ul,
-section ol {
-  margin-bottom: 1rem;
-  animation: fadeIn 1s backwards;
-}
-ul, ol {
-  padding-left: 1.5rem;
-}
-ul li::marker {
-  color: #22C55E;
-}
-
-/* 6. Tombol Kembali */
 .btn-back {
   display: inline-block;
-  margin-top: 1rem;
-  font-size: 0.875rem;
+  margin-top: 1.5rem;
+  font-size: 1rem;
   color: #7C5DD3;
   border: 2px solid #7C5DD3;
-  padding: 0.5rem 1rem;
+  padding: 0.65rem 1.5rem;
   border-radius: 999px;
   transition: transform 0.2s, box-shadow 0.2s;
 }
@@ -104,153 +228,46 @@ ul li::marker {
   box-shadow: 0 6px 15px rgba(124,93,211,0.2);
 }
 
-/* 7. Animations */
-@keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(20px); }/* style.css - CSS terpusat untuk semua halaman Tips CBT Tidur */
-
-/* 1. Reset & Dasar */
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body {
-  font-family: 'Inter', sans-serif;
-  background: #F8FAFF;
-  color: #333;
-  line-height: 1.6;
+/* 6. Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
 }
-a { color: #7C5DD3; text-decoration: none; }
-a:hover { text-decoration: underline; }
-
-/* 2. Navigasi */
-nav {
-  background: #FFF;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-  position: sticky;
-  top: 0;
-  z-index: 10;
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
-nav .container {
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 0.5rem 1rem;
-}
-nav .nav-list {
-  display: flex;
-  gap: 1rem;
-  overflow-x: auto;
-}
-nav .nav-list a {
-  padding: 0.75rem 1rem;
-  color: #7C5DD3;
-  font-weight: 500;
-  border-radius: 999px;
-  transition: background 0.3s;
-}
-nav .nav-list a.active,
-nav .nav-list a:hover {
-  background: rgba(124,93,211,0.1);
-}
-
-/* 3. Kontainer & Section */
-.container {
-  max-width: 900px;
-  margin: 2rem auto;
-  padding: 0 1rem;
-}
-section {
-  background: #FFF;
-  margin-bottom: 2rem;
-  padding: 2rem;
-  border-radius: 1rem;
-  box-shadow: 0 8px 30px rgba(0,0,0,0.05);
-  animation: fadeInUp 0.8s ease-out;
-}
-
-/* 4. Heading */
-section h2 {
-  font-size: 1.75rem;
-  color: #7C5DD3;
-  margin-bottom: 1rem;
-  position: relative;
-}
-section h2::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  bottom: -5px;
-  width: 50px;
-  height: 4px;
-  background: linear-gradient(90deg, #7C5DD3, #22C55E);
-  animation: slideIn 1s ease-out;
-}
-
-/* 5. Teks & Daftar */
-section p,
-section ul,
-section ol {
-  margin-bottom: 1rem;
-  animation: fadeIn 1s backwards;
-}
-ul, ol {
-  padding-left: 1.5rem;
-}
-ul li::marker {
-  color: #22C55E;
-}
-
-/* 6. Tombol Kembali */
-.btn-back {
-  display: inline-block;
-  margin-top: 1rem;
-  font-size: 0.875rem;
-  color: #7C5DD3;
-  border: 2px solid #7C5DD3;
-  padding: 0.5rem 1rem;
-  border-radius: 999px;
-  transition: transform 0.2s, box-shadow 0.2s;
-}
-.btn-back:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 15px rgba(124,93,211,0.2);
-}
-
-/* 7. Animations */
 @keyframes fadeInUp {
   from { opacity: 0; transform: translateY(20px); }
   to   { opacity: 1; transform: translateY(0); }
 }
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to   { opacity: 1; }
+@keyframes popIn {
+  from { opacity: 0; transform: scale(0.8); }
+  to   { opacity: 1; transform: scale(1); }
 }
 @keyframes slideIn {
   from { width: 0; }
-  to   { width: 50px; }
+  to   { width: 4rem; }
 }
 
-/* 8. Responsive */
+/* 7. Responsive */
 @media (min-width: 768px) {
-  section { padding: 3rem; }
-  section h2 { font-size: 2.25rem; }
-  section p, section ul li, section ol li {
-    font-size: 1.125rem;
+  .hero {
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: left;
   }
-}
-
-  to   { opacity: 1; transform: translateY(0); }
-}
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to   { opacity: 1; }
-}
-@keyframes slideIn {
-  from { width: 0; }
-  to   { width: 50px; }
-}
-
-/* 8. Responsive */
-@media (min-width: 768px) {
-  section { padding: 3rem; }
-  section h2 { font-size: 2.25rem; }
-  section p, section ul li, section ol li {
-    font-size: 1.125rem;
+  .hero-content {
+    max-width: 50%;
+  }
+  .hero img {
+    max-width: 45%;
+    margin-top: 0;
+  }
+  nav .nav-list {
+    gap: 1.5rem;
+  }
+  .container {
+    margin: 4rem auto;
   }
 }
