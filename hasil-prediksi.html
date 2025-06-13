@@ -3,7 +3,110 @@
 <head>
   <title>Hasil Prediksi Tidur</title>
   <meta charset="UTF-8">
-  <link rel="stylesheet" href="style/hasil-prediksi.css" />
+  <style>
+    body {
+      background: linear-gradient(135deg, #e0e7ff 0%, #f6dfff 100%);
+      font-family: 'Inter', Arial, sans-serif;
+      margin: 0;
+      color: #21243d;
+    }
+    .container {
+      background: #fff;
+      max-width: 420px;
+      margin: 3.2rem auto 0 auto;
+      padding: 2.3rem 2rem 1.6rem 2rem;
+      border-radius: 18px;
+      box-shadow: 0 6px 38px 0 rgba(66,71,112,0.09);
+    }
+    h2 {
+      text-align: center;
+      font-weight: 700;
+      font-size: 1.4rem;
+      color: #6751ef;
+      margin-bottom: 1.8rem;
+    }
+    .loader {
+      display: none;
+      text-align: center;
+      color: #6751ef;
+      font-size: 1.1rem;
+      margin-bottom: 15px;
+    }
+    .prediction-result {
+      font-size: 1.08rem;
+      background: #eef2fe;
+      border-radius: 12px;
+      padding: 1.1rem 1.2rem;
+      color: #2e2e4d;
+      margin-bottom: 14px;
+      min-height: 44px;
+    }
+    .prediction-result ul {
+      margin: 0;
+      padding: 0 0 0 20px;
+    }
+    .prediction-tips {
+      font-size: .98rem;
+      background: #fdf6ff;
+      color: #614488;
+      border-radius: 8px;
+      padding: .7rem 1.1rem;
+      margin-bottom: 10px;
+    }
+    .cbti-advice {
+      margin-top: 15px;
+      text-align: left;
+    }
+    .cbti-advice button {
+      margin-top: 6px;
+      background: #6751ef;
+      color: #fff;
+      border: none;
+      padding: .6rem 1.2rem;
+      border-radius: 9px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background .14s;
+    }
+    .cbti-advice button:hover {
+      background: #5043c3;
+    }
+    .db-error-msg {
+      color: #e11d48;
+      margin-top: 10px;
+      font-size: .97rem;
+      min-height: 20px;
+    }
+    .actions {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 22px;
+    }
+    .actions button {
+      background: #2563eb;
+      color: #fff;
+      border: none;
+      padding: .65rem 1.3rem;
+      border-radius: 8px;
+      font-size: .98rem;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 1px 8px rgba(66,71,112,0.07);
+      transition: background .15s;
+    }
+    .actions button:hover {
+      background: #183d90;
+    }
+    @media (max-width: 600px) {
+      .container {
+        padding: 1.3rem .7rem .8rem .7rem;
+        max-width: 96vw;
+      }
+      h2 { font-size: 1.05rem; }
+      .prediction-result, .prediction-tips { font-size: .95rem;}
+    }
+  </style>
 </head>
 <body>
   <div class="container">
@@ -17,6 +120,7 @@
     <div class="actions">
       <button onclick="window.location.href='form-input.html'">Input Data Baru</button>
       <button onclick="window.location.href='riwayat.html'">Lihat Riwayat</button>
+      <
       <button onclick="window.location.href='main-menu.html'">Menu Utama</button>
     </div>
   </div>
