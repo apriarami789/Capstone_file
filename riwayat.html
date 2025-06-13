@@ -1,41 +1,45 @@
 <!DOCTYPE html>
-<html>
+<html lang="id">
 <head>
-  <title>Riwayat Prediksi Tidur</title>
   <meta charset="UTF-8">
+  <title>Riwayat Prediksi Tidur • SleepWell AI</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-  <h2>Riwayat Data & Prediksi Tidur Anda</h2>
-
-  <!-- Loader -->
-  <div id="loader" style="display:none; margin-bottom:12px;">⏳ Mengambil data riwayat...</div>
-  
-  <!-- Tabel Riwayat -->
-  <table border="1" id="riwayatTable">
-    <tr>
-      <th>Tanggal</th>
-      <th>Aktivitas Fisik</th>
-      <th>Tingkat Stres</th>
-      <th>Detak Jantung</th>
-      <th>Langkah Harian</th>
-      <th>Kualitas Tidur</th>
-      <th>Durasi Tidur</th>
-      <th>Gangguan Tidur</th>
-    </tr>
-  </table>
-
-  <!-- Grafik Chart.js -->
-  <div style="margin-top:24px; max-width:600px;">
-    <canvas id="sleepChart"></canvas>
+  <div class="riwayat-container">
+    <div class="riwayat-card">
+      <img src="style/img/logo-sinyal-tenang.png" alt="SleepWell Logo" class="logo">
+      <h2 class="title">Riwayat Data & Prediksi Tidur Anda</h2>
+      <div id="loader" class="loader">⏳ Mengambil data riwayat...</div>
+      <div class="table-wrap">
+        <table id="riwayatTable">
+          <thead>
+            <tr>
+              <th>Tanggal</th>
+              <th>Aktivitas Fisik</th>
+              <th>Tingkat Stres</th>
+              <th>Detak Jantung</th>
+              <th>Langkah Harian</th>
+              <th>Kualitas Tidur</th>
+              <th>Durasi Tidur</th>
+              <th>Gangguan Tidur</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+      <div class="grafik-box">
+        <canvas id="sleepChart"></canvas>
+      </div>
+      <div class="riwayat-btn-group">
+        <button onclick="window.location.href='form-input.html'" class="btn-main">Input Baru</button>
+        <button onclick="window.location.href='main-menu.html'" class="btn-main btn-alt">Menu Utama</button>
+        <button onclick="logout()" class="btn-main btn-danger">Logout</button>
+        <button onclick="downloadCSV()" class="btn-main btn-download">Download CSV</button>
+      </div>
+      <div id="errorMsg" class="error-msg"></div>
+    </div>
   </div>
-
-  <button onclick="window.location.href='form-input.html'">Input Baru</button>
-  <button onclick="window.location.href='main-menu.html'">Menu Utama</button>
-  <button onclick="logout()">Logout</button>
-  <button onclick="downloadCSV()">Download CSV</button>
-  
-  <div id="errorMsg" style="color:red; margin-top:10px;"></div>
-
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script>
@@ -45,25 +49,21 @@
 
     let lastRiwayatData = [];
 
-    // Logout handler, sign out dari Auth juga!
     async function logout() {
       sessionStorage.clear();
       await supabase.auth.signOut();
       window.location.href = "login-user.html";
     }
 
-    // Ambil riwayat setelah cek login via Auth
     async function tampilRiwayat() {
       document.getElementById('loader').style.display = 'block';
       document.getElementById('errorMsg').innerText = '';
 
-      // Cek login via Supabase Auth
       const { data: { user } } = await supabase.auth.getUser();
       if (!user) {
         window.location.href = "login-user.html";
         return;
       }
-      // Sync user_id ke sessionStorage untuk halaman lain (optional, biar seragam)
       sessionStorage.setItem("user_id", user.id);
 
       try {
@@ -76,6 +76,8 @@
         let labels = [], qualities = [], durations = [];
         lastRiwayatData = data || [];
 
+        const tbody = document.querySelector('#riwayatTable tbody');
+        tbody.innerHTML = '';
         if (error) throw error;
         if (data && data.length > 0) {
           for (const r of data) {
@@ -90,17 +92,15 @@
                 <td>${r.sleep_duration ?? '-'}</td>
                 <td>${r.sleep_disorder ?? '-'}</td>
               </tr>`;
-            // Untuk grafik, masukkan walau null (Chart.js akan handle gap)
             labels.push(r.created_at?.slice(0, 10) || '');
             qualities.push((r.quality_of_sleep !== undefined && r.quality_of_sleep !== null && r.quality_of_sleep !== '') ? Number(r.quality_of_sleep) : null);
             durations.push((r.sleep_duration !== undefined && r.sleep_duration !== null && r.sleep_duration !== '') ? Number(r.sleep_duration) : null);
           }
-          document.getElementById('riwayatTable').innerHTML += rows;
+          tbody.innerHTML = rows;
         } else {
-          document.getElementById('riwayatTable').innerHTML += `<tr><td colspan="8">Belum ada data riwayat.</td></tr>`;
+          tbody.innerHTML = `<tr><td colspan="8">Belum ada data riwayat.</td></tr>`;
         }
 
-        // Render grafik jika ada minimal 1 data
         const chartEl = document.getElementById('sleepChart').getContext('2d');
         if (window.sleepChartInstance) window.sleepChartInstance.destroy();
 
@@ -152,7 +152,6 @@
             }
           });
         }
-        // Jika tidak ada data, grafik akan kosong.
       } catch (err) {
         document.getElementById('loader').style.display = 'none';
         document.getElementById('errorMsg').innerText = "Gagal mengambil riwayat: " + (err.message || err);
@@ -160,7 +159,6 @@
     }
     tampilRiwayat();
 
-    // Download CSV fungsi
     function downloadCSV() {
       if (!lastRiwayatData.length) {
         alert("Tidak ada data untuk diunduh!");
@@ -198,5 +196,171 @@
       URL.revokeObjectURL(url);
     }
   </script>
+  <style>
+    :root {
+      --primary: #6751ef;
+      --primary-dark: #4a3ec8;
+      --blue: #2563eb;
+      --background: #f5f7fa;
+      --card-bg: #fff;
+      --gray: #eef2fe;
+      --border: #e5e7eb;
+      --danger: #e11d48;
+      --radius: 18px;
+    }
+    html, body {
+      min-height: 100vh;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #e0e7ff 0%, #f6dfff 100%);
+      font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+    }
+    .riwayat-container {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255,255,255,0.09);
+    }
+    .riwayat-card {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      box-shadow: 0 8px 32px rgba(66,71,112,0.13);
+      padding: 30px 24px 24px 24px;
+      max-width: 950px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      border: 1.5px solid var(--border);
+      transition: box-shadow 0.2s;
+    }
+    .riwayat-card:hover {
+      box-shadow: 0 12px 36px rgba(103,81,239,0.15);
+    }
+    .logo {
+      width: 54px;
+      height: 54px;
+      object-fit: contain;
+      margin-bottom: 13px;
+    }
+    .title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 16px;
+      text-align: center;
+      letter-spacing: .5px;
+    }
+    .loader {
+      display: none;
+      margin-bottom: 12px;
+      color: #555;
+      font-size: .97rem;
+      text-align: center;
+    }
+    .table-wrap {
+      width: 100%;
+      overflow-x: auto;
+      margin-bottom: 18px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: #fafaff;
+      font-size: .97rem;
+      margin: 0;
+      border-radius: 12px 12px 0 0;
+      overflow: hidden;
+      box-shadow: 0 1px 8px rgba(103,81,239,0.05);
+    }
+    th, td {
+      padding: 8px 10px;
+      border-bottom: 1.5px solid var(--border);
+      text-align: center;
+    }
+    th {
+      background: var(--gray);
+      color: #333;
+      font-weight: 600;
+      font-size: 1rem;
+    }
+    tr:last-child td {
+      border-bottom: none;
+    }
+    td {
+      color: #555;
+    }
+    .grafik-box {
+      margin-top: 24px;
+      width: 100%;
+      max-width: 600px;
+    }
+    .riwayat-btn-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+      margin: 25px 0 10px 0;
+      width: 100%;
+    }
+    .btn-main {
+      background: var(--primary);
+      color: #fff;
+      font-weight: 600;
+      border: none;
+      border-radius: 10px;
+      padding: 12px 24px;
+      font-size: 1.05rem;
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(103,81,239,0.07);
+      transition: background .13s;
+      letter-spacing: .2px;
+    }
+    .btn-main:hover {
+      background: var(--primary-dark);
+    }
+    .btn-alt {
+      background: var(--blue);
+    }
+    .btn-alt:hover {
+      background: #2042b3;
+    }
+    .btn-danger {
+      background: var(--danger);
+    }
+    .btn-danger:hover {
+      background: #b91c1c;
+    }
+    .btn-download {
+      background: #fff;
+      color: var(--primary);
+      border: 1.2px solid var(--primary);
+    }
+    .btn-download:hover {
+      background: var(--gray);
+      color: var(--primary-dark);
+    }
+    .error-msg {
+      color: var(--danger);
+      font-weight: 500;
+      min-height: 18px;
+      margin-top: 10px;
+      text-align: center;
+      letter-spacing: .18px;
+    }
+    @media (max-width: 780px) {
+      .riwayat-card { padding: 15px 1vw 10px 1vw; }
+      .grafik-box { max-width: 100vw; }
+      table { font-size: .92rem; }
+      th, td { padding: 7px 3px; }
+      .logo { width: 36px; height: 36px; }
+    }
+    @media (max-width: 520px) {
+      .riwayat-card { padding: 6px 1vw 5px 1vw; }
+      .title { font-size: 1rem; }
+      .btn-main { font-size: .92rem; padding: 9px 7px; }
+    }
+  </style>
 </body>
 </html>
