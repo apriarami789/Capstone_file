@@ -1,32 +1,46 @@
 <!DOCTYPE html>
-<html>
+<html lang="id">
 <head>
-  <title>Input Data Tidur</title>
   <meta charset="UTF-8">
+  <title>Input Data Tidur Harian • SleepWell AI</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-  <h2>Input Data Tidur Harian</h2>
-  <div id="userProfile"></div>
-  <form id="sleepForm">
-    <label>Aktivitas Fisik (1-100):</label>
-    <input type="range" id="Physical_Activity_Level" min="1" max="100" value="50">
-    <span id="physicalActivityValue">50</span><br><br>
-
-    <label>Tingkat Stres (1-10):</label>
-    <input type="range" id="Stress_Level" min="1" max="10" value="5">
-    <span id="stressLevelValue">5</span><br><br>
-
-    <label>Detak Jantung (BPM):</label>
-    <input type="number" id="Heart_Rate" min="40" max="200" required><br><br>
-
-    <label>Langkah Harian:</label>
-    <input type="number" id="Daily_Steps" min="0" max="30000" required><br><br>
-
-    <button type="submit">Kirim & Analisis</button>
-  </form>
-  <div id="inputMsg" style="margin:12px 0; color:red;"></div>
-  <div id="loader" style="display:none; margin-bottom:12px;">⏳ Menyimpan data, mohon tunggu...</div>
-  <button onclick="window.location.href='main-menu.html'">Kembali ke Menu</button>
+  <div class="input-container">
+    <div class="input-card">
+      <img src="img/logo-sinyal-tenang.png" alt="SleepWell Logo" class="logo">
+      <h2 class="title">Input Data Tidur Harian</h2>
+      <div id="userProfile"></div>
+      <form id="sleepForm" autocomplete="off">
+        <div class="form-group">
+          <label>Aktivitas Fisik <span class="mini-info">(1-100)</span></label>
+          <div class="range-group">
+            <input type="range" id="Physical_Activity_Level" min="1" max="100" value="50">
+            <span id="physicalActivityValue" class="range-value">50</span>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Tingkat Stres <span class="mini-info">(1-10)</span></label>
+          <div class="range-group">
+            <input type="range" id="Stress_Level" min="1" max="10" value="5">
+            <span id="stressLevelValue" class="range-value">5</span>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Detak Jantung <span class="mini-info">(BPM)</span></label>
+          <input type="number" id="Heart_Rate" min="40" max="200" required placeholder="Misal: 70">
+        </div>
+        <div class="form-group">
+          <label>Langkah Harian</label>
+          <input type="number" id="Daily_Steps" min="0" max="30000" required placeholder="Misal: 8000">
+        </div>
+        <button type="submit" class="btn-main">Kirim & Analisis</button>
+      </form>
+      <div id="inputMsg" class="input-msg"></div>
+      <div id="loader" class="loader">⏳ Menyimpan data, mohon tunggu...</div>
+      <button onclick="window.location.href='main-menu.html'" class="btn-back">← Kembali ke Menu</button>
+    </div>
+  </div>
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
   <script>
@@ -45,26 +59,21 @@
         return;
       }
       userId = user.id;
-      // Simpan userId di sessionStorage jika belum ada (untuk halaman lain)
       sessionStorage.setItem("user_id", userId);
-
-      // Ambil profil dari metadata Auth
       userProfile = user.user_metadata || {};
       document.getElementById("userProfile").innerHTML = `
-        <fieldset>
+        <fieldset class="profile-box">
           <legend>Profil Anda</legend>
-          Nama: <input value="${userProfile.name || ''}" readonly><br>
-          Gender: <input value="${userProfile.gender || ''}" readonly><br>
-          Umur: <input value="${userProfile.age || ''}" readonly><br>
-          Pekerjaan: <input value="${userProfile.occupation || ''}" readonly><br>
-          BMI: <input value="${userProfile.bmi_category || ''}" readonly><br>
+          <div class="profile-field"><span>Nama:</span> <input value="${userProfile.name || ''}" readonly></div>
+          <div class="profile-field"><span>Gender:</span> <input value="${userProfile.gender || ''}" readonly></div>
+          <div class="profile-field"><span>Umur:</span> <input value="${userProfile.age || ''}" readonly></div>
+          <div class="profile-field"><span>Pekerjaan:</span> <input value="${userProfile.occupation || ''}" readonly></div>
+          <div class="profile-field"><span>BMI:</span> <input value="${userProfile.bmi_category || ''}" readonly></div>
         </fieldset>
-        <br>
       `;
     }
     fillProfile();
 
-    // Slider value display
     document.getElementById("Physical_Activity_Level").oninput = function() {
       document.getElementById("physicalActivityValue").innerText = this.value;
     };
@@ -72,7 +81,6 @@
       document.getElementById("stressLevelValue").innerText = this.value;
     };
 
-    // Submit handler dengan validasi & loader
     document.getElementById("sleepForm").onsubmit = async function(e) {
       e.preventDefault();
       document.getElementById("inputMsg").innerText = "";
@@ -83,7 +91,6 @@
       const heart = parseInt(document.getElementById("Heart_Rate").value);
       const steps = parseInt(document.getElementById("Daily_Steps").value);
 
-      // Validasi
       if (isNaN(heart) || heart < 40 || heart > 200) {
         document.getElementById("inputMsg").innerText = "Detak jantung harus antara 40–200 BPM.";
         document.getElementById("loader").style.display = 'none';
@@ -95,7 +102,6 @@
         return;
       }
 
-      // Simpan ke sleep_data
       try {
         const { data: insertData, error } = await supabase.from("sleep_data").insert([{
           user_id: userId,
@@ -106,7 +112,6 @@
           created_at: new Date()
         }]).select("id").single();
         if (error) throw error;
-        // Simpan input + profil ke sessionStorage (untuk hasil prediksi)
         sessionStorage.setItem("sleep_input", JSON.stringify({
           gender: userProfile.gender,
           age: userProfile.age,
@@ -126,5 +131,213 @@
       }
     };
   </script>
+  <style>
+    :root {
+      --primary: #6751ef;
+      --primary-dark: #4a3ec8;
+      --blue: #2563eb;
+      --background: #f5f7fa;
+      --card-bg: #fff;
+      --gray: #eef2fe;
+      --border: #e5e7eb;
+      --danger: #e11d48;
+      --radius: 18px;
+    }
+    html, body {
+      min-height: 100vh;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #e0e7ff 0%, #f6dfff 100%);
+      font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+    }
+    .input-container {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255,255,255,0.11);
+    }
+    .input-card {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      box-shadow: 0 8px 32px rgba(66,71,112,0.13);
+      padding: 30px 28px 20px 28px;
+      max-width: 420px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      border: 1.5px solid var(--border);
+      transition: box-shadow 0.2s;
+    }
+    .input-card:hover {
+      box-shadow: 0 12px 36px rgba(103,81,239,0.15);
+    }
+    .logo {
+      width: 58px;
+      height: 58px;
+      object-fit: contain;
+      margin-bottom: 16px;
+    }
+    .title {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 18px;
+      text-align: center;
+      letter-spacing: .5px;
+    }
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 17px;
+      width: 100%;
+    }
+    label {
+      font-size: 1rem;
+      color: #495057;
+      font-weight: 500;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .mini-info {
+      font-size: .92em;
+      font-weight: 400;
+      color: #888;
+      margin-left: 5px;
+    }
+    input[type=number] {
+      border: 1.3px solid var(--border);
+      border-radius: 10px;
+      padding: 10px 12px;
+      font-size: 1rem;
+      background: var(--gray);
+      outline: none;
+      transition: border .15s;
+    }
+    input[type=number]:focus {
+      border: 1.6px solid var(--primary);
+      background: #fff;
+    }
+    .range-group {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    input[type=range] {
+      flex: 1;
+      accent-color: var(--primary);
+      height: 4px;
+    }
+    .range-value {
+      display: inline-block;
+      min-width: 24px;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--primary);
+      background: var(--gray);
+      border-radius: 7px;
+      padding: 4px 9px;
+      margin-left: 3px;
+    }
+    .btn-main {
+      background: var(--primary);
+      color: #fff;
+      font-weight: 600;
+      border: none;
+      border-radius: 10px;
+      padding: 12px 0;
+      font-size: 1.08rem;
+      width: 100%;
+      cursor: pointer;
+      margin-top: 2px;
+      box-shadow: 0 2px 8px rgba(103,81,239,0.07);
+      transition: background .13s;
+      letter-spacing: .3px;
+    }
+    .btn-main:hover {
+      background: var(--primary-dark);
+    }
+    .btn-back {
+      background: transparent;
+      color: var(--blue);
+      border: none;
+      font-size: 1rem;
+      font-weight: 500;
+      margin-top: 18px;
+      cursor: pointer;
+      transition: color .12s;
+      text-align: left;
+      width: 100%;
+    }
+    .btn-back:hover {
+      color: var(--primary-dark);
+      text-decoration: underline;
+    }
+    .input-msg {
+      min-height: 18px;
+      margin: 14px 0 0 0;
+      font-weight: 500;
+      font-size: 1rem;
+      text-align: center;
+      color: var(--danger);
+      letter-spacing: .2px;
+      transition: color .2s;
+    }
+    .loader {
+      display: none;
+      margin: 16px 0;
+      color: #555;
+      font-size: .98rem;
+      text-align: center;
+    }
+    .profile-box {
+      border: 1.2px solid var(--primary);
+      border-radius: 10px;
+      padding: 11px 14px 7px 14px;
+      margin-bottom: 18px;
+      background: #f8f9ff;
+      width: 100%;
+      max-width: 350px;
+    }
+    .profile-box legend {
+      font-weight: 600;
+      color: var(--primary);
+      font-size: 1.08rem;
+      padding: 0 7px;
+    }
+    .profile-field {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 5px;
+    }
+    .profile-field span {
+      width: 90px;
+      color: #888;
+      font-size: .98rem;
+    }
+    .profile-field input {
+      border: none;
+      background: #eaeaff;
+      font-weight: 600;
+      border-radius: 6px;
+      padding: 4px 8px;
+      font-size: .98rem;
+      color: #444;
+      width: 65%;
+    }
+    @media (max-width: 520px) {
+      .input-card { padding: 16px 4vw 8px 4vw; }
+      .logo { width: 38px; height: 38px; }
+      .title { font-size: 1.09rem; }
+      .btn-main { font-size: .97rem; }
+      .profile-box legend { font-size: .95rem; }
+      .profile-field span { width: 66px; font-size: .96rem; }
+      .profile-box { padding: 7px 7px 3px 7px; }
+    }
+  </style>
 </body>
 </html>
