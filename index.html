@@ -113,9 +113,23 @@
 <!-- FAQ Section -->
 <section class="faq-section" id="faq">
   <div class="faq-title">FAQ</div>
-  <!-- ...faq items... -->
+  <div class="faq-item" onclick="toggleFaq(this)">
+    <div class="faq-q">Apakah SleepWell AI gratis? <span>▼</span></div>
+    <div class="faq-a">Ya, SleepWell AI gratis untuk semua pengguna, tanpa biaya tersembunyi.</div>
+  </div>
+  <div class="faq-item" onclick="toggleFaq(this)">
+    <div class="faq-q">Apakah data saya aman & rahasia? <span>▼</span></div>
+    <div class="faq-a">Tentu. Semua data Anda terenkripsi dan tidak pernah dibagikan ke pihak luar.</div>
+  </div>
+  <div class="faq-item" onclick="toggleFaq(this)">
+    <div class="faq-q">Bagaimana SleepWell AI memprediksi tidur? <span>▼</span></div>
+    <div class="faq-a">Kami menggunakan algoritma machine learning dari data aktivitas, stress, pola tidur, dan gaya hidup Anda untuk hasil prediksi akurat dan personal.</div>
+  </div>
+  <div class="faq-item" onclick="toggleFaq(this)">
+    <div class="faq-q">Apakah SleepWell bisa digunakan semua umur? <span>▼</span></div>
+    <div class="faq-a">Bisa. Cocok untuk remaja, dewasa, hingga lansia. Data rekomendasi akan menyesuaikan usia dan profil pengguna.</div>
+  </div>
 </section>
-
 <script>
 function toggleFaq(el) {
   document.querySelectorAll('.faq-item').forEach(i=>i!==el&&i.classList.remove('open'));
@@ -125,18 +139,75 @@ function toggleFaq(el) {
 
 <!-- Testimoni Section -->
 <section class="testi-section" id="testi">
-  <!-- ...testimonial HTML and script... -->
+  <div class="testi-title">Apa Kata Pengguna?</div>
+  <div class="testi-box" id="testi-box">
+    <img class="testi-img" id="testi-img" src="https://randomuser.me/api/portraits/women/65.jpg"/>
+    <div class="testi-quote" id="testi-quote">“SleepWell AI bener-bener bantu aku atur pola tidur! Sekarang bangun pagi lebih segar dan produktif.”</div>
+    <div class="testi-name" id="testi-name">— Nadia, Mahasiswi</div>
+    <div class="testi-arrows">
+      <button class="testi-arrow" onclick="prevTesti(event)">&lt;</button>
+      <button class="testi-arrow" onclick="nextTesti(event)">&gt;</button>
+    </div>
+  </div>
 </section>
+<script>
+const testimonials = [
+  {
+    img: "https://randomuser.me/api/portraits/women/65.jpg",
+    quote: "“SleepWell AI bener-bener bantu aku atur pola tidur! Sekarang bangun pagi lebih segar dan produktif.”",
+    name: "— Nadia, Mahasiswi"
+  },
+  {
+    img: "https://randomuser.me/api/portraits/men/47.jpg",
+    quote: "“Analisis tidurnya detail, rekomendasinya mudah diterapkan. Data privasi juga terjaga!”",
+    name: "— Andi, Data Analyst"
+  },
+  {
+    img: "https://randomuser.me/api/portraits/men/9.jpg",
+    quote: "“Saya jadi sadar pentingnya sleep hygiene. Grafik riwayatnya keren dan mudah dimengerti.”",
+    name: "— Budi, Guru"
+  },
+  {
+    img: "https://randomuser.me/api/portraits/women/89.jpg",
+    quote: "“Tim support SleepWell AI cepat tanggap, dan desain aplikasinya user-friendly banget!”",
+    name: "— Siska, Ibu Rumah Tangga"
+  }
+];
+let testiIdx = 0;
+function updateTesti(idx) {
+  document.getElementById('testi-img').src = testimonials[idx].img;
+  document.getElementById('testi-quote').innerHTML = testimonials[idx].quote;
+  document.getElementById('testi-name').innerHTML = testimonials[idx].name;
+}
+function prevTesti(e) { e.stopPropagation(); testiIdx = (testiIdx + testimonials.length - 1) % testimonials.length; updateTesti(testiIdx);}
+function nextTesti(e) { e.stopPropagation(); testiIdx = (testiIdx + 1) % testimonials.length; updateTesti(testiIdx);}
+setInterval(()=>{testiIdx=(testiIdx+1)%testimonials.length;updateTesti(testiIdx);},7000);
+</script>
 
 <!-- CTA Section -->
 <section class="cta-section">
-  <!-- ...cta content... -->
+  <div class="cta-title">Saatnya Tidur Berkualitas, Hidup Lebih Bahagia.</div>
+  <div>Gabung bersama ribuan pengguna. Gratis, privasi terjamin, dan dukungan penuh SleepWell AI!</div>
+  <a href="sign-up.html" class="btn cta-btn">Mulai Gratis Sekarang</a>
 </section>
 
 <!-- Footer -->
 <footer id="contact">
-  <!-- ...footer content... -->
+  <div class="footer-row">
+    <img src="img/logo-sinyal-tenang.png" class="footer-logo" alt="Logo SleepWell"/>
+    <span class="navbar-logo" style="font-size:1.11rem">SleepWell <span style="color:var(--blue)">AI</span></span>
+    <a href="mailto:support@sleepwellai.id" class="footer-link">support@sleepwellai.id</a>
+    <a href="#" class="footer-link">Kebijakan Privasi</a>
+    <a href="#" class="footer-link">Instagram</a>
+    <a href="#" class="footer-link">LinkedIn</a>
+  </div>
+  <div class="footer-partner">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Google-flutter-logo.svg" alt="Flutter"/>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/2/2d/Tailwind_CSS_Logo.svg" alt="TailwindCSS"/>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/7/7e/Supabase_logo.png" alt="Supabase"/>
+  </div>
+  <div class="footer-copy">SleepWell AI &copy; 2025 &middot; Powered by DevAcademy.id &middot; All rights reserved.</div>
 </footer>
-
 </body>
 </html>
+
