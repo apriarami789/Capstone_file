@@ -133,4 +133,25 @@
       transition: background .15s, box-shadow .15s;
       margin: 0;
       width: 100%;
-      lett
+      letter-spacing: .3px;
+    }
+    .btn-mainmenu:hover {
+      background: var(--primary-dark);
+      box-shadow: 0 4px 18px rgba(103,81,239,0.13);
+    }
+    .btn-logout {
+      background: var(--danger);
+    }
+    .btn-logout:hover {
+      background: #b91c1c;
+    }
+    @media (max-width: 520px) {
+      .mainmenu-card { padding: 20px 6vw 18px 6vw; }
+      .logo { width: 42px; height: 42px; }
+      .title { font-size: 1.16rem; }
+      .btn-mainmenu { font-size: .98rem; }
+      .user-welcome { font-size: .99rem; }
+    }
+  </style>
+</body>
+</html>
