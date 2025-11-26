@@ -2,112 +2,108 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <title>Registrasi Akun • SleepWell AI</title>
+  <title>Daftar • SleepWell AI</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- Link ke style.css di bawah -->
 </head>
 <body>
-  <div class="register-container">
-    <div class="register-card">
+  <div class="signup-container">
+    <div class="signup-card">
       <img src="style/img/logo-sinyal-tenang.png" alt="SleepWell Logo" class="logo">
-      <h2 class="title">Buat Akun SleepWell</h2>
+      <h2 class="title">Daftar SleepWell</h2>
+
       <form id="signupForm" autocomplete="off">
-        <div class="form-group">
-          <label>Nama Lengkap</label>
-          <input name="name" required placeholder="Masukkan nama lengkap...">
-        </div>
         <div class="form-group">
           <label>Email</label>
           <input name="email" type="email" required placeholder="Email aktif...">
         </div>
+
         <div class="form-group">
           <label>Password</label>
           <input name="password" type="password" required placeholder="Minimal 6 karakter">
         </div>
+
         <div class="form-group">
-          <label>Jenis Kelamin</label>
-          <select name="gender" required>
-            <option value="">-- Pilih --</option>
-            <option value="Male">Pria</option>
-            <option value="Female">Wanita</option>
-          </select>
+          <label>Ulangi Password</label>
+          <input name="confirm_password" type="password" required placeholder="Ulangi password">
         </div>
-        <div class="form-group">
-          <label>Umur</label>
-          <input name="age" type="number" min="10" max="100" required placeholder="Usia kamu">
-        </div>
-        <div class="form-group">
-          <label>Pekerjaan</label>
-          <select name="occupation" required>
-            <option value="">-- Pilih --</option>
-            <option value="Accountant">Accountant</option>
-            <option value="Doctor">Doctor</option>
-            <option value="Engineer">Engineer</option>
-            <option value="Lawyer">Lawyer</option>
-            <option value="Manager">Manager</option>
-            <option value="Nurse">Nurse</option>
-            <option value="Sales Representative">Sales Representative</option>
-            <option value="Salesperson">Salesperson</option>
-            <option value="Scientist">Scientist</option>
-            <option value="Software Engineer">Software Engineer</option>
-            <option value="Teacher">Teacher</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label>Kategori BMI</label>
-          <select name="bmi_category" required>
-            <option value="">-- Pilih --</option>
-            <option value="Normal">Normal</option>
-            <option value="Overweight">Overweight</option>
-            <option value="Obese">Obese</option>
-          </select>
-        </div>
-        <button type="submit" class="btn-register">Daftar</button>
+
+        <button type="submit" class="btn-signup">Daftar</button>
       </form>
+
       <div id="signupMsg" class="signup-msg"></div>
-      <p class="redirect">Sudah punya akun? <a href="login-user.html">Login di sini</a></p>
+
+      <p class="redirect">
+        Sudah punya akun?
+        <a href="login-user.html">Login di sini</a>
+      </p>
     </div>
   </div>
 
+  <!-- Supabase JS -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
   <script>
+    // Supabase project kamu
     const supabaseUrl = 'https://whszzlmewqonddsrumuy.supabase.co';
     const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Indoc3p6bG1ld3FvbmRkc3J1bXV5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjQxOTMyMDQsImV4cCI6MjA3OTc2OTIwNH0.1sf5B9s90lV5PHnxePelbcSC_fvhAq1LNj45SV36evo';
     const supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
 
-    document.getElementById("signupForm").onsubmit = async function(e) {
+    document.getElementById("signupForm").onsubmit = async function (e) {
       e.preventDefault();
+
       const fd = new FormData(this);
-      const name = fd.get("name");
       const email = fd.get("email");
       const password = fd.get("password");
-      const gender = fd.get("gender");
-      const age = fd.get("age");
-      const occupation = fd.get("occupation");
-      const bmi_category = fd.get("bmi_category");
+      const confirmPassword = fd.get("confirm_password");
 
-      // Signup Supabase Auth + metadata profil
-      const { error } = await supabase.auth.signUp({
-        email,
-        password,
-        options: {
-          data: {
-            name,
-            gender,
-            age,
-            occupation,
-            bmi_category
-          }
+      const msgEl = document.getElementById("signupMsg");
+      msgEl.style.color = "#374151";
+
+      if (password !== confirmPassword) {
+        msgEl.innerText = "Password dan konfirmasi password tidak sama.";
+        msgEl.style.color = "#e11d48";
+        return;
+      }
+
+      if (password.length < 6) {
+        msgEl.innerText = "Password minimal 6 karakter.";
+        msgEl.style.color = "#e11d48";
+        return;
+      }
+
+      msgEl.innerText = "Mendaftarkan akun...";
+
+      try {
+        // Sign up ke Supabase Auth
+        const { data, error } = await supabase.auth.signUp({
+          email,
+          password
+        });
+
+        if (error) {
+          console.error(error);
+          msgEl.innerText = error.message || "Gagal mendaftar. Coba lagi.";
+          msgEl.style.color = "#e11d48";
+          return;
         }
-      });
 
-      document.getElementById("signupMsg").innerText = error
-        ? "Gagal daftar: " + error.message
-        : "Registrasi sukses! Cek email kamu untuk verifikasi sebelum login.";
-      document.getElementById("signupMsg").style.color = error ? "#e11d48" : "#2563eb";
+        // Kalau email confirmation aktif, user wajib cek email dulu
+        msgEl.style.color = "#16a34a";
+        msgEl.innerText = "Pendaftaran berhasil! Silakan cek email untuk verifikasi (jika diminta), lalu login.";
+
+        // Redirect pelan-pelan ke login
+        setTimeout(() => {
+          window.location.href = "login-user.html";
+        }, 2500);
+
+      } catch (err) {
+        console.error(err);
+        msgEl.innerText = "Terjadi kesalahan saat mendaftar. Coba lagi.";
+        msgEl.style.color = "#e11d48";
+      }
     };
   </script>
-  <!-- Style langsung di bawah -->
+
+  <!-- CSS (sama nuansa dengan login) -->
   <style>
     :root {
       --primary: #6751ef;
@@ -120,7 +116,6 @@
       --danger: #e11d48;
       --radius: 18px;
     }
-
     html, body {
       height: 100%;
       margin: 0;
@@ -129,17 +124,17 @@
       font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
       min-height: 100vh;
     }
-    .register-container {
+    .signup-container {
       display: flex;
       align-items: center;
       justify-content: center;
       min-height: 100vh;
-      background: rgba(255,255,255,0.18);
+      background: rgba(255,255,255,0.13);
     }
-    .register-card {
+    .signup-card {
       background: var(--card-bg);
       border-radius: var(--radius);
-      box-shadow: 0 8px 32px rgba(66,71,112,0.15);
+      box-shadow: 0 8px 32px rgba(66,71,112,0.14);
       padding: 32px 28px 24px 28px;
       width: 100%;
       max-width: 400px;
@@ -149,7 +144,7 @@
       border: 1.5px solid var(--border);
       transition: box-shadow 0.2s;
     }
-    .register-card:hover {
+    .signup-card:hover {
       box-shadow: 0 12px 36px rgba(103,81,239,0.15);
     }
     .logo {
@@ -178,7 +173,7 @@
       font-weight: 500;
       margin-bottom: 5px;
     }
-    input, select {
+    input {
       border: 1.3px solid var(--border);
       border-radius: 10px;
       padding: 10px 12px;
@@ -187,11 +182,11 @@
       outline: none;
       transition: border .15s;
     }
-    input:focus, select:focus {
+    input:focus {
       border: 1.6px solid var(--primary);
       background: #fff;
     }
-    .btn-register {
+    .btn-signup {
       margin-top: 8px;
       background: var(--primary);
       color: #fff;
@@ -206,7 +201,7 @@
       transition: background .13s;
       letter-spacing: .3px;
     }
-    .btn-register:hover {
+    .btn-signup:hover {
       background: var(--primary-dark);
     }
     .signup-msg {
@@ -234,14 +229,12 @@
       color: var(--primary);
       text-decoration: underline;
     }
-
     @media (max-width: 520px) {
-      .register-card { padding: 20px 6vw 18px 6vw; }
+      .signup-card { padding: 20px 6vw 18px 6vw; }
       .title { font-size: 1.18rem; }
       .logo { width: 42px; height: 42px; }
-      .btn-register { font-size: .97rem; }
+      .btn-signup { font-size: .97rem; }
     }
   </style>
 </body>
 </html>
-
